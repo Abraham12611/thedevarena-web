@@ -72,8 +72,7 @@ const services = [
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
+  animate: { opacity: 1, y: 0 }
 };
 
 export default function Services() {
@@ -93,6 +92,7 @@ export default function Services() {
           whileInView="animate"
           viewport={{ once: true }}
           variants={fadeInUp}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -111,10 +111,8 @@ export default function Services() {
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
-              variants={{
-                ...fadeInUp,
-                transition: { delay: index * 0.1, duration: 0.5 },
-              }}
+              variants={fadeInUp}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               className={`group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm 
                 border border-border/50 hover:border-primary/50 
                 transition-all duration-300 hover:shadow-[0_0_30px_rgba(238,243,95,0.1)]
