@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 2% 6%;
+  --foreground: 0 0% 98%;
+  --card: 240 2% 10%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 2% 6%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 60 89% 65%;
+  --primary-foreground: 240 2% 6%;
+  --secondary: 240 2% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 2% 12%;
+  --muted-foreground: 240 5% 64%;
+  --accent: 60 89% 65%;
+  --accent-foreground: 240 2% 6%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 2% 12%;
+  --input: 240 2% 12%;
+  --ring: 60 89% 65%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary to-accent;
+}
+
+.hover-glow {
+  @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(238,243,95,0.3)];
+}
+
+.nav-link {
+  @apply relative text-muted-foreground hover:text-foreground transition-colors duration-200;
+}
+
+.nav-link::after {
+  @apply content-[''] absolute left-0 bottom-[-4px] w-0 h-[2px] bg-primary transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.card-hover {
+  @apply transition-transform duration-300 hover:-translate-y-2;
+}
+
+.bg-grid-white {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.02)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+.pulse-dot {
+  @apply relative flex h-2.5 w-2.5;
+}
+
+.pulse-dot::before {
+  content: '';
+  @apply absolute inset-0 rounded-full bg-primary;
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.pulse-dot::after {
+  content: '';
+  @apply absolute inset-0 rounded-full bg-primary;
+  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
