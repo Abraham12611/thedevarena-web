@@ -2,11 +2,16 @@
   "name": "thedevarena",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.17.0",
+    "npm": "9.6.7"
+  },
   "scripts": {
     "dev": "next dev",
-    "build": "npm ci && next build",
+    "build": "npm cache clean --force && npm ci && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cache-clean": "npm cache clean --force"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
