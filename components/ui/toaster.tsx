@@ -8,8 +8,8 @@ import {
   ToastTitle,
   ToastViewport,
 } from "@/components/ui/toast";
-import { useToast } from "@/components/ui/toast/use-toast";
-import type { ToastProps } from "@/components/ui/toast/toast-types";
+import { useToast } from "./toast/use-toast";
+import type { ToastProps } from "./toast/toast-types";
 
 export function Toaster() {
   const { toasts } = useToast();
@@ -21,10 +21,17 @@ export function Toaster() {
         title,
         description,
         action,
+        className,
+        variant,
         ...props
       }: ToastProps) => {
         return (
-          <Toast key={id} {...props}>
+          <Toast
+            key={id}
+            className={className}
+            variant={variant}
+            {...props}
+          >
             <div className="grid gap-1">
               {title && <ToastTitle>{title}</ToastTitle>}
               {description && (
@@ -32,7 +39,7 @@ export function Toaster() {
               )}
             </div>
             {action}
-            <ToastClose />
+            <ToastClose onClick={() => useToast().dismiss(id)} />
           </Toast>
         );
       })}

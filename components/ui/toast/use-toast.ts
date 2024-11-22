@@ -1,3 +1,5 @@
+"use client"
+
 import { useContext } from "react"
 import { ToastContext } from "./toast-context"
 import type { ToastProps } from "./toast-types"
@@ -9,7 +11,11 @@ export function useToast() {
     throw new Error("useToast must be used within a ToastProvider")
   }
   
-  return context
+  return {
+    toasts: context.toasts,
+    toast: context.addToast,
+    dismiss: context.removeToast,
+  }
 }
 
 export type { ToastProps } 
