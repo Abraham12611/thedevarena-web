@@ -7,9 +7,9 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
+  useToast,
+  type ToastProps
 } from "@/components/ui/toast";
-import { useToast } from "./toast/use-toast";
-import type { ToastProps } from "./toast/toast-types";
 
 export function Toaster() {
   const { toasts } = useToast();

@@ -5,6 +5,7 @@ import * as ToastPrimitives from "@radix-ui/react-toast"
 import { cva, type VariantProps } from "class-variance-authority"
 import { X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import type { ToastProps } from "./toast-types"
 
 const ToastProvider = ToastPrimitives.Provider
 const ToastViewport = ToastPrimitives.Viewport
@@ -83,7 +84,6 @@ const ToastDescription = React.forwardRef<
 ToastDescription.displayName = ToastPrimitives.Description.displayName
 
 export {
-  type ToastProps,
   ToastProvider,
   ToastViewport,
   Toast,

@@ -15,7 +15,7 @@ export function useToast() {
     toasts: context.toasts,
     toast: context.addToast,
     dismiss: context.removeToast,
-  }
+  } as const
 }
 
 export type { ToastProps } 
