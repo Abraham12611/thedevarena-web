@@ -7,12 +7,12 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
-  useToast,
-  type ToastProps
-} from "@/components/ui/toast";
+} from "@/components/ui/toast/toast-primitives";
+import { useToast } from "@/components/ui/toast/use-toast";
+import type { ToastProps } from "@/components/ui/toast/toast-types";
 
 export function Toaster() {
-  const { toasts } = useToast();
+  const { toasts, dismiss } = useToast();
 
   return (
     <ToastProvider>
@@ -39,7 +39,7 @@ export function Toaster() {
               )}
             </div>
             {action}
-            <ToastClose onClick={() => useToast().dismiss(id)} />
+            <ToastClose onClick={() => dismiss(id)} />
           </Toast>
         );
       })}

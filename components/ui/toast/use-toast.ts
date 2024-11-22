@@ -4,7 +4,13 @@ import { useContext } from "react"
 import { ToastContext } from "./toast-context"
 import type { ToastProps } from "./toast-types"
 
-export function useToast() {
+export interface UseToastReturn {
+  toasts: ToastProps[]
+  toast: (props: Omit<ToastProps, "id">) => void
+  dismiss: (id: string) => void
+}
+
+export function useToast(): UseToastReturn {
   const context = useContext(ToastContext)
   
   if (!context) {
@@ -15,7 +21,7 @@ export function useToast() {
     toasts: context.toasts,
     toast: context.addToast,
     dismiss: context.removeToast,
-  } as const
+  }
 }
 
 export type { ToastProps } 
