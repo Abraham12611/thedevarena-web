@@ -1,6 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
-import { Providers } from '@/components/providers';
+import { ThemeProvider } from '@/components/theme-provider';
+import { ToastProvider } from "@/components/ui/toast/toast-provider";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
@@ -20,12 +21,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} dark`}>
-        <Providers>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <Toaster />
-        </Providers>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <ToastProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <Toaster />
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
