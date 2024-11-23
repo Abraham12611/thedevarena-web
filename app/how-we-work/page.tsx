@@ -8,13 +8,13 @@ const steps = [
   {
     icon: Phone,
     title: "Discovery Call",
-    description: "We start with a 30-minute introductory call to understand your unique needs, goals, and target audience. This allows us to ensure we're the right fit before we begin.",
+    description: "We start with a 30-minute introductory call to understand your unique needs, goals, and target audience. This allows us to ensure we&apos;re the right fit before we begin.",
     color: "from-[#FF6B6B] to-[#FFE66D]"
   },
   {
     icon: FileText,
     title: "Content Strategy",
-    description: "Together, we'll create a comprehensive content plan tailored to your business objectives. This roadmap keeps our efforts aligned and helps us track progress towards your goals.",
+    description: "Together, we&apos;ll create a comprehensive content plan tailored to your business objectives. This roadmap keeps our efforts aligned and helps us track progress towards your goals.",
     color: "from-[#4ECDC4] to-[#556270]"
   },
   {
@@ -28,18 +28,6 @@ const steps = [
     title: "Rigorous Review",
     description: "Before delivery, your content undergoes a multi-stage review process. We validate accuracy, optimize for clarity, and refine the tone to match your brand.",
     color: "from-[#FF8C42] to-[#FFF275]"
-  },
-  {
-    icon: TrendingUp,
-    title: "Continuous Improvement",
-    description: "You'll receive your finalized content on a regular cadence. We welcome your feedback and commit to revising anything that doesn't meet your standards.",
-    color: "from-[#45B7D1] to-[#DFFFE2]"
-  },
-  {
-    icon: CreditCard,
-    title: "Transparent Billing",
-    description: "You'll only be invoiced monthly for the work we've completed. No advance payments, just high-quality technical content that delivers results.",
-    color: "from-[#A8E6CF] to-[#DCEDC1]"
   }
 ];
 
@@ -71,76 +59,6 @@ export default function HowWeWork() {
             From web development to cloud engineering, our team of developer-writers transforms complex topics into 
             engaging, developer-friendly content that drives understanding and adoption.
           </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl font-bold mb-4">
-            Our Process: <span className="gradient-text">Content That Converts</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="group relative"
-            >
-              <div className="relative rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 p-6
-                transition-all duration-300 hover:shadow-[0_0_30px_rgba(238,243,95,0.1)]"
-              >
-                <div className="mb-4 inline-block p-3 rounded-lg bg-secondary/50 
-                  group-hover:bg-primary/10 transition-colors duration-300"
-                >
-                  <step.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
-
-                {/* Hover Gradient */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 
-                  opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="text-center"
-        >
-          <h2 className="text-3xl font-bold mb-6">
-            Ready to Transform Your{" "}
-            <span className="gradient-text">Developer Content?</span>
-          </h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-            Schedule a call to learn how TheDevArena can elevate your technical documentation, 
-            tutorials, and more. We're excited to help your SaaS business drive adoption through 
-            developer-first content.
-          </p>
-          <Button
-            size="lg"
-            className="group relative hover:scale-105 transition-all duration-300 
-              bg-gradient-to-r from-primary via-primary to-accent 
-              hover:shadow-[0_0_30px_rgba(238,243,95,0.3)] hover:border-primary/50"
-          >
-            <span className="flex items-center gap-2">
-              Schedule Discovery Call
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </span>
-          </Button>
         </motion.div>
       </div>
     </div>
