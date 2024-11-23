@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { ToastProvider as ToastProviderPrimitive } from "./toast-primitives"
-import { ToastProvider as ToastContextProvider } from "./toast-context"
+import { ToastProvider as ToastProviderPrimitive } from "@radix-ui/react-toast"
+import { ToastProvider as ToastContextProvider, useToastContext } from "./toast-context"
 import {
   Toast,
   ToastViewport,
@@ -10,7 +10,6 @@ import {
   ToastDescription,
   ToastClose,
 } from "./toast-primitives"
-import { useToast } from "./use-toast"
 import type { ToastProps } from "./toast-types"
 
 // Combine both providers into a single ToastProvider
@@ -24,7 +23,7 @@ const ToastProvider = ({ children }: { children: React.ReactNode }) => {
 
 // Create a barrel export
 export {
-  useToast,
+  useToastContext as useToast,
   Toast,
   ToastViewport,
   ToastTitle,
