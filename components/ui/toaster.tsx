@@ -9,22 +9,24 @@ import {
   ToastViewport,
   useToast,
   type ToastProps
-} from "./toast";
+} from "./toast/index.tsx";
 
 export function Toaster() {
   const { toasts, dismiss } = useToast();
 
   return (
     <ToastProvider>
-      {toasts.map(({
-        id,
-        title,
-        description,
-        action,
-        className,
-        variant,
-        ...props
-      }: ToastProps) => {
+      {toasts.map((toast) => {
+        const {
+          id,
+          title,
+          description,
+          action,
+          className,
+          variant,
+          ...props
+        } = toast;
+
         return (
           <Toast
             key={id}
