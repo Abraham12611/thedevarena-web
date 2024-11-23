@@ -1,6 +1,11 @@
 "use client"
 
-import { useToast } from "./use-toast"
+import {
+  Toast,
+  ToastClose,
+  ToastDescription,
+  ToastTitle,
+} from "./toast-primitives"
 import type { ToastProps } from "./toast-types"
 
 interface ClientToastProps {
@@ -9,21 +14,23 @@ interface ClientToastProps {
 }
 
 export function ClientToast({ toast, onDismiss }: ClientToastProps) {
+  const { id, title, description, action, className, variant, ...restProps } = toast
+
   return (
     <Toast
-      key={toast.id}
-      className={toast.className}
-      variant={toast.variant}
-      {...props}
+      key={id}
+      className={className}
+      variant={variant}
+      {...restProps}
     >
       <div className="grid gap-1">
-        {toast.title && <ToastTitle>{toast.title}</ToastTitle>}
-        {toast.description && (
-          <ToastDescription>{toast.description}</ToastDescription>
+        {title && <ToastTitle>{title}</ToastTitle>}
+        {description && (
+          <ToastDescription>{description}</ToastDescription>
         )}
       </div>
-      {toast.action}
-      <ToastClose onClick={() => onDismiss(toast.id)} />
+      {action}
+      <ToastClose onClick={() => onDismiss(id)} />
     </Toast>
   )
 } 

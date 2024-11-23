@@ -1,19 +1,24 @@
 "use client";
 
 import {
-  Toast,
-  ToastClose,
-  ToastDescription,
   ToastProvider,
-  ToastTitle,
   ToastViewport,
 } from "./toast/toast-primitives"
 import { ClientToast } from "./toast/client-toast"
+import { useToast } from "./toast/use-toast"
 
 export function Toaster() {
+  const { toasts, dismiss } = useToast()
+
   return (
     <ToastProvider>
-      <ClientToast />
+      {toasts.map((toast) => (
+        <ClientToast 
+          key={toast.id}
+          toast={toast}
+          onDismiss={dismiss}
+        />
+      ))}
       <ToastViewport />
     </ToastProvider>
   )
