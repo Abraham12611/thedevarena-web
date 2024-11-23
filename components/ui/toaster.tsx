@@ -9,7 +9,7 @@ import {
   ToastViewport,
   useToast,
   type ToastProps
-} from "./toast/index.tsx";
+} from "./toast";
 
 export function Toaster() {
   const { toasts, dismiss } = useToast();
