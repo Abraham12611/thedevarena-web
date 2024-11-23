@@ -6,7 +6,7 @@ import { Mail, MessageSquare, Clock, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { useToast } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/toast/use-toast";
 import { submitToAirtable } from "@/lib/airtable";
 
 const contactInfo = [

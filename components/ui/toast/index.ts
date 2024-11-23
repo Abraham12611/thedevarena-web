@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import { ToastProvider as ToastProviderPrimitive } from "./toast-primitives"
 import { ToastProvider as ToastContextProvider } from "./toast-context"
 import {
