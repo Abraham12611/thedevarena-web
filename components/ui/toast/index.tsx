@@ -21,6 +21,7 @@ const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
+// Create a barrel export
 export {
   useToast,
   Toast,
@@ -29,5 +30,6 @@ export {
   ToastDescription,
   ToastClose,
   ToastProvider,
-  type ToastProps
-} 
+}
+
+export type { ToastProps } 

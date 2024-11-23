@@ -9,14 +9,14 @@ import {
   ToastViewport,
   useToast,
   type ToastProps
-} from "./toast";
+} from "@/components/ui/toast/index";
 
 export function Toaster() {
   const { toasts, dismiss } = useToast();
 
   return (
     <ToastProvider>
-      {toasts.map((toast) => {
+      {toasts.map((toast: ToastProps) => {
         const {
           id,
           title,
