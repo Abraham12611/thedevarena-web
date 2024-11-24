@@ -9,18 +9,13 @@ const NOOP = {
   dismiss: () => {},
 }
 
-export function useToast() {
-  // Early return if we're in a non-browser environment
-  if (typeof window === 'undefined') {
-    return NOOP
-  }
+function useServerToast() {
+  return NOOP
+}
 
-  try {
-    return useToastClient()
-  } catch {
-    // If the hook fails (e.g., not within provider), return no-op implementation
-    return NOOP
-  }
+export function useToast() {
+  const hook = typeof window === 'undefined' ? useServerToast : useToastClient
+  return hook()
 }
 
 export type { ToastProps } 
