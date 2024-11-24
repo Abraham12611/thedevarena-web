@@ -6,7 +6,7 @@ import type { ToastProps } from "./toast-types"
 interface ToastContextValue {
   toasts: ToastProps[]
   addToast: (toast: Omit<ToastProps, "id">) => void
-  dismissToast: (id: string) => void
+  removeToast: (id: string) => void
 }
 
 export const ToastContext = React.createContext<ToastContextValue | undefined>(undefined)
@@ -21,7 +21,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     ])
   }, [])
 
-  const dismissToast = React.useCallback((id: string) => {
+  const removeToast = React.useCallback((id: string) => {
     setToasts((current) => current.filter((toast) => toast.id !== id))
   }, [])
 
@@ -29,9 +29,9 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     () => ({
       toasts,
       addToast,
-      dismissToast,
+      removeToast,
     }),
-    [toasts, addToast, dismissToast]
+    [toasts, addToast, removeToast]
   )
 
   return (
