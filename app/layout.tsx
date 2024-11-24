@@ -1,8 +1,8 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
-import { ToastProvider } from "@/components/ui/toast/toast-provider";
-import { Toaster } from "@/components/ui/toaster";
+import { ClientWrapper } from "@/components/ui/toast/client-wrapper"
+import { Toaster } from "@/components/ui/toaster"
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 
@@ -27,12 +27,12 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <ToastProvider>
+          <ClientWrapper>
             <Navbar />
             <main>{children}</main>
             <Footer />
             <Toaster />
-          </ToastProvider>
+          </ClientWrapper>
         </ThemeProvider>
       </body>
     </html>
