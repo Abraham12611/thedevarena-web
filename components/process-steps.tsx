@@ -94,38 +94,6 @@ export default function ProcessSteps() {
 
         <div className="relative">
           <div className="relative max-w-[900px] mx-auto">
-            {/* Connecting Lines Container */}
-            <div className="absolute inset-0 hidden md:block">
-              {steps.map((_, index) => (
-                index < steps.length - 1 && (
-                  <svg
-                    key={`line-${index}`}
-                    className="absolute"
-                    style={{
-                      top: `${index * 280 + 80}px`,
-                      left: '0',
-                      width: '100%',
-                      height: '280px',
-                    }}
-                    viewBox="0 0 900 280"
-                  >
-                    <path
-                      d={
-                        index % 2 === 0
-                          ? "M100,40 C300,40 600,240 800,240"  // Left to right curve
-                          : "M800,40 C600,40 300,240 100,240"  // Right to left curve
-                      }
-                      fill="none"
-                      stroke="hsl(var(--primary))"
-                      strokeWidth="2"
-                      strokeDasharray="6 4"
-                      className="opacity-30"
-                    />
-                  </svg>
-                )
-              ))}
-            </div>
-
             {/* Cards */}
             {steps.map((step, index) => (
               <motion.div
