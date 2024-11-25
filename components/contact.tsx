@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CalendarDays } from "lucide-react";
+import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 
 export default function Contact() {
   return (
@@ -19,15 +20,16 @@ export default function Contact() {
           className="text-center"
         >
           <div className="max-w-xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative"
+            <NeonGradientCard
+              borderSize={1.5}
+              borderRadius={24}
+              neonColors={{
+                firstColor: "#6C5CE7",
+                secondColor: "#45B7D1"
+              }}
+              className="transition-all duration-300 hover:scale-[1.02]"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 blur-xl opacity-50" />
-              <div className="relative bg-card/50 backdrop-blur-xl rounded-2xl p-8 shadow-xl text-center">
+              <div className="relative bg-card/50 backdrop-blur-xl rounded-2xl p-8">
                 {/* Emoji Icon */}
                 <div className="flex justify-center mb-6">
                   <div className="w-20 h-20 relative">
@@ -59,7 +61,7 @@ export default function Contact() {
                   Claim Your Free Strategy Call
                 </a>
               </div>
-            </motion.div>
+            </NeonGradientCard>
           </div>
         </motion.div>
       </div>
