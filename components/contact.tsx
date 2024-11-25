@@ -75,7 +75,7 @@ export default function Contact() {
             Get in <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a project in mind? We'd love to help bring your documentation vision to life.
+            Have a project in mind? We&apos;d love to help bring your documentation vision to life.
           </p>
         </motion.div>
 
