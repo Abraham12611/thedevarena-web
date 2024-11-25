@@ -63,6 +63,13 @@ const socialIcons = {
   github: Github,
 };
 
+const teamGradients = [
+  { color: "from-[#FF6B6B] to-[#FFE66D]" }, // Warm gradient
+  { color: "from-[#4ECDC4] to-[#556270]" }, // Cool gradient
+  { color: "from-[#6C5CE7] to-[#A8E6CF]" }, // Purple gradient
+  { color: "from-[#45B7D1] to-[#DFFFE2]" }, // Blue gradient
+];
+
 export default function Team() {
   return (
     <section id="team" className="py-24 relative overflow-hidden">
@@ -105,37 +112,47 @@ export default function Team() {
                 borderSize={1.5}
                 borderRadius={24}
                 neonColors={{
-                  firstColor: "hsl(var(--primary))",
-                  secondColor: "hsl(var(--accent))"
+                  firstColor: teamGradients[index].color.split(" ")[0].replace("from-[", "").replace("]", ""),
+                  secondColor: teamGradients[index].color.split(" ")[1].replace("to-[", "").replace("]", "")
                 }}
                 className="h-full transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
               >
-                <div className="p-6 space-y-4">
-                  {/* Profile Image */}
-                  <div className="relative w-24 h-24 mx-auto mb-4">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="rounded-full object-cover"
-                    />
+                <div className="relative p-6 rounded-3xl bg-card/80 backdrop-blur-sm">
+                  {/* Decorative gradient orb */}
+                  <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${teamGradients[index].color} opacity-20 blur-2xl transition-all duration-300 group-hover:opacity-30 group-hover:scale-125`} />
+
+                  {/* Profile Image with gradient border */}
+                  <div className="relative w-24 h-24 mx-auto mb-6">
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${teamGradients[index].color} blur-md opacity-50`} />
+                    <div className="relative rounded-full p-[2px] bg-gradient-to-br from-border to-border/0">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="rounded-full object-cover"
+                      />
+                    </div>
                   </div>
 
                   {/* Member Info */}
-                  <div className="text-center">
-                    <h3 className="text-xl font-semibold">{member.name}</h3>
-                    <p className="text-primary font-medium mt-1">{member.role}</p>
-                    <p className="text-muted-foreground text-sm mt-2">
+                  <div className="text-center relative z-10">
+                    <h3 className="text-xl font-semibold transition-colors group-hover:text-primary">
+                      {member.name}
+                    </h3>
+                    <p className={`font-medium mt-1 bg-gradient-to-r ${teamGradients[index].color} bg-clip-text text-transparent`}>
+                      {member.role}
+                    </p>
+                    <p className="text-muted-foreground text-sm mt-2 transition-colors group-hover:text-muted-foreground/80">
                       {member.bio}
                     </p>
                   </div>
 
-                  {/* Specialties */}
-                  <div className="flex flex-wrap gap-2 justify-center">
+                  {/* Specialties with gradient background */}
+                  <div className="flex flex-wrap gap-2 justify-center mt-4">
                     {member.specialties.map((specialty) => (
                       <span
                         key={specialty}
-                        className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary"
+                        className={`text-xs px-2 py-1 rounded-full bg-gradient-to-br ${teamGradients[index].color} bg-opacity-10 text-primary backdrop-blur-sm transition-all duration-300 hover:scale-105`}
                       >
                         {specialty}
                       </span>
@@ -143,7 +160,7 @@ export default function Team() {
                   </div>
 
                   {/* Social Links */}
-                  <div className="flex justify-center gap-3 pt-4">
+                  <div className="flex justify-center gap-3 pt-4 relative z-10">
                     {Object.entries(member.social).map(([platform, url]) => {
                       const Icon = socialIcons[platform as keyof typeof socialIcons];
                       return (
@@ -151,7 +168,7 @@ export default function Team() {
                           key={platform}
                           variant="outline"
                           size="icon"
-                          className="w-8 h-8 rounded-full border border-muted-foreground/20 bg-transparent hover:bg-transparent hover:border-primary transition-colors duration-300"
+                          className={`w-8 h-8 rounded-full border bg-transparent hover:bg-gradient-to-br ${teamGradients[index].color} hover:border-transparent transition-all duration-300 group/icon`}
                           asChild
                         >
                           <a 
@@ -160,7 +177,7 @@ export default function Team() {
                             rel="noopener noreferrer"
                             className="flex items-center justify-center"
                           >
-                            <Icon className="w-3.5 h-3.5 text-muted-foreground" />
+                            <Icon className="w-3.5 h-3.5 text-muted-foreground group-hover/icon:text-background transition-colors duration-300" />
                           </a>
                         </Button>
                       );
