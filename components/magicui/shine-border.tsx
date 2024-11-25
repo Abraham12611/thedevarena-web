@@ -1,15 +1,14 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, HTMLMotionProps } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-interface ShineBorderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ShineBorderProps extends Omit<HTMLMotionProps<"div">, "color"> {
   borderWidth?: string;
   duration?: number;
   delay?: number;
   color?: string[];
-  children: React.ReactNode;
 }
 
 export default function ShineBorder({
@@ -47,6 +46,8 @@ export default function ShineBorder({
     };
   }, []);
 
+  const gradientColors = color.map((c) => `${c}15`).join(", ");
+
   return (
     <motion.div
       ref={divRef}
@@ -58,9 +59,7 @@ export default function ShineBorder({
     >
       <div
         style={{
-          background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, ${color.map(
-            (c) => `${c}15`
-          )}, transparent 40%)`,
+          background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, ${gradientColors}, transparent 40%)`,
         }}
         className={cn(
           "pointer-events-none absolute inset-0 transition-opacity duration-500",
