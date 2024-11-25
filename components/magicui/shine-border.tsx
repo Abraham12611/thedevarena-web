@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 interface ShineBorderProps {
+  borderRadius?: string;
   borderWidth?: string;
   duration?: number;
   delay?: number;
@@ -15,6 +16,7 @@ interface ShineBorderProps {
 }
 
 export default function ShineBorder({
+  borderRadius = "24px",
   borderWidth = "1px",
   duration = 3,
   delay = 0,
