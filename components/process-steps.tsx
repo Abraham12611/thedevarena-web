@@ -102,19 +102,19 @@ export default function ProcessSteps() {
                     key={`line-${index}`}
                     className="absolute"
                     style={{
-                      top: `${index * 220 + 100}px`,
+                      top: `${index * 280 + 120}px`,
                       left: '50%',
                       transform: 'translateX(-50%)',
                       width: '500px',
-                      height: '120px',
+                      height: '160px',
                     }}
-                    viewBox="0 0 500 120"
+                    viewBox="0 0 500 160"
                   >
                     <path
                       d={
                         index % 2 === 0
-                          ? "M50,10 C150,10 350,110 450,110"
-                          : "M450,10 C350,10 150,110 50,110"
+                          ? "M50,20 C150,20 350,140 450,140"
+                          : "M450,20 C350,20 150,140 50,140"
                       }
                       fill="none"
                       stroke="hsl(var(--primary))"
