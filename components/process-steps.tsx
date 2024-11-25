@@ -146,8 +146,6 @@ export default function ProcessSteps() {
                 }}
               >
                 <ShineBorder
-                  borderRadius={24}
-                  borderWidth={1}
                   duration={10}
                   color={[
                     step.color.split(" ")[0].replace("from-[", "").replace("]", ""),
