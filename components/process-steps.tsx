@@ -147,44 +147,40 @@ export default function ProcessSteps() {
                   zIndex: steps.length - index
                 }}
               >
-                <NeonGradientCard className="max-w-sm items-center justify-center text-center">
-                  <ShineBorder
-                    borderRadius="24px"
-                    borderWidth="1px"
-                    duration={10}
-                    color={[
-                      step.color.split(" ")[0].replace("from-[", "").replace("]", ""),
-                      step.color.split(" ")[1].replace("to-[", "").replace("]", ""),
-                      "hsl(var(--primary))"
-                    ]}
-                    className="w-full"
-                  >
-                    <div className="relative p-8 rounded-3xl bg-card/80 backdrop-blur-sm">
-                      {/* Content wrapper */}
-                      <div className="relative">
-                        {/* Number and Title */}
-                        <div className="mb-6">
-                          <span className="text-sm font-medium text-muted-foreground block mb-2">
-                            Step {step.number}
-                          </span>
-                          <div className="flex items-center gap-3">
-                            <div className={`p-2 rounded-xl bg-gradient-to-br ${step.color}`}>
-                              <step.icon className="w-5 h-5 text-background" />
-                            </div>
-                            <h3 className="text-xl font-semibold">{step.title}</h3>
+                <NeonGradientCard 
+                  borderSize={1.5}
+                  borderRadius={24}
+                  neonColors={{
+                    firstColor: step.color.split(" ")[0].replace("from-[", "").replace("]", ""),
+                    secondColor: step.color.split(" ")[1].replace("to-[", "").replace("]", "")
+                  }}
+                  className="max-w-sm items-center justify-center text-center"
+                >
+                  <div className="relative p-8 rounded-3xl bg-card/80 backdrop-blur-sm">
+                    {/* Content wrapper */}
+                    <div className="relative">
+                      {/* Number and Title */}
+                      <div className="mb-6">
+                        <span className="text-sm font-medium text-muted-foreground block mb-2">
+                          Step {step.number}
+                        </span>
+                        <div className="flex items-center gap-3">
+                          <div className={`p-2 rounded-xl bg-gradient-to-br ${step.color}`}>
+                            <step.icon className="w-5 h-5 text-background" />
                           </div>
+                          <h3 className="text-xl font-semibold">{step.title}</h3>
                         </div>
-
-                        {/* Description */}
-                        <p className="text-muted-foreground text-sm leading-relaxed">
-                          {step.description}
-                        </p>
-
-                        {/* Decorative gradient orb */}
-                        <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${step.color} opacity-20 blur-2xl`} />
                       </div>
+
+                      {/* Description */}
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {step.description}
+                      </p>
+
+                      {/* Decorative gradient orb */}
+                      <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${step.color} opacity-20 blur-2xl`} />
                     </div>
-                  </ShineBorder>
+                  </div>
                 </NeonGradientCard>
               </motion.div>
             ))}
