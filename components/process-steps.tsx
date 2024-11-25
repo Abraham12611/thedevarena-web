@@ -8,7 +8,6 @@ import {
   CheckCircle2,
   Rocket
 } from "lucide-react";
-import Pushpin from "./pushpin";
 
 const steps = [
   {
@@ -146,33 +145,35 @@ export default function ProcessSteps() {
                 }}
               >
                 {/* Card */}
-                <div className="relative bg-card/80 backdrop-blur-sm rounded-2xl shadow-lg">
-                  {/* Pushpin */}
-                  <Pushpin />
+                <div className="relative p-8 rounded-3xl overflow-hidden">
+                  {/* Glassmorphism effects */}
+                  <div className="absolute inset-0 bg-background/20 backdrop-blur-xl" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-background/50 to-background/20" />
+                  <div className="absolute inset-[1px] rounded-3xl bg-gradient-to-br from-border/50 to-border/20" />
 
-                  {/* Card Content */}
-                  <div className="p-8 pt-10">
+                  {/* Content wrapper */}
+                  <div className="relative">
                     {/* Number and Title */}
-                    <div className="mb-4">
-                      <span className="text-3xl font-bold text-primary/80 font-mono block mb-2">
-                        {step.number}
+                    <div className="mb-6">
+                      <span className="text-sm font-medium text-muted-foreground block mb-2">
+                        Step {step.number}
                       </span>
                       <div className="flex items-center gap-3">
-                        <step.icon className="w-6 h-6 text-primary" />
-                        <h3 className="text-2xl font-bold">{step.title}</h3>
+                        <div className={`p-2 rounded-xl bg-gradient-to-br ${step.color}`}>
+                          <step.icon className="w-5 h-5 text-background" />
+                        </div>
+                        <h3 className="text-xl font-semibold">{step.title}</h3>
                       </div>
                     </div>
 
-                    {/* Description Box */}
-                    <div className="relative mt-6 p-6 bg-secondary/50 rounded-xl border border-border/50">
-                      <p className="text-muted-foreground">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
+                    {/* Description */}
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {step.description}
+                    </p>
 
-                  {/* Card Border Gradient */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 -z-10 blur-sm opacity-50" />
+                    {/* Decorative gradient orb */}
+                    <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${step.color} opacity-20 blur-2xl`} />
+                  </div>
                 </div>
               </motion.div>
             ))}
