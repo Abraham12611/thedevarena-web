@@ -1,14 +1,17 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
 
-interface ShineBorderProps extends Omit<HTMLMotionProps<"div">, "color"> {
+interface ShineBorderProps {
   borderWidth?: string;
   duration?: number;
   delay?: number;
   color?: string[];
+  children: ReactNode;
+  className?: string;
 }
 
 export default function ShineBorder({
@@ -18,7 +21,6 @@ export default function ShineBorder({
   color = ["hsl(var(--primary))", "hsl(var(--accent))", "hsl(var(--secondary))"],
   children,
   className,
-  ...props
 }: ShineBorderProps) {
   const divRef = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -49,24 +51,27 @@ export default function ShineBorder({
   const gradientColors = color.map((c) => `${c}15`).join(", ");
 
   return (
-    <motion.div
+    <div
       ref={divRef}
       className={cn("relative", className)}
       style={{
         padding: borderWidth,
       }}
-      {...props}
     >
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: opacity }}
+        transition={{ duration: 0.5 }}
         style={{
           background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, ${gradientColors}, transparent 40%)`,
         }}
-        className={cn(
-          "pointer-events-none absolute inset-0 transition-opacity duration-500",
-          opacity === 0 ? "opacity-0" : "opacity-100"
-        )}
+        className="pointer-events-none absolute inset-0 transition-opacity duration-500"
       />
-      <div className="absolute inset-0 rounded-3xl">{children}</div>
-    </motion.div>
+      <div className="absolute inset-0 rounded-3xl">
+        <div className="relative h-full">
+          {children}
+        </div>
+      </div>
+    </div>
   );
 } 
