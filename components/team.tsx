@@ -145,13 +145,18 @@ export default function Team() {
                       return (
                         <Button
                           key={platform}
-                          variant="ghost"
+                          variant="outline"
                           size="icon"
-                          className="hover:text-primary"
+                          className="w-8 h-8 rounded-full border border-muted-foreground/20 bg-transparent hover:bg-transparent hover:border-primary transition-colors duration-300"
                           asChild
                         >
-                          <a href={url} target="_blank" rel="noopener noreferrer">
-                            <Icon className="w-4 h-4" />
+                          <a 
+                            href={url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center"
+                          >
+                            <Icon className="w-3.5 h-3.5 text-muted-foreground" />
                           </a>
                         </Button>
                       );
