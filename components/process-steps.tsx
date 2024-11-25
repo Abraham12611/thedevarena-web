@@ -102,19 +102,18 @@ export default function ProcessSteps() {
                     key={`line-${index}`}
                     className="absolute"
                     style={{
-                      top: `${index * 280 + 120}px`,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: '500px',
-                      height: '160px',
+                      top: `${index * 280 + 80}px`,
+                      left: '0',
+                      width: '100%',
+                      height: '280px',
                     }}
-                    viewBox="0 0 500 160"
+                    viewBox="0 0 900 280"
                   >
                     <path
                       d={
                         index % 2 === 0
-                          ? "M50,20 C150,20 350,140 450,140"
-                          : "M450,20 C350,20 150,140 50,140"
+                          ? "M100,40 C300,40 600,240 800,240"  // Left to right curve
+                          : "M800,40 C600,40 300,240 100,240"  // Right to left curve
                       }
                       fill="none"
                       stroke="hsl(var(--primary))"
@@ -141,8 +140,8 @@ export default function ProcessSteps() {
                   stiffness: 100
                 }}
                 className={`relative ${
-                  index % 2 === 0 ? "ml-0 mr-auto" : "ml-auto mr-0"
-                } mb-32 last:mb-0 w-full md:w-[400px] group`}
+                  index % 2 === 0 ? "mr-auto" : "ml-auto"
+                } mb-32 last:mb-0 w-full md:w-[400px]`}
                 style={{
                   zIndex: steps.length - index
                 }}
