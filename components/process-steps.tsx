@@ -146,12 +146,15 @@ export default function ProcessSteps() {
                 }}
               >
                 <ShineBorder
+                  borderRadius={24}
+                  borderWidth={1}
+                  duration={10}
                   color={[
                     step.color.split(" ")[0].replace("from-[", "").replace("]", ""),
                     step.color.split(" ")[1].replace("to-[", "").replace("]", ""),
                     "hsl(var(--primary))"
                   ]}
-                  className="rounded-3xl"
+                  className="w-full"
                 >
                   <div className="relative p-8 rounded-3xl bg-card/80 backdrop-blur-sm">
                     {/* Content wrapper */}
