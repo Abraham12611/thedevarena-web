@@ -66,6 +66,10 @@ const socialIcons = {
 export default function Team() {
   return (
     <section id="team" className="py-24 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-background/80" />
+      <div className="absolute inset-0 bg-grid-white/[0.02]" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
