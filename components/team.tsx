@@ -152,7 +152,7 @@ export default function Team() {
                     {member.specialties.map((specialty) => (
                       <span
                         key={specialty}
-                        className={`text-xs px-2 py-1 rounded-full bg-gradient-to-br ${teamGradients[index].color} bg-opacity-10 text-primary backdrop-blur-sm transition-all duration-300 hover:scale-105`}
+                        className={`text-xs px-2 py-1 rounded-full bg-gradient-to-br ${teamGradients[index].color} bg-opacity-10 text-white backdrop-blur-sm transition-all duration-300 hover:scale-105`}
                       >
                         {specialty}
                       </span>
