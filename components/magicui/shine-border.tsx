@@ -30,21 +30,36 @@ export default function ShineBorder({
     const div = divRef.current;
     if (!div) return;
 
-    const updatePos = () => {
+    const updatePos = (e?: MouseEvent) => {
       const rect = div.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
-      setPos({ x, y });
+      
+      if (e) {
+        // Mouse position relative to the container
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        setPos({ x, y });
+      } else {
+        // Default center position
+        setPos({ 
+          x: rect.width / 2,
+          y: rect.height / 2
+        });
+      }
       setOpacity(1);
     };
 
+    // Initial position
     updatePos();
-    window.addEventListener("resize", updatePos);
-    window.addEventListener("scroll", updatePos);
+
+    // Track mouse movement
+    div.addEventListener("mousemove", updatePos);
+    window.addEventListener("resize", () => updatePos());
+    window.addEventListener("scroll", () => updatePos());
 
     return () => {
-      window.removeEventListener("resize", updatePos);
-      window.removeEventListener("scroll", updatePos);
+      div.removeEventListener("mousemove", updatePos);
+      window.removeEventListener("resize", () => updatePos());
+      window.removeEventListener("scroll", () => updatePos());
     };
   }, []);
 
@@ -53,24 +68,33 @@ export default function ShineBorder({
   return (
     <div
       ref={divRef}
-      className={cn("relative", className)}
-      style={{
-        padding: borderWidth,
-      }}
+      className={cn(
+        "group relative rounded-3xl p-[1px] transition-all duration-300",
+        className
+      )}
     >
+      {/* Shine effect */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: opacity }}
+        animate={{ opacity }}
         transition={{ duration: 0.5 }}
+        className="absolute inset-0 rounded-3xl transition-opacity duration-500"
         style={{
-          background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, ${gradientColors}, transparent 40%)`,
+          background: `radial-gradient(800px circle at ${pos.x}px ${pos.y}px, ${gradientColors}, transparent 40%)`,
         }}
-        className="pointer-events-none absolute inset-0 transition-opacity duration-500"
       />
-      <div className="absolute inset-0 rounded-3xl">
-        <div className="relative h-full">
-          {children}
-        </div>
+
+      {/* Border */}
+      <div
+        className="absolute inset-0 rounded-3xl opacity-20"
+        style={{
+          background: `linear-gradient(to right, ${color.join(", ")})`,
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative rounded-[calc(1.5rem-1px)] bg-background">
+        {children}
       </div>
     </div>
   );
