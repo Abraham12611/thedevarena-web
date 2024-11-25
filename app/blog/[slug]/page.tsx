@@ -1,40 +1,40 @@
-import BlogAuthor from "@/components/blog/blog-author";
-import BlogContent from "@/components/blog/blog-content";
-import BlogHeader from "@/components/blog/blog-header";
-import RelatedPosts from "@/components/blog/related-posts";
-import ShareButtons from "@/components/blog/share-buttons";
+import { Metadata } from "next";
+import Layout from "@/components/layout";
+import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 
-// List of all possible blog post slugs
-const posts = [
-  "future-of-ui-ux-design",
-  "social-media-security",
-  "future-of-interactive-design",
-  "perfect-font-introduction",
-  "design-systems-evolution",
-  "future-of-micro-interactions"
-];
-
-// Generate static params for all blog posts
-export function generateStaticParams() {
-  return posts.map((slug) => ({
-    slug: slug,
-  }));
+interface BlogPostProps {
+  params: {
+    slug: string;
+  };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: BlogPostProps): Promise<Metadata> {
+  // You can fetch blog post data here to generate dynamic metadata
+  return {
+    title: `Blog Post - ${params.slug}`,
+    description: "Blog post description",
+  };
+}
+
+export default function BlogPost({ params }: BlogPostProps) {
   return (
-    <article className="min-h-screen py-24 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20" />
-      <div className="absolute inset-0 bg-grid-white/[0.02]" />
-      
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <BlogHeader />
-        <BlogAuthor />
-        <BlogContent />
-        <ShareButtons />
-        <RelatedPosts />
+    <Layout>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <NeonGradientCard
+          borderSize={1.5}
+          borderRadius={24}
+          neonColors={{
+            firstColor: "hsl(var(--primary))",
+            secondColor: "hsl(var(--accent))"
+          }}
+          className="overflow-hidden"
+        >
+          <article className="prose prose-invert max-w-none p-8">
+            <h1>Blog Post Title</h1>
+            <p>Blog post content goes here...</p>
+          </article>
+        </NeonGradientCard>
       </div>
-    </article>
+    </Layout>
   );
 }
