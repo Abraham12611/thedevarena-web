@@ -121,31 +121,31 @@ export default function ProcessSteps() {
                     firstColor: step.color.split(" ")[0].replace("from-[", "").replace("]", ""),
                     secondColor: step.color.split(" ")[1].replace("to-[", "").replace("]", "")
                   }}
-                  className="max-w-sm items-center justify-center text-center"
+                  className="max-w-sm items-center justify-center text-center transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
                 >
-                  <div className="relative p-8 rounded-3xl bg-card/80 backdrop-blur-sm">
+                  <div className="relative p-8 rounded-3xl bg-card/80 backdrop-blur-sm transition-all duration-300 group">
                     {/* Content wrapper */}
                     <div className="relative">
                       {/* Number and Title */}
                       <div className="mb-6">
-                        <span className="text-sm font-medium text-muted-foreground block mb-2">
+                        <span className="text-sm font-medium text-muted-foreground block mb-2 transition-colors group-hover:text-primary">
                           Step {step.number}
                         </span>
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-xl bg-gradient-to-br ${step.color}`}>
+                          <div className={`p-2 rounded-xl bg-gradient-to-br ${step.color} transition-transform duration-300 group-hover:scale-110`}>
                             <step.icon className="w-5 h-5 text-background" />
                           </div>
-                          <h3 className="text-xl font-semibold">{step.title}</h3>
+                          <h3 className="text-xl font-semibold transition-colors group-hover:text-primary">{step.title}</h3>
                         </div>
                       </div>
 
                       {/* Description */}
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-sm leading-relaxed transition-colors group-hover:text-muted-foreground/80">
                         {step.description}
                       </p>
 
                       {/* Decorative gradient orb */}
-                      <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${step.color} opacity-20 blur-2xl`} />
+                      <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${step.color} opacity-20 blur-2xl transition-all duration-300 group-hover:opacity-30 group-hover:scale-125`} />
                     </div>
                   </div>
                 </NeonGradientCard>
