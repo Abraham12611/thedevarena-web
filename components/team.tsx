@@ -123,13 +123,17 @@ export default function Team() {
 
                   {/* Profile Image with gradient border */}
                   <div className="relative w-24 h-24 mx-auto mb-6">
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${teamGradients[index].color} blur-md opacity-50`} />
-                    <div className="relative rounded-full p-[2px] bg-gradient-to-br from-border to-border/0">
+                    {/* Gradient glow effect behind image */}
+                    <div className={`absolute -inset-1 rounded-full bg-gradient-to-br ${teamGradients[index].color} blur-md opacity-30`} />
+                    
+                    {/* Image container */}
+                    <div className="relative rounded-full ring-1 ring-border/50 overflow-hidden">
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
                         className="rounded-full object-cover"
+                        sizes="(max-width: 96px) 100vw, 96px"
                       />
                     </div>
                   </div>
