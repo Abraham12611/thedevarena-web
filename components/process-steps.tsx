@@ -151,9 +151,9 @@ export default function ProcessSteps() {
                     step.color.split(" ")[1].replace("to-[", "").replace("]", ""),
                     "hsl(var(--primary))"
                   ]}
-                  className="rounded-3xl overflow-hidden"
+                  className="rounded-3xl"
                 >
-                  <div className="relative p-8">
+                  <div className="relative p-8 rounded-3xl bg-card/80 backdrop-blur-sm">
                     {/* Content wrapper */}
                     <div className="relative">
                       {/* Number and Title */}

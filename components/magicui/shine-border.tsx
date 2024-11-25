@@ -34,12 +34,10 @@ export default function ShineBorder({
       const rect = div.getBoundingClientRect();
       
       if (e) {
-        // Mouse position relative to the container
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         setPos({ x, y });
       } else {
-        // Default center position
         setPos({ 
           x: rect.width / 2,
           y: rect.height / 2
@@ -48,10 +46,7 @@ export default function ShineBorder({
       setOpacity(1);
     };
 
-    // Initial position
     updatePos();
-
-    // Track mouse movement
     div.addEventListener("mousemove", updatePos);
     window.addEventListener("resize", () => updatePos());
     window.addEventListener("scroll", () => updatePos());
@@ -67,40 +62,36 @@ export default function ShineBorder({
     <div
       ref={divRef}
       className={cn(
-        "group relative transition-all duration-300",
+        "group relative p-[1px] transition-all duration-300",
         className
       )}
     >
-      {/* Background with shine effect */}
-      <div className="absolute inset-0 rounded-3xl bg-background/10 backdrop-blur-xl" />
-      
-      {/* Animated border gradient */}
+      {/* Animated border container */}
       <motion.div
         className="absolute inset-0 rounded-3xl"
-        style={{
-          background: `linear-gradient(to right, ${color.join(", ")})`,
-          padding: "1px",
-        }}
-        initial={{ opacity: 0.1 }}
-        whileHover={{ opacity: 0.5 }}
+        initial={{ opacity: 0.2 }}
+        whileHover={{ opacity: 0.8 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-background to-transparent opacity-50" />
+        {/* Base gradient border */}
+        <div
+          className="absolute inset-0 rounded-3xl"
+          style={{
+            background: `linear-gradient(to right, ${color.join(", ")})`,
+          }}
+        />
+        
+        {/* Shine effect on border */}
+        <div
+          className="absolute inset-0 rounded-3xl"
+          style={{
+            background: `radial-gradient(1000px circle at ${pos.x}px ${pos.y}px, ${color.map(c => `${c}40`).join(", ")}, transparent 40%)`,
+          }}
+        />
       </motion.div>
 
-      {/* Shine effect */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity }}
-        transition={{ duration: 0.5 }}
-        className="absolute inset-0 rounded-3xl"
-        style={{
-          background: `radial-gradient(1200px circle at ${pos.x}px ${pos.y}px, ${color.map(c => `${c}10`).join(", ")}, transparent 40%)`,
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative rounded-3xl bg-background/5 backdrop-blur-sm">
+      {/* Content container */}
+      <div className="relative h-full rounded-3xl bg-background/80 backdrop-blur-sm">
         {children}
       </div>
     </div>
