@@ -168,7 +168,7 @@ export default function Team() {
                           key={platform}
                           variant="outline"
                           size="icon"
-                          className={`w-8 h-8 rounded-full border bg-transparent hover:bg-gradient-to-br ${teamGradients[index].color} hover:border-transparent transition-all duration-300 group/icon`}
+                          className="w-8 h-8 rounded-full border border-border/50 bg-transparent hover:bg-transparent hover:border-primary transition-all duration-300"
                           asChild
                         >
                           <a 
@@ -177,7 +177,7 @@ export default function Team() {
                             rel="noopener noreferrer"
                             className="flex items-center justify-center"
                           >
-                            <Icon className="w-3.5 h-3.5 text-muted-foreground group-hover/icon:text-background transition-colors duration-300" />
+                            <Icon className="w-3.5 h-3.5 text-muted-foreground hover:text-primary transition-colors duration-300" />
                           </a>
                         </Button>
                       );
