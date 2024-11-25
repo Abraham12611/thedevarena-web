@@ -63,37 +63,44 @@ export default function ShineBorder({
     };
   }, []);
 
-  const gradientColors = color.map((c) => `${c}15`).join(", ");
-
   return (
     <div
       ref={divRef}
       className={cn(
-        "group relative rounded-3xl p-[1px] transition-all duration-300",
+        "group relative transition-all duration-300",
         className
       )}
     >
+      {/* Background with shine effect */}
+      <div className="absolute inset-0 rounded-3xl bg-background/10 backdrop-blur-xl" />
+      
+      {/* Animated border gradient */}
+      <motion.div
+        className="absolute inset-0 rounded-3xl"
+        style={{
+          background: `linear-gradient(to right, ${color.join(", ")})`,
+          padding: "1px",
+        }}
+        initial={{ opacity: 0.1 }}
+        whileHover={{ opacity: 0.5 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-background to-transparent opacity-50" />
+      </motion.div>
+
       {/* Shine effect */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity }}
         transition={{ duration: 0.5 }}
-        className="absolute inset-0 rounded-3xl transition-opacity duration-500"
+        className="absolute inset-0 rounded-3xl"
         style={{
-          background: `radial-gradient(800px circle at ${pos.x}px ${pos.y}px, ${gradientColors}, transparent 40%)`,
-        }}
-      />
-
-      {/* Border */}
-      <div
-        className="absolute inset-0 rounded-3xl opacity-20"
-        style={{
-          background: `linear-gradient(to right, ${color.join(", ")})`,
+          background: `radial-gradient(1200px circle at ${pos.x}px ${pos.y}px, ${color.map(c => `${c}10`).join(", ")}, transparent 40%)`,
         }}
       />
 
       {/* Content */}
-      <div className="relative rounded-[calc(1.5rem-1px)] bg-background">
+      <div className="relative rounded-3xl bg-background/5 backdrop-blur-sm">
         {children}
       </div>
     </div>

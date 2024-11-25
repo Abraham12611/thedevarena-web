@@ -147,17 +147,13 @@ export default function ProcessSteps() {
               >
                 <ShineBorder
                   color={[
-                    step.color.split(" ")[0].replace("from-", ""),
-                    step.color.split(" ")[1].replace("to-", ""),
+                    step.color.split(" ")[0].replace("from-[", "").replace("]", ""),
+                    step.color.split(" ")[1].replace("to-[", "").replace("]", ""),
                     "hsl(var(--primary))"
                   ]}
-                  className="rounded-3xl"
+                  className="rounded-3xl overflow-hidden"
                 >
-                  <div className="relative p-8 rounded-3xl overflow-hidden">
-                    {/* Glassmorphism effects */}
-                    <div className="absolute inset-0 bg-background/20 backdrop-blur-xl" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-background/50 to-background/20" />
-
+                  <div className="relative p-8">
                     {/* Content wrapper */}
                     <div className="relative">
                       {/* Number and Title */}
