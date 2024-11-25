@@ -121,18 +121,14 @@ export default function Team() {
                   {/* Decorative gradient orb */}
                   <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${teamGradients[index].color} opacity-20 blur-2xl transition-all duration-300 group-hover:opacity-30 group-hover:scale-125`} />
 
-                  {/* Profile Image with gradient border */}
+                  {/* Profile Image */}
                   <div className="relative w-24 h-24 mx-auto mb-6">
-                    {/* Gradient glow effect behind image */}
-                    <div className={`absolute -inset-1 rounded-full bg-gradient-to-br ${teamGradients[index].color} blur-md opacity-30`} />
-                    
-                    {/* Image container */}
-                    <div className="relative rounded-full ring-1 ring-border/50 overflow-hidden">
+                    <div className="relative w-full h-full rounded-full overflow-hidden ring-1 ring-border/50">
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="rounded-full object-cover"
+                        className="object-cover"
                         sizes="(max-width: 96px) 100vw, 96px"
                       />
                     </div>
