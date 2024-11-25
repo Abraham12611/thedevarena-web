@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   Rocket
 } from "lucide-react";
+import ShineBorder from "@/components/magicui/shine-border";
 
 const steps = [
   {
@@ -144,37 +145,44 @@ export default function ProcessSteps() {
                   zIndex: steps.length - index
                 }}
               >
-                {/* Card */}
-                <div className="relative p-8 rounded-3xl overflow-hidden">
-                  {/* Glassmorphism effects */}
-                  <div className="absolute inset-0 bg-background/20 backdrop-blur-xl" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-background/50 to-background/20" />
-                  <div className="absolute inset-[1px] rounded-3xl bg-gradient-to-br from-border/50 to-border/20" />
+                <ShineBorder
+                  color={[
+                    step.color.split(" ")[0].replace("from-", ""),
+                    step.color.split(" ")[1].replace("to-", ""),
+                    "hsl(var(--primary))"
+                  ]}
+                  className="rounded-3xl"
+                >
+                  <div className="relative p-8 rounded-3xl overflow-hidden">
+                    {/* Glassmorphism effects */}
+                    <div className="absolute inset-0 bg-background/20 backdrop-blur-xl" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-background/50 to-background/20" />
 
-                  {/* Content wrapper */}
-                  <div className="relative">
-                    {/* Number and Title */}
-                    <div className="mb-6">
-                      <span className="text-sm font-medium text-muted-foreground block mb-2">
-                        Step {step.number}
-                      </span>
-                      <div className="flex items-center gap-3">
-                        <div className={`p-2 rounded-xl bg-gradient-to-br ${step.color}`}>
-                          <step.icon className="w-5 h-5 text-background" />
+                    {/* Content wrapper */}
+                    <div className="relative">
+                      {/* Number and Title */}
+                      <div className="mb-6">
+                        <span className="text-sm font-medium text-muted-foreground block mb-2">
+                          Step {step.number}
+                        </span>
+                        <div className="flex items-center gap-3">
+                          <div className={`p-2 rounded-xl bg-gradient-to-br ${step.color}`}>
+                            <step.icon className="w-5 h-5 text-background" />
+                          </div>
+                          <h3 className="text-xl font-semibold">{step.title}</h3>
                         </div>
-                        <h3 className="text-xl font-semibold">{step.title}</h3>
                       </div>
+
+                      {/* Description */}
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {step.description}
+                      </p>
+
+                      {/* Decorative gradient orb */}
+                      <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${step.color} opacity-20 blur-2xl`} />
                     </div>
-
-                    {/* Description */}
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {step.description}
-                    </p>
-
-                    {/* Decorative gradient orb */}
-                    <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${step.color} opacity-20 blur-2xl`} />
                   </div>
-                </div>
+                </ShineBorder>
               </motion.div>
             ))}
           </div>
