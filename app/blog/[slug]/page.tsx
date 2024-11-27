@@ -1,40 +1,47 @@
-import { Metadata } from "next";
-import Layout from "@/components/layout";
-import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
+import { notFound } from "next/navigation";
+import fs from "fs/promises";
+import path from "path";
+import BlogContent from "@/components/blog/blog-content";
 
-interface BlogPostProps {
+interface BlogPageProps {
   params: {
     slug: string;
   };
 }
 
-export async function generateMetadata({ params }: BlogPostProps): Promise<Metadata> {
-  // You can fetch blog post data here to generate dynamic metadata
-  return {
-    title: `Blog Post - ${params.slug}`,
-    description: "Blog post description",
-  };
+async function getBlogContent(slug: string) {
+  try {
+    const filePath = path.join(process.cwd(), 'app/blog/content', `${slug}.md`);
+    const content = await fs.readFile(filePath, 'utf8');
+    return content;
+  } catch (error) {
+    return null;
+  }
 }
 
-export default function BlogPost({ params }: BlogPostProps) {
+export async function generateStaticParams() {
+  const contentDir = path.join(process.cwd(), 'app/blog/content');
+  const files = await fs.readdir(contentDir);
+  
+  return files
+    .filter(file => file.endsWith('.md'))
+    .map(file => ({
+      slug: file.replace('.md', ''),
+    }));
+}
+
+export default async function BlogPage({ params }: BlogPageProps) {
+  const content = await getBlogContent(params.slug);
+
+  if (!content) {
+    notFound();
+  }
+
   return (
-    <Layout>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <NeonGradientCard
-          borderSize={1.5}
-          borderRadius={24}
-          neonColors={{
-            firstColor: "hsl(var(--primary))",
-            secondColor: "hsl(var(--accent))"
-          }}
-          className="overflow-hidden"
-        >
-          <article className="prose prose-invert max-w-none p-8">
-            <h1>Blog Post Title</h1>
-            <p>Blog post content goes here...</p>
-          </article>
-        </NeonGradientCard>
+    <main className="container mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto">
+        <BlogContent content={content} />
       </div>
-    </Layout>
+    </main>
   );
 }

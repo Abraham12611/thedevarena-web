@@ -202,3 +202,27 @@
   @apply absolute inset-0 rounded-full bg-primary;
   animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+.prose pre {
+  @apply bg-card border border-border rounded-lg;
+}
+
+.prose code {
+  @apply text-primary bg-primary/10 rounded px-1;
+}
+
+.prose pre code {
+  @apply bg-transparent text-inherit px-0;
+}
+
+.prose img {
+  @apply rounded-lg border border-border;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  @apply scroll-m-20;
+}
+
+.prose a {
+  @apply text-primary hover:text-primary/80 transition-colors;
+}
