@@ -57,7 +57,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 w-full rounded-lg bg-primary px-8 py-4 text-background font-medium hover:bg-primary/90 transition-colors duration-200"
                 >
-                  <CalendarDays className="w-5 h-5" />
+                  <CalendarDays className="w-5 h-5 transition-transform group-hover:rotate-12" />
                   Claim Your Free Strategy Call
                 </a>
               </div>
