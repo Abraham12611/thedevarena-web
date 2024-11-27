@@ -71,22 +71,28 @@ export default function Portfolio() {
               className="group relative"
             >
               <div className="relative rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 
-                overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(238,243,95,0.1)]"
+                overflow-hidden transition-all duration-500 ease-out
+                group-hover:shadow-[0_0_50px_rgba(238,243,95,0.15)] 
+                group-hover:border-primary/30 
+                group-hover:-translate-y-1"
               >
-                {/* Project Image */}
+                {/* Project Image Container */}
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="object-cover transition-transform duration-700 ease-out
+                      group-hover:scale-105 group-hover:rotate-1"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent 
+                    opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                <div className="p-6 relative z-10">
+                  <h3 className="text-xl font-bold mb-2 transition-colors duration-300
+                    group-hover:text-primary/90 group-hover:translate-x-1 transform-gpu">
                     {project.title}
                   </h3>
                   <p className="text-muted-foreground mb-4">
@@ -99,7 +105,8 @@ export default function Portfolio() {
                       <span
                         key={i}
                         className="text-xs px-2 py-1 rounded-full bg-secondary/50 
-                          text-muted-foreground"
+                          text-muted-foreground transition-all duration-300
+                          group-hover:bg-primary/10 group-hover:text-primary"
                       >
                         {tag}
                       </span>
@@ -111,9 +118,12 @@ export default function Portfolio() {
                     {project.metrics.map((metric, i) => (
                       <div
                         key={i}
-                        className="flex items-center gap-2 text-sm text-muted-foreground"
+                        className="flex items-center gap-2 text-sm text-muted-foreground
+                          transition-transform duration-300 ease-out
+                          hover:translate-x-1"
                       >
-                        <ArrowRight className="w-4 h-4 text-primary" />
+                        <ArrowRight className="w-4 h-4 text-primary transition-transform duration-300
+                          group-hover:translate-x-1" />
                         {metric}
                       </div>
                     ))}
@@ -122,7 +132,10 @@ export default function Portfolio() {
                   {/* View Project Button */}
                   <Button
                     variant="ghost"
-                    className="w-full group/button hover:bg-primary/10"
+                    className="w-full group/button 
+                      transition-all duration-300
+                      hover:bg-primary/10 hover:text-primary
+                      focus:ring-2 focus:ring-primary/20"
                     asChild
                   >
                     <a
@@ -132,15 +145,16 @@ export default function Portfolio() {
                       className="flex items-center justify-center gap-2"
                     >
                       View Project
-                      <ExternalLink className="w-4 h-4 transition-transform duration-300 
-                        group-hover/button:translate-x-1" />
+                      <ExternalLink className="w-4 h-4 transition-all duration-300 
+                        group-hover/button:translate-x-1 group-hover/button:rotate-12" />
                     </a>
                   </Button>
                 </div>
 
                 {/* Hover Gradient */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 
-                  opacity-0 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 via-accent/5 to-background 
+                  opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none
+                  mix-blend-overlay" />
               </div>
             </motion.div>
           ))}
