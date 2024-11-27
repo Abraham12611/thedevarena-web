@@ -4,12 +4,13 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 const logos = [
-  { src: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg", alt: "MongoDB" },
-  { src: "https://cdn.worldvectorlogo.com/logos/digitalocean-2.svg", alt: "DigitalOcean" },
-  { src: "https://cdn.worldvectorlogo.com/logos/netlify.svg", alt: "Netlify" },
-  { src: "https://cdn.worldvectorlogo.com/logos/vercel.svg", alt: "Vercel" },
-  { src: "https://cdn.worldvectorlogo.com/logos/vultr.svg", alt: "Vultr" },
-  { src: "https://cdn.worldvectorlogo.com/logos/freecodecamp-1.svg", alt: "freeCodeCamp" },
+  { src: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg", alt: "MongoDB", className: "h-8", invert: true },
+  { src: "https://cdn.worldvectorlogo.com/logos/digitalocean-2.svg", alt: "DigitalOcean", className: "h-8", invert: true },
+  { src: "https://cdn.worldvectorlogo.com/logos/netlify.svg", alt: "Netlify", className: "h-8", invert: true },
+  { src: "https://cdn.worldvectorlogo.com/logos/vercel.svg", alt: "Vercel", className: "h-16", invert: true },
+  { src: "/images/logos/vultr-logo.png", alt: "Vultr", className: "h-16", invert: true },
+  { src: "/images/logos/freecodecamp-logo.svg", alt: "freeCodeCamp", className: "h-8", invert: true },
+  { src: "/images/logos/inplaineglish_logo.png", alt: "inPlainEnglish", className: "h-8", invert: false },
 ];
 
 export default function LogoCarousel() {
@@ -56,14 +57,17 @@ export default function LogoCarousel() {
         {[...logos, ...logos].map((logo, index) => (
           <div
             key={index}
-            className="mx-12 flex items-center justify-center min-w-[150px] opacity-70 hover:opacity-100 transition-opacity"
+            className="mx-12 flex items-center justify-center min-w-[150px] opacity-70 hover:opacity-100 
+              transition-all duration-300 hover:scale-110"
           >
             <Image
               src={logo.src}
               alt={logo.alt}
               width={120}
               height={40}
-              className="h-8 w-auto object-contain filter brightness-0 invert"
+              className={`w-auto object-contain ${logo.className} ${
+                logo.invert ? 'filter brightness-0 invert' : ''
+              }`}
             />
           </div>
         ))}
@@ -75,14 +79,17 @@ export default function LogoCarousel() {
         {[...logos, ...logos].map((logo, index) => (
           <div
             key={index}
-            className="mx-12 flex items-center justify-center min-w-[150px] opacity-70 hover:opacity-100 transition-opacity"
+            className="mx-12 flex items-center justify-center min-w-[150px] opacity-70 hover:opacity-100 
+              transition-all duration-300 hover:scale-110"
           >
             <Image
               src={logo.src}
               alt={logo.alt}
               width={120}
               height={40}
-              className="h-8 w-auto object-contain filter brightness-0 invert"
+              className={`w-auto object-contain ${logo.className} ${
+                logo.invert ? 'filter brightness-0 invert' : ''
+              }`}
             />
           </div>
         ))}

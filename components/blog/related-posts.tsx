@@ -39,43 +39,59 @@ export default function RelatedPosts() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.2 }}
-            className="group relative bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50"
+            className="group relative"
           >
-            <Link href={`/blog/${post.slug}`}>
-              <div className="relative h-48">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-                <Badge
-                  className="absolute top-4 left-4"
-                  variant="secondary"
-                >
-                  {post.category}
-                </Badge>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
-                  <span>{post.date}</span>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    {post.readingTime}
-                  </div>
+            <div className="relative bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50
+              transition-all duration-500 ease-out
+              group-hover:shadow-[0_0_50px_rgba(238,243,95,0.15)]
+              group-hover:border-primary/30
+              group-hover:-translate-y-1"
+            >
+              <Link href={`/blog/${post.slug}`}>
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out
+                      group-hover:scale-105 group-hover:rotate-1"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent
+                    opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                  <Badge
+                    className="absolute top-4 left-4 transition-all duration-300
+                      group-hover:bg-primary/20 group-hover:text-primary"
+                    variant="secondary"
+                  >
+                    {post.category}
+                  </Badge>
                 </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {post.description}
-                </p>
-              </div>
-            </Link>
+                <div className="p-6 relative z-10">
+                  <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground
+                    transition-all duration-300 group-hover:translate-x-1">
+                    <span>{post.date}</span>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-4 h-4 transition-transform duration-300
+                        group-hover:scale-110" />
+                      {post.readingTime}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 transition-all duration-300
+                    group-hover:text-primary/90 group-hover:translate-x-1 transform-gpu">
+                    {post.title}
+                  </h3>
+                  <p className="text-muted-foreground transition-colors duration-300
+                    group-hover:text-muted-foreground/80">
+                    {post.description}
+                  </p>
+                </div>
+              </Link>
 
-            {/* Hover Gradient */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 opacity-0 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
+              {/* Hover Gradient */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 via-accent/5 to-background 
+                opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none
+                mix-blend-overlay" />
+            </div>
           </motion.article>
         ))}
       </div>

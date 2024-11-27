@@ -1,9 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion"
+import Image from "next/image"
+import { format } from "date-fns"
 import ShareButtons from "./share-buttons"
+import { AuthorIsland } from "./author-island"
+import Markdown from "react-markdown"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { BlogPost } from "@/types/blog"
 
-export default function BlogContent() {
+interface BlogContentProps {
+  post: BlogPost
+}
+
+// Define the CodeProps interface locally
+interface CodeProps {
+  node?: any;
+  inline?: boolean;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export default function BlogContent({ post }: BlogContentProps) {
   return (
     <article className="prose prose-lg dark:prose-invert max-w-none">
       <motion.div
@@ -11,26 +30,59 @@ export default function BlogContent() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p>
-          The field of UI/UX design is constantly evolving. As we look ahead,
-          we&apos;re seeing emerging trends that will shape the future of digital
-          experiences.
-        </p>
+        {/* Feature Image */}
+        <div className="relative aspect-video w-full mb-8 rounded-lg overflow-hidden">
+          <Image
+            src={post.featureImage}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
-        <h2>The Rise of AI-Driven Design</h2>
-        <p>
-          Artificial Intelligence isn&apos;t just a buzzword - it&apos;s
-          revolutionizing how we approach design. From automated layout
-          suggestions to intelligent user behavior analysis, AI is becoming an
-          invaluable tool in the designer&apos;s toolkit.
-        </p>
+        {/* Metadata */}
+        <div className="flex items-center gap-4 text-muted-foreground mb-8">
+          <time dateTime={post.publishedAt}>
+            {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
+          </time>
+        </div>
 
-        <h2>Immersive Experiences</h2>
-        <p>
-          Virtual and Augmented Reality aren&apos;t just for gaming anymore.
-          They&apos;re becoming integral parts of everyday digital experiences,
-          from virtual shopping to remote collaboration.
-        </p>
+        {/* Author Island */}
+        <div className="mb-8">
+          <AuthorIsland author={post.author} />
+        </div>
+
+        {/* Content */}
+        <Markdown
+          components={{
+            code({ className, children, inline, ...props }: CodeProps) {
+              if (inline) {
+                return (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              }
+
+              const match = /language-(\w+)/.exec(className || '');
+              const lang = match ? match[1] : '';
+
+              return (
+                <SyntaxHighlighter
+                  style={vscDarkPlus as any}
+                  language={lang}
+                  PreTag="div"
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              );
+            },
+          }}
+        >
+          {post.content}
+        </Markdown>
 
         <ShareButtons />
       </motion.div>
