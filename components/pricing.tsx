@@ -110,57 +110,78 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
-              className={`relative group rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 p-8
-                ${pkg.featured ? "ring-2 ring-primary/50" : ""}
-              `}
+              className="group relative"
             >
-              {/* Content */}
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-4xl font-bold">
-                    {formatPrice(calculatePrice(pkg.monthlyPrice))}
-                  </span>
-                  <span className="text-muted-foreground">
-                    /{isQuarterly ? 'quarter' : 'month'}
+              <div className={`relative rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 p-8
+                transition-all duration-500 ease-out
+                group-hover:shadow-[0_0_50px_rgba(238,243,95,0.15)]
+                group-hover:border-primary/30
+                group-hover:-translate-y-1
+                ${pkg.featured ? "ring-2 ring-primary/50" : ""}`}
+              >
+                {/* Content */}
+                <div className="mb-6 relative z-10">
+                  <h3 className="text-2xl font-bold mb-2 transition-colors duration-300
+                    group-hover:text-primary/90">{pkg.title}</h3>
+                  <div className="flex items-baseline gap-2 mb-4 transition-all duration-300
+                    group-hover:translate-x-1">
+                    <span className="text-4xl font-bold">
+                      {formatPrice(calculatePrice(pkg.monthlyPrice))}
+                    </span>
+                    <span className="text-muted-foreground">
+                      /{isQuarterly ? 'quarter' : 'month'}
+                    </span>
+                  </div>
+                  <p className="text-muted-foreground transition-colors duration-300
+                    group-hover:text-muted-foreground/80">{pkg.description}</p>
+                </div>
+
+                {/* Features */}
+                <ul className="space-y-4 mb-8 relative z-10">
+                  {pkg.features.map((feature, i) => (
+                    <li key={i} 
+                      className="flex items-start gap-3 transition-all duration-300 ease-out
+                        hover:translate-x-1">
+                      <Check className="w-5 h-5 text-primary mt-0.5 transition-transform duration-300
+                        group-hover:scale-110" />
+                      <span className="text-muted-foreground transition-colors duration-300
+                        group-hover:text-muted-foreground/80">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Spots Available */}
+                <div className="mb-6 flex items-center gap-2 relative z-10">
+                  <div className="pulse-dot transition-all duration-300
+                    group-hover:scale-110" />
+                  <span className="text-sm text-muted-foreground transition-all duration-300
+                    group-hover:text-primary/80">
+                    {pkg.spotsAvailable} spot{pkg.spotsAvailable !== 1 ? "s" : ""} available
                   </span>
                 </div>
-                <p className="text-muted-foreground">{pkg.description}</p>
+
+                {/* CTA Button */}
+                <Button
+                  className="w-full group/button relative z-10
+                    transition-all duration-300
+                    bg-gradient-to-r from-primary via-primary to-accent 
+                    hover:shadow-[0_0_30px_rgba(238,243,95,0.3)]
+                    hover:border-primary/50
+                    hover:scale-[1.02]"
+                  size="lg"
+                >
+                  <span className="flex items-center gap-2">
+                    Schedule Technical Consultation
+                    <Calendar className="w-5 h-5 transition-all duration-300 
+                      group-hover/button:rotate-12" />
+                  </span>
+                </Button>
+
+                {/* Hover Gradient */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 via-accent/5 to-background 
+                  opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none
+                  mix-blend-overlay" />
               </div>
-
-              {/* Features */}
-              <ul className="space-y-4 mb-8">
-                {pkg.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span className="text-muted-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Spots Available */}
-              <div className="mb-6 flex items-center gap-2">
-                <div className="pulse-dot" />
-                <span className="text-sm text-muted-foreground">
-                  {pkg.spotsAvailable} spot{pkg.spotsAvailable !== 1 ? "s" : ""} available
-                </span>
-              </div>
-
-              {/* CTA Button */}
-              <Button
-                className="w-full group relative hover:scale-105 transition-all duration-300 
-                  bg-gradient-to-r from-primary via-primary to-accent 
-                  hover:shadow-[0_0_30px_rgba(238,243,95,0.3)] hover:border-primary/50"
-                size="lg"
-              >
-                <span className="flex items-center gap-2">
-                  Schedule Technical Consultation
-                  <Calendar className="w-5 h-5 transition-transform group-hover:rotate-12" />
-                </span>
-              </Button>
-
-              {/* Hover Effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 -z-10 blur-sm opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
             </motion.div>
           ))}
         </div>
