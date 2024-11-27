@@ -31,7 +31,10 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
         twitter: "https://twitter.com/johndoe",
         github: "https://github.com/johndoe",
         website: "https://johndoe.com"
-      }
+      },
+      tags: ["Technical Writing", "Development"],
+      readingTime: "5 min read",
+      views: 0
     };
     
     return post;
