@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import type { BlogPost } from "@/lib/blog";
+import type { BlogPost } from "@/types/blog";
 
 interface BlogListProps {
   posts: BlogPost[];
@@ -42,7 +42,7 @@ export default function BlogList({ posts, isGridView = true }: BlogListProps) {
               <div className={isGridView ? 'block' : 'grid md:grid-cols-2 gap-6'}>
                 <div className="relative h-64 md:h-full overflow-hidden">
                   <Image
-                    src={post.image}
+                    src={post.featureImage}
                     alt={post.title}
                     fill
                     className="object-cover transition-transform duration-700 ease-out
@@ -78,7 +78,7 @@ export default function BlogList({ posts, isGridView = true }: BlogListProps) {
                       </span>
                     </div>
                     <span className="text-sm text-muted-foreground">
-                      {new Date(post.date).toLocaleDateString('en-US', {
+                      {new Date(post.publishedAt).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric'
@@ -98,7 +98,7 @@ export default function BlogList({ posts, isGridView = true }: BlogListProps) {
                     <div>
                       <p className="font-medium">{post.author.name}</p>
                       <p className="text-sm text-muted-foreground">
-                        {post.author.role}
+                        {post.author.profession}
                       </p>
                     </div>
                   </div>
