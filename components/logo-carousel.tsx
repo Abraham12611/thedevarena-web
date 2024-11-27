@@ -10,6 +10,7 @@ const logos = [
   { src: "https://cdn.worldvectorlogo.com/logos/vercel.svg", alt: "Vercel", className: "h-16" },
   { src: "/images/logos/vultr-logo.png", alt: "Vultr", className: "h-16" },
   { src: "/images/logos/freecodecamp-logo.svg", alt: "freeCodeCamp", className: "h-8" },
+  { src: "/images/logos/inplaineglish_logo.png", alt: "inPlainEnglish", className: "h-8" },
 ];
 
 export default function LogoCarousel() {
