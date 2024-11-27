@@ -8,13 +8,13 @@ const steps = [
   {
     icon: Phone,
     title: "Discovery Call",
-    description: "We start with a 30-minute introductory call to understand your unique needs, goals, and target audience. This allows us to ensure we&apos;re the right fit before we begin.",
+    description: "We start with a 30-minute introductory call to understand your unique needs, goals, and target audience. This allows us to ensure we're the right fit before we begin.",
     color: "from-[#FF6B6B] to-[#FFE66D]"
   },
   {
     icon: FileText,
     title: "Content Strategy",
-    description: "Together, we&apos;ll create a comprehensive content plan tailored to your business objectives. This roadmap keeps our efforts aligned and helps us track progress towards your goals.",
+    description: "Together, we'll create a comprehensive content plan tailored to your business objectives. This roadmap keeps our efforts aligned and helps us track progress towards your goals.",
     color: "from-[#4ECDC4] to-[#556270]"
   },
   {
@@ -59,6 +59,48 @@ export default function HowWeWork() {
             From web development to cloud engineering, our team of developer-writers transforms complex topics into 
             engaging, developer-friendly content that drives understanding and adoption.
           </p>
+        </motion.div>
+
+        {/* Process Steps */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative p-6 rounded-2xl border border-border bg-card/50 backdrop-blur-sm"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-5 rounded-2xl`} />
+                <div className="relative">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${step.color}`}>
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold">{step.title}</h3>
+                  </div>
+                  <p className="text-muted-foreground">{step.description}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <Button size="lg" className="group">
+            Start Your Journey
+            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
         </motion.div>
       </div>
     </div>
