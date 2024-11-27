@@ -6,20 +6,20 @@ import Team from '@/components/team';
 import Pricing from '@/components/pricing';
 import FAQs from '@/components/faqs';
 import Contact from '@/components/contact';
-import FeaturedBlogs from '@/components/blog/featured-blogs';
+import FeaturedSection from "@/components/home/featured-section";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
+    <main>
       <Hero />
       <Services />
       <ProcessSteps />
       <Portfolio />
       <Team />
       <Pricing />
-      <FeaturedBlogs />
+      <FeaturedSection />
       <FAQs />
       <Contact />
-    </>
+    </main>
   );
 }
