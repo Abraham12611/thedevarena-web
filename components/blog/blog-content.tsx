@@ -5,6 +5,7 @@ import ShareButtons from "./share-buttons"
 import Markdown from "react-markdown"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"
+import type { CodeProps } from 'react-markdown/lib/components/code'
 
 interface BlogContentProps {
   content: string
@@ -20,21 +21,23 @@ export default function BlogContent({ content }: BlogContentProps) {
       >
         <Markdown
           components={{
-            code({ node, inline, className, children, ...props }) {
+            code({ className, children, ...props }: CodeProps) {
               const match = /language-(\w+)/.exec(className || '');
-              return !inline && match ? (
-                <SyntaxHighlighter
-                  style={vscDarkPlus}
-                  language={match[1]}
-                  PreTag="div"
-                  {...props}
-                >
-                  {String(children).replace(/\n$/, '')}
-                </SyntaxHighlighter>
-              ) : (
+              const isInline = !match;
+              
+              return isInline ? (
                 <code className={className} {...props}>
                   {children}
                 </code>
+              ) : (
+                <SyntaxHighlighter
+                  {...props}
+                  style={vscDarkPlus as any}
+                  language={match[1]}
+                  PreTag="div"
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
               );
             },
           }}
