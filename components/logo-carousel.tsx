@@ -8,8 +8,8 @@ const logos = [
   { src: "https://cdn.worldvectorlogo.com/logos/digitalocean-2.svg", alt: "DigitalOcean" },
   { src: "https://cdn.worldvectorlogo.com/logos/netlify.svg", alt: "Netlify" },
   { src: "https://cdn.worldvectorlogo.com/logos/vercel.svg", alt: "Vercel" },
-  { src: "https://cdn.worldvectorlogo.com/logos/vultr.svg", alt: "Vultr" },
-  { src: "https://cdn.worldvectorlogo.com/logos/freecodecamp-1.svg", alt: "freeCodeCamp" },
+  { src: "/images/logos/vultr-logo.png", alt: "Vultr" },
+  { src: "/images/logos/freecodecamp-logo.svg", alt: "freeCodeCamp" },
 ];
 
 export default function LogoCarousel() {
@@ -56,7 +56,8 @@ export default function LogoCarousel() {
         {[...logos, ...logos].map((logo, index) => (
           <div
             key={index}
-            className="mx-12 flex items-center justify-center min-w-[150px] opacity-70 hover:opacity-100 transition-opacity"
+            className="mx-12 flex items-center justify-center min-w-[150px] opacity-70 hover:opacity-100 
+              transition-all duration-300 hover:scale-110"
           >
             <Image
               src={logo.src}
@@ -75,7 +76,8 @@ export default function LogoCarousel() {
         {[...logos, ...logos].map((logo, index) => (
           <div
             key={index}
-            className="mx-12 flex items-center justify-center min-w-[150px] opacity-70 hover:opacity-100 transition-opacity"
+            className="mx-12 flex items-center justify-center min-w-[150px] opacity-70 hover:opacity-100 
+              transition-all duration-300 hover:scale-110"
           >
             <Image
               src={logo.src}
