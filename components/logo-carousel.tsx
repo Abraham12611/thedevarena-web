@@ -4,13 +4,13 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 const logos = [
-  { src: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg", alt: "MongoDB", className: "h-8" },
-  { src: "https://cdn.worldvectorlogo.com/logos/digitalocean-2.svg", alt: "DigitalOcean", className: "h-8" },
-  { src: "https://cdn.worldvectorlogo.com/logos/netlify.svg", alt: "Netlify", className: "h-8" },
-  { src: "https://cdn.worldvectorlogo.com/logos/vercel.svg", alt: "Vercel", className: "h-16" },
-  { src: "/images/logos/vultr-logo.png", alt: "Vultr", className: "h-16" },
-  { src: "/images/logos/freecodecamp-logo.svg", alt: "freeCodeCamp", className: "h-8" },
-  { src: "/images/logos/inplaineglish_logo.png", alt: "inPlainEnglish", className: "h-8" },
+  { src: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg", alt: "MongoDB", className: "h-8", invert: true },
+  { src: "https://cdn.worldvectorlogo.com/logos/digitalocean-2.svg", alt: "DigitalOcean", className: "h-8", invert: true },
+  { src: "https://cdn.worldvectorlogo.com/logos/netlify.svg", alt: "Netlify", className: "h-8", invert: true },
+  { src: "https://cdn.worldvectorlogo.com/logos/vercel.svg", alt: "Vercel", className: "h-16", invert: true },
+  { src: "/images/logos/vultr-logo.png", alt: "Vultr", className: "h-16", invert: true },
+  { src: "/images/logos/freecodecamp-logo.svg", alt: "freeCodeCamp", className: "h-8", invert: true },
+  { src: "/images/logos/inplaineglish_logo.png", alt: "inPlainEnglish", className: "h-8", invert: false },
 ];
 
 export default function LogoCarousel() {
@@ -65,7 +65,9 @@ export default function LogoCarousel() {
               alt={logo.alt}
               width={120}
               height={40}
-              className={`w-auto object-contain filter brightness-0 invert ${logo.className}`}
+              className={`w-auto object-contain ${logo.className} ${
+                logo.invert ? 'filter brightness-0 invert' : ''
+              }`}
             />
           </div>
         ))}
@@ -85,7 +87,9 @@ export default function LogoCarousel() {
               alt={logo.alt}
               width={120}
               height={40}
-              className={`w-auto object-contain filter brightness-0 invert ${logo.className}`}
+              className={`w-auto object-contain ${logo.className} ${
+                logo.invert ? 'filter brightness-0 invert' : ''
+              }`}
             />
           </div>
         ))}
