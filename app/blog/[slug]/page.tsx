@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import fs from "fs/promises";
 import path from "path";
 import BlogContent from "@/components/blog/blog-content";
+import { BlogPost } from "@/types/blog";
 
 interface BlogPageProps {
   params: {
@@ -9,38 +10,47 @@ interface BlogPageProps {
   };
 }
 
-async function getBlogContent(slug: string) {
+async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
     const filePath = path.join(process.cwd(), 'app/blog/content', `${slug}.md`);
     const content = await fs.readFile(filePath, 'utf8');
-    return content;
+    
+    // You'll need to add frontmatter processing here to extract metadata
+    // For now, using dummy data
+    const post: BlogPost = {
+      slug,
+      title: "Sample Title",
+      description: "Sample description",
+      content,
+      publishedAt: new Date().toISOString(),
+      featureImage: "/images/blog/default-feature.jpg",
+      author: {
+        name: "John Doe",
+        profession: "Technical Writer",
+        image: "/images/authors/john-doe.jpg",
+        twitter: "https://twitter.com/johndoe",
+        github: "https://github.com/johndoe",
+        website: "https://johndoe.com"
+      }
+    };
+    
+    return post;
   } catch (error) {
     return null;
   }
 }
 
-export async function generateStaticParams() {
-  const contentDir = path.join(process.cwd(), 'app/blog/content');
-  const files = await fs.readdir(contentDir);
-  
-  return files
-    .filter(file => file.endsWith('.md'))
-    .map(file => ({
-      slug: file.replace('.md', ''),
-    }));
-}
-
 export default async function BlogPage({ params }: BlogPageProps) {
-  const content = await getBlogContent(params.slug);
+  const post = await getBlogPost(params.slug);
 
-  if (!content) {
+  if (!post) {
     notFound();
   }
 
   return (
     <main className="container mx-auto px-4 py-16">
       <div className="max-w-4xl mx-auto">
-        <BlogContent content={content} />
+        <BlogContent post={post} />
       </div>
     </main>
   );

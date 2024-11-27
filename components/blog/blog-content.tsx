@@ -1,13 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion"
+import Image from "next/image"
+import { format } from "date-fns"
 import ShareButtons from "./share-buttons"
+import { AuthorIsland } from "./author-island"
 import Markdown from "react-markdown"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { BlogPost } from "@/types/blog"
 
 interface BlogContentProps {
-  content: string
+  post: BlogPost
 }
 
 // Define the CodeProps interface locally
@@ -18,7 +22,7 @@ interface CodeProps {
   children?: React.ReactNode;
 }
 
-export default function BlogContent({ content }: BlogContentProps) {
+export default function BlogContent({ post }: BlogContentProps) {
   return (
     <article className="prose prose-lg dark:prose-invert max-w-none">
       <motion.div
@@ -26,6 +30,30 @@ export default function BlogContent({ content }: BlogContentProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
+        {/* Feature Image */}
+        <div className="relative aspect-video w-full mb-8 rounded-lg overflow-hidden">
+          <Image
+            src={post.featureImage}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        {/* Metadata */}
+        <div className="flex items-center gap-4 text-muted-foreground mb-8">
+          <time dateTime={post.publishedAt}>
+            {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
+          </time>
+        </div>
+
+        {/* Author Island */}
+        <div className="mb-8">
+          <AuthorIsland author={post.author} />
+        </div>
+
+        {/* Content */}
         <Markdown
           components={{
             code({ className, children, inline, ...props }: CodeProps) {
@@ -53,7 +81,7 @@ export default function BlogContent({ content }: BlogContentProps) {
             },
           }}
         >
-          {content}
+          {post.content}
         </Markdown>
 
         <ShareButtons />
