@@ -83,19 +83,46 @@ export default function FAQs() {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="group relative rounded-lg border border-border/50 bg-card/80 backdrop-blur-sm px-6 data-[state=open]:bg-secondary/50"
+                className="group relative rounded-lg border border-border/50 bg-card/80 backdrop-blur-sm px-6 
+                  transition-all duration-500 ease-out
+                  hover:shadow-[0_0_50px_rgba(238,243,95,0.15)]
+                  hover:border-primary/30
+                  hover:-translate-y-1
+                  data-[state=open]:bg-secondary/50
+                  data-[state=open]:shadow-[0_0_30px_rgba(238,243,95,0.15)]
+                  data-[state=open]:border-primary/30"
               >
-                <AccordionTrigger className="py-6 text-left hover:no-underline">
-                  <div className="flex items-center gap-3 text-lg font-semibold pr-4">
+                <AccordionTrigger 
+                  className="py-6 text-left hover:no-underline
+                    transition-all duration-300 ease-out"
+                >
+                  <div className="flex items-center gap-3 text-lg font-semibold pr-4
+                    transition-colors duration-300
+                    group-hover:text-primary/90
+                    group-data-[state=open]:text-primary">
                     {faq.question}
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="pb-6 text-muted-foreground">
-                  {faq.answer}
+                
+                <AccordionContent 
+                  className="pb-6 text-muted-foreground
+                    transition-all duration-300
+                    group-hover:text-muted-foreground/80"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {faq.answer}
+                  </motion.div>
                 </AccordionContent>
 
-                {/* Hover/Active Gradient */}
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 opacity-0 group-hover:opacity-50 group-data-[state=open]:opacity-50 transition-opacity duration-500 -z-10" />
+                {/* Enhanced Hover/Active Gradient */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-primary/10 via-accent/5 to-background 
+                  opacity-0 transition-all duration-700 ease-out -z-10 mix-blend-overlay
+                  group-hover:opacity-100
+                  group-data-[state=open]:opacity-100" />
               </AccordionItem>
             ))}
           </Accordion>
