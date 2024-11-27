@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { blogPosts, getAllTags, searchPosts } from "@/lib/blog";
+import { blogPosts, getAllTags, searchPosts, getFeaturedPosts } from "@/lib/blog";
 import BlogList from "@/components/blog/blog-list";
 import BlogSearch from "@/components/blog/blog-search";
 import FeaturedBlogs from "@/components/blog/featured-blogs";
@@ -13,7 +13,7 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const allTags = getAllTags();
-  
+  const featuredPosts = getFeaturedPosts();
   const filteredPosts = searchPosts(searchQuery, selectedTags);
 
   const handleTagToggle = (tag: string) => {
@@ -29,7 +29,7 @@ export default function BlogPage() {
       <div className="max-w-7xl mx-auto">
         {/* Featured Blogs Section */}
         <section className="mb-16">
-          <FeaturedBlogs posts={blogPosts.slice(0, 3)} />
+          <FeaturedBlogs posts={featuredPosts} />
         </section>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">

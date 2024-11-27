@@ -1,5 +1,5 @@
+import { BlogPost } from "@/types/blog";
 import { blogPosts } from "./blog";
-import type { BlogPost } from "@/types/blog";
 
 export function getAllTags(): string[] {
   const tagsSet = new Set<string>();
@@ -21,6 +21,10 @@ export function searchPosts(query: string, selectedTags: string[] = []): BlogPos
 
     return matchesQuery && matchesTags;
   });
+}
+
+export function getFeaturedPosts(limit: number = 3): BlogPost[] {
+  return blogPosts.slice(0, limit);
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
