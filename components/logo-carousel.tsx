@@ -64,7 +64,9 @@ export default function LogoCarousel() {
               alt={logo.alt}
               width={120}
               height={40}
-              className="h-8 w-auto object-contain filter brightness-0 invert"
+              className={`h-8 w-auto object-contain filter brightness-0 invert ${
+                logo.alt === "Vercel" || logo.alt === "Vultr" ? "h-12" : "h-8"
+              }`}
             />
           </div>
         ))}
@@ -84,7 +86,9 @@ export default function LogoCarousel() {
               alt={logo.alt}
               width={120}
               height={40}
-              className="h-8 w-auto object-contain filter brightness-0 invert"
+              className={`h-8 w-auto object-contain filter brightness-0 invert ${
+                logo.alt === "Vercel" || logo.alt === "Vultr" ? "h-12" : "h-8"
+              }`}
             />
           </div>
         ))}
