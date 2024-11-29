@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter, Globe } from "lucide-react";
 import { Button } from "./ui/button";
 import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 
@@ -13,9 +13,9 @@ const team = [
     bio: "Full-stack developer turned technical writer",
     image: "https://i.postimg.cc/L593G1z9/Profile-pic.jpg",
     social: {
-      twitter: "#",
-      linkedin: "#",
-      github: "#",
+      twitter: "https://twitter.com/abrahamdahunsi",
+      github: "https://github.com/Abraham12611",
+      website: "https://www.abrahamdahunsi.com",
     },
     specialties: ["API Documentation", "Developer Experience", "Technical Architecture"],
   },
@@ -61,6 +61,7 @@ const socialIcons = {
   twitter: Twitter,
   linkedin: Linkedin,
   github: Github,
+  website: Globe,
 };
 
 const teamGradients = [
