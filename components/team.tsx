@@ -8,10 +8,10 @@ import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 
 const team = [
   {
-    name: "Sarah Chen",
+    name: "Abraham Dahunsi",
     role: "Lead Technical Writer",
-    bio: "10+ years documenting complex APIs and developer tools",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=500&fit=crop",
+    bio: "Full-stack developer turned technical writer",
+    image: "https://i.postimg.cc/L593G1z9/Profile-pic.jpg",
     social: {
       twitter: "#",
       linkedin: "#",
