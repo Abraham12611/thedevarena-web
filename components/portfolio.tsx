@@ -11,7 +11,6 @@ const projects = [
     description: "Complete API documentation and developer portal for a cloud infrastructure provider",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
     tags: ["API Documentation", "Developer Portal", "Technical Writing"],
-    metrics: ["45% Reduction in Support Tickets", "92% Developer Satisfaction"],
     link: "#"
   },
   {
@@ -19,7 +18,6 @@ const projects = [
     description: "Comprehensive SDK documentation and integration guides for a payment processing platform",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
     tags: ["SDK Documentation", "Integration Guides", "Code Samples"],
-    metrics: ["2.5x Faster Integration Time", "89% First-Try Success Rate"],
     link: "#"
   },
   {
@@ -27,7 +25,6 @@ const projects = [
     description: "End-to-end documentation for a containerization and orchestration platform",
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop",
     tags: ["Technical Documentation", "Tutorials", "Best Practices"],
-    metrics: ["78% Increase in User Adoption", "94% Documentation Accuracy"],
     link: "#"
   }
 ];
@@ -52,12 +49,9 @@ export default function Portfolio() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-             <span className="gradient-text">Success Stories:</span> See How Great Docs Drive Developer Success{" "}
+             <span className="gradient-text">Our Work:</span> See some of the content we've created{" "}
            
           </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            Browse real results from companies that transformed their technical documentation from a pain point into a competitive advantage.
-          </p>
         </motion.div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -112,23 +106,6 @@ export default function Portfolio() {
                       </span>
                     ))}
                   </div>
-
-                  {/* Metrics */}
-                  <div className="space-y-2 mb-6">
-                    {project.metrics.map((metric, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center gap-2 text-sm text-muted-foreground
-                          transition-transform duration-300 ease-out
-                          hover:translate-x-1"
-                      >
-                        <ArrowRight className="w-4 h-4 text-primary transition-transform duration-300
-                          group-hover:translate-x-1" />
-                        {metric}
-                      </div>
-                    ))}
-                  </div>
-
                   {/* View Project Button */}
                   <Button
                     variant="ghost"
