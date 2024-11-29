@@ -117,7 +117,9 @@ export default function Team() {
                 }}
                 className="h-full transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
               >
-                <div className="relative p-6 rounded-3xl bg-card/80 backdrop-blur-sm">
+                <div className={`relative p-6 rounded-3xl bg-card/80 backdrop-blur-sm ${
+                  member.name !== "Sarah Chen" ? "blur-[8px]" : ""
+                }`}>
                   {/* Decorative gradient orb */}
                   <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${teamGradients[index].color} opacity-20 blur-2xl transition-all duration-300 group-hover:opacity-30 group-hover:scale-125`} />
 
