@@ -10,7 +10,7 @@ const team = [
   {
     name: "Abraham Dahunsi",
     role: "Lead Technical Writer",
-    bio: "Full-stack developer turned technical writer",
+    bio: "Full-stack developer and technical writer",
     image: "https://i.postimg.cc/L593G1z9/Profile-pic.jpg",
     social: {
       twitter: "https://twitter.com/abrahamdahunsi",
@@ -86,15 +86,6 @@ export default function Team() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <div className="inline-block mb-6 relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 blur-md rounded-full group-hover:blur-lg transition-all duration-300" />
-            <div className="relative px-4 py-1.5 rounded-full border border-primary/50 bg-background/50 backdrop-blur-sm">
-              <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent font-medium">
-                Our Team
-              </span>
-            </div>
-          </div>
-
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Meet Our Expert{" "}
             <span className="gradient-text">Documentation Team</span>

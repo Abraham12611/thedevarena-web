@@ -62,11 +62,11 @@ export default function Portfolio() {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Featured{" "}
-            <span className="gradient-text">Documentation Projects</span>
+            Our {" "}
+            <span className="gradient-text">Work</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            Explore our portfolio of developer documentation, technical content, and API documentation projects that drive developer success
+          Some of the of contents we've created for our clients over the years.
           </p>
         </motion.div>
 
