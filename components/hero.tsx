@@ -33,7 +33,7 @@ export default function Hero() {
               </div>
             </div>
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 leading-tight">
- <span className="gradient-text">Developer-First</span> Technical Content
+ <span className="gradient-text">Developer-First</span> Content
 for Growing SaaS Teams 
               <br />
               and Startups
@@ -86,7 +86,7 @@ for Growing SaaS Teams
               {
                 title: "Developer Experience",
                 description:
-                  "Data-driven technical content that drives developer adoption and product growth. Strategic roadmaps for documentation, tutorials, and developer resources.",
+                  "Data-driven technical content that drives developer adoption and product growth.",
               },
             ].map((feature, index) => (
               <div
