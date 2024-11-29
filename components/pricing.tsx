@@ -94,7 +94,7 @@ export default function Pricing() {
             <span className="gradient-text">That Fits Your Budget</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto mb-12">
-           Flexible plans that scale with your documentation needs. Choose monthly for flexibility or save 15% with quarterly commitments.
+           Flexible plans that scale with your content needs. Choose monthly for flexibility or save 15% with quarterly commitments.
           </p>
 
           {/* Billing Toggle */}
@@ -185,7 +185,7 @@ export default function Pricing() {
                   size="lg"
                 >
                   <span className="flex items-center gap-2">
-                    Schedule Technical Consultation
+                    Schedule Discovery Call
                     <Calendar className="w-5 h-5 transition-all duration-300 
                       group-hover/button:rotate-12" />
                   </span>
