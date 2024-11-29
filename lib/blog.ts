@@ -49,7 +49,9 @@ export const blogPosts: BlogPost[] = [
 export function getAllTags(): string[] {
   const tagsSet = new Set<string>();
   blogPosts.forEach(post => {
-    post.tags?.forEach(tag => tagsSet.add(tag));
+    if (post.tags && Array.isArray(post.tags)) {
+      post.tags.forEach(tag => tagsSet.add(tag));
+    }
   });
   return Array.from(tagsSet);
 }
@@ -61,8 +63,9 @@ export function searchPosts(query: string, selectedTags: string[] = []): BlogPos
       (post.description?.toLowerCase().includes(query.toLowerCase()) ?? false) ||
       (post.content?.toLowerCase().includes(query.toLowerCase()) ?? false);
 
+    const postTags = post.tags ?? [];
     const matchesTags = selectedTags.length === 0 || 
-      (post.tags && selectedTags.some(tag => post.tags.includes(tag)));
+      selectedTags.some(tag => postTags.includes(tag));
 
     return matchesQuery && matchesTags;
   });
