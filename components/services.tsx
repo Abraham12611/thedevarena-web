@@ -12,13 +12,17 @@ import {
   LayoutDashboard,
   MessageSquareCode,
   Microscope,
+  Newspaper,
+  ImagePlus,
+  FileText,
+  BookText,
 } from "lucide-react";
 
 const services = [
   {
     title: "Blog Posts",
     description: "Clear, Engaging, blog posts that attracts developers and boost your brand's authority.",
-    icon: File,
+    icon: Newspaper,
     className: "md:col-span-2 md:row-span-1",
   },
   {
@@ -28,15 +32,15 @@ const services = [
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    title: "SDK Implementation",
-    description: "Detailed SDK documentation with code samples across multiple languages",
-    icon: FileCode2,
+    title: "Content Graphics",
+    description: "Custom content graphics that simplify complex concepts and visually engage your developer audience.",
+    icon: ImagePlus,
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    title: "Developer Portals",
-    description: "Custom developer portals that showcase your API ecosystem",
-    icon: LayoutDashboard,
+    title: "Whitepapers",
+    description: "Comprehensive, data-driven white papers that showcase your expertise and drive developer trust.",
+    icon: FileText,
     className: "md:col-span-2 md:row-span-1",
   },
   {
@@ -58,9 +62,9 @@ const services = [
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    title: "Technical Training",
-    description: "Custom training materials and onboarding documentation",
-    icon: GraduationCap,
+    title: "E-Books",
+    description: "In-depth, developer-focused e-books that educate, inspire, and position your brand as an industry leader.",
+    icon: BookText,
     className: "md:col-span-1 md:row-span-1",
   },
   {
