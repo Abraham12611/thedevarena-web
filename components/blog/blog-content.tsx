@@ -14,7 +14,6 @@ interface BlogContentProps {
   post: BlogPost
 }
 
-// Define the CodeProps interface locally
 interface CodeProps {
   node?: any;
   inline?: boolean;
@@ -23,6 +22,9 @@ interface CodeProps {
 }
 
 export default function BlogContent({ post }: BlogContentProps) {
+  // Default image for posts without a feature image
+  const defaultFeatureImage = "/images/blog/default-feature.jpg";
+  
   return (
     <article className="prose prose-lg dark:prose-invert max-w-none">
       <motion.div
@@ -33,7 +35,7 @@ export default function BlogContent({ post }: BlogContentProps) {
         {/* Feature Image */}
         <div className="relative aspect-video w-full mb-8 rounded-lg overflow-hidden">
           <Image
-            src={post.featureImage}
+            src={post.featureImage || defaultFeatureImage}
             alt={post.title}
             fill
             className="object-cover"
@@ -43,9 +45,11 @@ export default function BlogContent({ post }: BlogContentProps) {
 
         {/* Metadata */}
         <div className="flex items-center gap-4 text-muted-foreground mb-8">
-          <time dateTime={post.publishedAt}>
-            {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
-          </time>
+          {post.publishedAt && (
+            <time dateTime={post.publishedAt}>
+              {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
+            </time>
+          )}
         </div>
 
         {/* Author Island */}
@@ -81,7 +85,7 @@ export default function BlogContent({ post }: BlogContentProps) {
             },
           }}
         >
-          {post.content}
+          {post.content || ''}
         </Markdown>
 
         <ShareButtons />
