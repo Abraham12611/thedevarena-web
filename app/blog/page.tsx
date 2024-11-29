@@ -6,7 +6,7 @@ import { blogPosts, getAllTags, searchPosts, getFeaturedPosts } from "@/lib/blog
 import type { BlogPost } from "@/types/blog";
 import BlogList from "@/components/blog/blog-list";
 import BlogSearch from "@/components/blog/blog-search";
-import FeaturedBlogs from "@/components/blog/featured-blogs";
+import { default as FeaturedBlogs } from "@/components/blog/featured-blogs";
 import NewsletterForm from "@/components/blog/newsletter-form";
 import { Badge } from "@/components/ui/badge";
 
