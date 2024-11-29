@@ -34,23 +34,22 @@ export const blogPosts: BlogPost[] = [
       name: "Mike Chen",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
       profession: "Security Specialist",
-      twitter: "https://twitter.com/mikechen",
-      github: "https://github.com/mikechen",
-      website: "https://mikechen.dev"
+      social: {
+        twitter: "https://twitter.com/mikechen",
+        github: "https://github.com/mikechen",
+        website: "https://mikechen.dev"
+      }
     },
     tags: ["Security", "Social Media", "Best Practices"],
     views: 980
   },
-  // ... Add more blog posts with the updated structure
 ];
 
 // Blog utility functions
 export function getAllTags(): string[] {
   const tagsSet = new Set<string>();
   blogPosts.forEach(post => {
-    if (post.tags) {
-      post.tags.forEach(tag => tagsSet.add(tag));
-    }
+    post.tags?.forEach(tag => tagsSet.add(tag));
   });
   return Array.from(tagsSet);
 }
@@ -63,7 +62,7 @@ export function searchPosts(query: string, selectedTags: string[] = []): BlogPos
       (post.content?.toLowerCase().includes(query.toLowerCase()) ?? false);
 
     const matchesTags = selectedTags.length === 0 || 
-      (post.tags && selectedTags.some(tag => post.tags?.includes(tag)));
+      (post.tags && selectedTags.some(tag => post.tags.includes(tag)));
 
     return matchesQuery && matchesTags;
   });
@@ -79,13 +78,13 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 
 export function getRelatedPosts(currentSlug: string, limit: number = 2): BlogPost[] {
   const currentPost = getPostBySlug(currentSlug);
-  if (!currentPost) return [];
+  if (!currentPost || !currentPost.tags) return [];
 
   return blogPosts
-    .filter(post => post.slug !== currentSlug)
+    .filter(post => post.slug !== currentSlug && post.tags)
     .sort((a, b) => {
-      const aCommonTags = a.tags.filter(tag => currentPost.tags.includes(tag)).length;
-      const bCommonTags = b.tags.filter(tag => currentPost.tags.includes(tag)).length;
+      const aCommonTags = a.tags?.filter(tag => currentPost.tags?.includes(tag)).length ?? 0;
+      const bCommonTags = b.tags?.filter(tag => currentPost.tags?.includes(tag)).length ?? 0;
       return bCommonTags - aCommonTags;
     })
     .slice(0, limit);

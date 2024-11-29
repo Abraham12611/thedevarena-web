@@ -23,9 +23,9 @@ export function AuthorIsland({ author }: AuthorIslandProps) {
         <p className="text-muted-foreground text-sm">{author.profession}</p>
         
         <div className="flex gap-3 mt-2">
-          {author.twitter && (
+          {author.social?.twitter && (
             <a
-              href={author.twitter}
+              href={author.social.twitter}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -34,9 +34,9 @@ export function AuthorIsland({ author }: AuthorIslandProps) {
             </a>
           )}
           
-          {author.github && (
+          {author.social?.github && (
             <a
-              href={author.github}
+              href={author.social.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -45,9 +45,9 @@ export function AuthorIsland({ author }: AuthorIslandProps) {
             </a>
           )}
           
-          {author.website && (
+          {author.social?.website && (
             <a
-              href={author.website}
+              href={author.social.website}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
