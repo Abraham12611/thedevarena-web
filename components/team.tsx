@@ -17,7 +17,7 @@ const team = [
       github: "https://github.com/Abraham12611",
       website: "https://www.abrahamdahunsi.com",
     },
-    specialties: ["API Documentation", "Developer Experience", "Technical Architecture"],
+    specialties: ["Content Strategy", "Technical Editing", "Documentation Testing"],
   },
   {
     name: "Marcus Rodriguez",
