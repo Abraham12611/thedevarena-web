@@ -1,21 +1,15 @@
 export interface Author {
   name: string;
-  profession: string;
   image: string;
-  twitter?: string;
-  github?: string;
-  website?: string;
 }
 
 export interface BlogPost {
-  slug: string;
+  id: number;
   title: string;
-  description: string;
-  content: string;
-  publishedAt: string;
-  featureImage: string;
+  excerpt: string;
+  date: string;
   author: Author;
-  tags: string[];
-  readingTime?: string;
-  views?: number;
+  category: string;
+  readingTime: string;
+  slug: string;
 } 

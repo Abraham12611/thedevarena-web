@@ -10,7 +10,13 @@ import FeaturedBlogs from "@/components/blog/featured-blogs";
 import NewsletterForm from "@/components/blog/newsletter-form";
 import { Badge } from "@/components/ui/badge";
 
-export default function BlogPage() {
+// You can type the props that page receives
+interface PageProps {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default function BlogPage({ params, searchParams }: PageProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const allTags = getAllTags();
