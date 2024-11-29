@@ -66,7 +66,7 @@ export default function Portfolio() {
             <span className="gradient-text">Work</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-          Some of the of contents we've created for our clients over the years.
+          Some of the of contents we`ve created for our clients over the years.
           </p>
         </motion.div>
 
