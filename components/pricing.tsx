@@ -9,11 +9,12 @@ import { useState } from "react";
 const basePackages = [
   {
     title: "Essential",
-    monthlyPrice: 1250,
+    monthlyPrice: 2227,
     description: "Launch your content strategy with everything you need to get started",
+    monthlyWords: 17500,
     features: [
       "Strategic Content Planning & Research",
-      "Technical Content Creation (17,500 words)",
+      (isQuarterly: boolean) => `Technical Content Creation (${isQuarterly ? '52,500' : '17,500'} words)`,
       "Developer-Focused SEO Optimization",
       "Visual Documentation",
       "Expert Technical Review",
@@ -24,11 +25,12 @@ const basePackages = [
   },
   {
     title: "Suite",
-    monthlyPrice: 3200,
+    monthlyPrice: 4454,
     description: "Complete content strategy for growing products",
+    monthlyWords: 30000,
     features: [
       "Comprehensive Content Strategy",
-      "Extended Technical Content (30,000 words)",
+      (isQuarterly: boolean) => `Extended Technical Content (${isQuarterly ? '90,000' : '30,000'} words)`,
       "Advanced Technical SEO & Content Distribution",
       "Enhanced Visual Documentation:",
       "Unlimited Technical Reviews",
@@ -155,7 +157,9 @@ export default function Pricing() {
                       <Check className="w-5 h-5 text-primary mt-0.5 transition-transform duration-300
                         group-hover:scale-110" />
                       <span className="text-muted-foreground transition-colors duration-300
-                        group-hover:text-muted-foreground/80">{feature}</span>
+                        group-hover:text-muted-foreground/80">
+                        {typeof feature === 'function' ? feature(isQuarterly) : feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
