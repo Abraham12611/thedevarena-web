@@ -11,11 +11,11 @@ import {
 const faqs = [
   {
     question: "What types of documentation do you specialize in?",
-    answer: "We specialize in technical documentation for APIs, SDKs, developer tools, and enterprise software. This includes API references, integration guides, tutorials, code samples, and developer portals. Our expertise covers both user-facing documentation and internal technical specifications."
+    answer: "We specialize in developer-focused content, including Articles, Blogs, integration tutorials, troubleshooting docs, and user manuals. Our expertise ensures clear, concise, and technically accurate content tailored to your product."
   },
   {
     question: "How long does a typical documentation project take?",
-    answer: "Project timelines vary based on scope and complexity. A basic API documentation project typically takes 2-3 weeks, while a comprehensive developer portal with multiple integration guides might take 4-6 weeks. We'll provide a detailed timeline during our initial consultation."
+    answer: "Project timelines vary based on scope and complexity. A basic documentation project typically takes between a few days to a week, while a comprehensive e-book or whitepaper might take 4-6 weeks. We'll provide a detailed timeline during our initial consultation."
   },
   {
     question: "Do you work with existing documentation tools?",
@@ -27,20 +27,16 @@ const faqs = [
   },
   {
     question: "Can you help with documentation strategy?",
-    answer: "Absolutely! We provide comprehensive documentation strategy services, including content planning, information architecture, style guides, and developer experience optimization. We'll help you create a documentation roadmap that aligns with your product goals."
+    answer: "Absolutely! We provide comprehensive content strategy services, including content planning, community research, style guides, and developer experience optimization. We'll help you create a content roadmap that aligns with your product goals."
   },
   {
-    question: "Do you offer ongoing documentation maintenance?",
-    answer: "Yes, we offer maintenance packages to keep your documentation up-to-date with product changes. This includes regular reviews, updates for new features, and continuous improvement based on developer feedback and usage analytics."
+    question: "Do you offer ongoing content maintenance?",
+    answer: "Yes, we offer maintenance packages to keep your content up-to-date with product changes. This includes regular reviews, updates for new features, and continuous improvement based on developer feedback and usage analytics at extra charge."
   },
   {
     question: "What makes your technical writing services different?",
-    answer: "Our team combines deep technical expertise with clear communication skills. We focus on developer experience, ensuring documentation is not just accurate but also practical and easy to use. We also emphasize modern documentation practices like interactive examples and automated testing."
+    answer: "We have a talent pool consisting of subject matter experts, technical editors, and professional writers. We focus on developer experience, ensuring content is not just accurate but also practical and easy to use. We also emphasize modern documentation practices like interactive examples and testing."
   },
-  {
-    question: "How do you handle API documentation for multiple versions?",
-    answer: "We implement version control strategies for API documentation, including clear version switching, change logs, and migration guides. We can set up automated processes to keep multiple versions in sync and highlight version-specific features or breaking changes."
-  }
 ];
 
 export default function FAQs() {
