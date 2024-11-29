@@ -13,6 +13,9 @@ interface BlogListProps {
 }
 
 export default function BlogList({ posts, isGridView = true }: BlogListProps) {
+  // Default image for posts without a feature image
+  const defaultFeatureImage = "/images/blog/default-feature.jpg";
+
   if (posts.length === 0) {
     return (
       <div className="text-center py-12">
@@ -42,7 +45,7 @@ export default function BlogList({ posts, isGridView = true }: BlogListProps) {
               <div className={isGridView ? 'block' : 'grid md:grid-cols-2 gap-6'}>
                 <div className="relative h-64 md:h-full overflow-hidden">
                   <Image
-                    src={post.featureImage}
+                    src={post.featureImage || defaultFeatureImage}
                     alt={post.title}
                     fill
                     className="object-cover transition-transform duration-700 ease-out
@@ -53,7 +56,7 @@ export default function BlogList({ posts, isGridView = true }: BlogListProps) {
                 </div>
                 <div className="p-6 relative z-10">
                   <div className="flex gap-2 mb-4">
-                    {post.tags.map((tag) => (
+                    {post.tags?.map((tag) => (
                       <Badge key={tag} variant="secondary" className="transition-colors duration-300
                         group-hover:bg-primary/20 group-hover:text-primary">
                         {tag}
@@ -77,13 +80,15 @@ export default function BlogList({ posts, isGridView = true }: BlogListProps) {
                         {post.readingTime}
                       </span>
                     </div>
-                    <span className="text-sm text-muted-foreground">
-                      {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </span>
+                    {post.publishedAt && (
+                      <span className="text-sm text-muted-foreground">
+                        {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </span>
+                    )}
                   </div>
                   <div className="flex items-center gap-3 transition-all duration-300
                     group-hover:translate-x-1">
