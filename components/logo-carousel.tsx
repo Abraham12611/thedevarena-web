@@ -49,7 +49,17 @@ export default function LogoCarousel() {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden py-10 bg-background/50 backdrop-blur-sm">
+    <section className="w-full overflow-hidden py-10 bg-background/50 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+        <div className="inline-block relative group">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 blur-md rounded-full group-hover:blur-lg transition-all duration-300" />
+          <div className="relative px-4 py-1.5 rounded-full border border-primary/50 bg-background/50 backdrop-blur-sm">
+            <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent font-medium">
+              Trusted By
+            </span>
+          </div>
+        </div>
+      </div>
       <div
         ref={row1Ref}
         className="flex animate-scroll-left"
@@ -94,6 +104,6 @@ export default function LogoCarousel() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

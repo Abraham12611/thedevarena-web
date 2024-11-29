@@ -77,6 +77,16 @@ export default function Pricing() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
+          {/* Add Badge */}
+          <div className="inline-block mb-6 relative group">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 blur-md rounded-full group-hover:blur-lg transition-all duration-300" />
+            <div className="relative px-4 py-1.5 rounded-full border border-primary/50 bg-background/50 backdrop-blur-sm">
+              <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent font-medium">
+                Pricing
+              </span>
+            </div>
+          </div>
+
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Technical Content {" "}
             <span className="gradient-text">That Fits Your Budget</span>
