@@ -5,6 +5,7 @@ import {
   BookOpen,
   Code2,
   FileCode2,
+  File,
   GanttChart,
   GitBranch,
   GraduationCap,
@@ -15,9 +16,9 @@ import {
 
 const services = [
   {
-    title: "API Documentation",
-    description: "Clear, comprehensive documentation for your APIs with interactive examples and best practices",
-    icon: Code2,
+    title: "Blog Posts",
+    description: "Clear, Engaging, blog posts that attracts developers and boost your brand's authority.",
+    icon: File,
     className: "md:col-span-2 md:row-span-1",
   },
   {
