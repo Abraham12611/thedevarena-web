@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import fs from "fs/promises";
 import path from "path";
 import BlogContent from "@/components/blog/blog-content";
-import { BlogPost } from "@/types/blog";
+import { Author, BlogPost } from "@/types/blog";
 
 interface BlogPageProps {
   params: {
@@ -25,12 +25,15 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
       publishedAt: new Date().toISOString(),
       featureImage: "/images/blog/default-feature.jpg",
       author: {
-        name: "John Doe",
+        name: "Abraham Dahunsi",
+        image: "/path/to/image.jpg",
         profession: "Technical Writer",
-        image: "/images/authors/john-doe.jpg",
-        twitter: "https://twitter.com/johndoe",
-        github: "https://github.com/johndoe",
-        website: "https://johndoe.com"
+        bio: "Full-stack developer turned technical writer",
+        social: {
+          twitter: "https://twitter.com/abrahamdahunsi",
+          github: "https://github.com/Abraham12611",
+          website: "https://www.abrahamdahunsi.com",
+        }
       },
       tags: ["Technical Writing", "Development"],
       readingTime: "5 min read",
