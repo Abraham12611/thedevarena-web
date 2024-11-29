@@ -8,27 +8,27 @@ import { useState } from "react";
 
 const basePackages = [
   {
-    title: "Developer Portal Essentials",
+    title: "Essential",
     monthlyPrice: 1250,
-    description: "Launch your developer documentation with everything you need to get started",
+    description: "Launch your content strategy with everything you need to get started",
     features: [
       "Strategic Content Planning & Research",
-      "Technical Content Creation (7,000 words)",
+      "Technical Content Creation (17,500 words)",
       "Developer-Focused SEO Optimization",
       "Visual Documentation",
       "Expert Technical Review",
       "Professional Technical Editing",
       "48-Hour Revision Turnaround",
     ],
-    spotsAvailable: 2,
+    spotsAvailable: 3,
   },
   {
-    title: "Enterprise Documentation Suite",
+    title: "Suite",
     monthlyPrice: 3200,
-    description: "Complete documentation ecosystem for growing products",
+    description: "Complete content strategy for growing products",
     features: [
       "Comprehensive Content Strategy",
-      "Extended Technical Content (15,000 words)",
+      "Extended Technical Content (30,000 words)",
       "Advanced Technical SEO & Content Distribution",
       "Enhanced Visual Documentation:",
       "Unlimited Technical Reviews",

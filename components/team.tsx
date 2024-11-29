@@ -88,7 +88,7 @@ export default function Team() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Meet Our Expert{" "}
-            <span className="gradient-text">Documentation Team</span>
+            <span className="gradient-text"> Team</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
             Experienced technical writers and content strategists dedicated to
