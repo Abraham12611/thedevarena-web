@@ -15,36 +15,36 @@ import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 const steps = [
   {
     number: "01",
-    title: "Technical Discovery & Scope",
-    description: "We start with a deep dive into your API, SDK, or technical product. Our team analyzes your existing documentation and codebase, identifies target developer personas and use cases, and delivers a detailed content strategy and documentation plan.",
+    title: "Discovery Call",
+    description: "We conduct a detailed discovery call to understand your technical product, target audience, and content needs. This sets the foundation for our content strategy and roadmap.",
     icon: Search,
     color: "from-[#FF6B6B] to-[#FFE66D]"
   },
   {
     number: "02",
-    title: "Information Architecture",
-    description: "Building the right structure is crucial for developer experience. We create documentation site information hierarchy, content type definitions, and navigation flows optimized for developer workflows.",
+    title: "Content Plan",
+    description: "We collaborate to create a tailored content strategy that aligns with your goals, resonates with your ideal audience, and delivers measurable results. If you already have a plan we can review and optimize it.",
     icon: LayoutPanelTop,
     color: "from-[#4ECDC4] to-[#556270]"
   },
   {
     number: "03",
-    title: "Content Prototyping",
-    description: "We develop initial content samples to validate our approach with sample documentation in your preferred format, interactive code examples and API request/response pairs, and integration with your existing documentation tools.",
+    title: "Content Creation",
+    description: "Our pool of subject matter experts create high-quality, developer-focused content that speaks to your audience, amplifying your brand’s voice and driving meaningful engagement.",
     icon: CodeSquare,
     color: "from-[#6C5CE7] to-[#A8E6CF]"
   },
   {
     number: "04",
-    title: "Technical Review & Iteration",
-    description: "Quality assurance with a focus on technical accuracy including code review by senior developers, testing of all sample code and API calls, and technical accuracy verification by subject matter experts.",
+    title: "Content Review",
+    description: "We conduct thorough reviews to ensure the accuracy, clarity, and relevance of the content. This includes code reviews, API testing, and technical accuracy verification by subject matter experts.",
     icon: CheckCircle2,
     color: "from-[#FF8C42] to-[#FFF275]"
   },
   {
     number: "05",
-    title: "Deployment & Maintenance",
-    description: "We ensure your documentation stays current and valuable through integration with your CI/CD pipeline, version control and change management, and ongoing updates based on developer feedback.",
+    title: "Content Delivery",
+    description: "Each content piece is delivered on schedule, thoroughly reviewed, and ready for publishing. We ensure every detail aligns with your goals, and if revisions are needed, we’ll work until you’re completely satisfied.",
     icon: Rocket,
     color: "from-[#45B7D1] to-[#DFFFE2]"
   }
@@ -85,10 +85,10 @@ export default function ProcessSteps() {
 
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Our Proven {" "}
-            <span className="gradient-text">Documentation Framework</span>
+            <span className="gradient-text">Content Framework</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            From API specs to interactive tutorials, we follow a battle-tested process that combines technical expertise with clear writing. The result? Documentation that developers trust and actually want to use.
+            We follow a battle-tested process that combines technical expertise with clear writing. The result? Content that developers trust and actually want to use.
           </p>
         </motion.div>
 
