@@ -12,14 +12,18 @@ export interface Author {
 }
 
 export interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  date: string;
-  author: Author;
-  category: string;
-  readingTime: string;
+  id?: number;
   slug: string;
+  title: string;
+  excerpt?: string;
+  description?: string;
   content?: string;
+  date?: string;
+  publishedAt?: string;
+  author: Author;
+  category?: string;
+  readingTime: string;
   tags?: string[];
+  views?: number;
+  featureImage?: string;
 } 

@@ -13,9 +13,11 @@ export const blogPosts: BlogPost[] = [
       name: "Lisa Johnson",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
       profession: "Senior UX Writer",
-      twitter: "https://twitter.com/lisajohnson",
-      github: "https://github.com/lisajohnson",
-      website: "https://lisajohnson.dev"
+      social: {
+        twitter: "https://twitter.com/lisajohnson",
+        github: "https://github.com/lisajohnson",
+        website: "https://lisajohnson.dev"
+      }
     },
     tags: ["UI/UX", "Design", "Trends"],
     views: 1250
@@ -46,7 +48,9 @@ export const blogPosts: BlogPost[] = [
 export function getAllTags(): string[] {
   const tagsSet = new Set<string>();
   blogPosts.forEach(post => {
-    post.tags.forEach(tag => tagsSet.add(tag));
+    if (post.tags) {
+      post.tags.forEach(tag => tagsSet.add(tag));
+    }
   });
   return Array.from(tagsSet);
 }
@@ -55,11 +59,11 @@ export function searchPosts(query: string, selectedTags: string[] = []): BlogPos
   return blogPosts.filter(post => {
     const matchesQuery = query === '' || 
       post.title.toLowerCase().includes(query.toLowerCase()) ||
-      post.description.toLowerCase().includes(query.toLowerCase()) ||
-      post.content.toLowerCase().includes(query.toLowerCase());
+      (post.description?.toLowerCase().includes(query.toLowerCase()) ?? false) ||
+      (post.content?.toLowerCase().includes(query.toLowerCase()) ?? false);
 
     const matchesTags = selectedTags.length === 0 || 
-      selectedTags.some(tag => post.tags.includes(tag));
+      (post.tags && selectedTags.some(tag => post.tags?.includes(tag)));
 
     return matchesQuery && matchesTags;
   });

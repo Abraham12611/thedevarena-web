@@ -15,11 +15,10 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
     const filePath = path.join(process.cwd(), 'app/blog/content', `${slug}.md`);
     const content = await fs.readFile(filePath, 'utf8');
     
-    // You'll need to add frontmatter processing here to extract metadata
-    // For now, using dummy data
     const post: BlogPost = {
       slug,
       title: "Sample Title",
+      excerpt: "Sample excerpt",
       description: "Sample description",
       content,
       publishedAt: new Date().toISOString(),
