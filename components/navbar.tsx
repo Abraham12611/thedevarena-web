@@ -11,8 +11,8 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Team", href: "#team" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Blog", href: "/blog" },
     { name: "How We Work", href: "/how-we-work" },
     { name: "Contact", href: "#contact" },
   ];
@@ -67,7 +67,7 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="px-3 py-2">
-              <Button className="w-full hover-glow">Get Started</Button>
+              <Button className="w-full hover-glow">Book a Call</Button>
             </div>
           </div>
         </motion.div>

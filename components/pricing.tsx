@@ -88,12 +88,6 @@ const addonServices = [
     icon: PenTool,
     price: "from $797",
   },
-  {
-    title: "Analytics Reports",
-    description: "Documentation performance analysis and optimization reports",
-    icon: LineChart,
-    price: "from $997",
-  },
 ];
 
 export default function Pricing() {
