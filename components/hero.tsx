@@ -36,9 +36,8 @@ export default function Hero() {
               <span className="gradient-text block sm:inline">Developer-First</span>{' '}
               <span className="block mt-2 sm:mt-0 sm:inline">Content</span>
               <span className="block text-2xl sm:text-4xl md:text-6xl lg:text-7xl mt-3 sm:mt-4">
-                <span className="block sm:inline">for Growing</span>{' '}
-                <span className="block mt-1 sm:mt-0 sm:inline">SaaS Teams</span>{' '}
-                <span className="block mt-1 sm:mt-0">&amp; Startups</span>
+                <span className="block sm:inline">for Growing SaaS Teams</span>{' '}
+                <span className="block mt-1 sm:mt-0 sm:inline">&amp; Startups</span>{' '}
               </span>
             </h1>
             <p className="text-sm sm:text-lg md:text-xl text-muted-foreground 
