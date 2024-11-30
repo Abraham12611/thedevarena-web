@@ -55,10 +55,15 @@ export default function Contact() {
                   href="https://calendly.com/your-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-lg bg-primary px-8 py-4 text-background font-medium hover:bg-primary/90 transition-colors duration-200"
+                  className="inline-flex items-center justify-center gap-2 w-full 
+                    rounded-lg bg-primary px-4 sm:px-8 py-3 sm:py-4 
+                    text-sm sm:text-base md:text-lg text-background font-medium 
+                    hover:bg-primary/90 transition-all duration-200
+                    hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <CalendarDays className="w-5 h-5 transition-transform group-hover:rotate-12" />
-                  Claim Your Free Strategy Call
+                  <CalendarDays className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="block sm:hidden">Book Free Call</span>
+                  <span className="hidden sm:block">Claim Your Free Strategy Call</span>
                 </a>
               </div>
             </NeonGradientCard>
