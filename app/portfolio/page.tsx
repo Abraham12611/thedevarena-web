@@ -71,11 +71,11 @@ const categories: Record<string, ProjectCategory> = {
     projects: [
       {
         id: "5",
-        title: "AWS Lambda Deep Dive",
-        description: "Comprehensive guide to serverless computing with AWS Lambda.",
-        image: "/images/portfolio/aws-lambda.jpg",
-        tags: ["AWS", "Serverless", "Backend"],
-        link: "#",
+        title: "Event-Driven Data Processing with Traefik, Docker, and Kafka",
+        description: "This guide explains how to implement event-driven data processing using Traefik, Docker, and Kafka. It emphasizes Traefik's flexibility and Kafka's scalability, persuading developers to streamline data processing through containerized deployments.",
+        image: "/images/Feature-image-Event-Driven-Data-Processing.png",
+        tags: ["Docker", "System Architecture", "Data Processing"],
+        link: "https://www.freecodecamp.org/news/how-to-implement-event-driven-data-processing/",
       },
       {
         id: "6",
@@ -102,11 +102,11 @@ const categories: Record<string, ProjectCategory> = {
       },
       {
         id: "8",
-        title: "GraphQL API with Node.js",
-        description: "Learn to build a scalable GraphQL API from scratch.",
-        image: "/images/portfolio/graphql-tutorial.jpg",
-        tags: ["GraphQL", "Node.js", "API"],
-        link: "#",
+        title: "How to Install NVIDIA CUDA Toolkit on Ubuntu",
+        description: "This guide explains how to install the NVIDIA CUDA Toolkit on Ubuntu. It highlights the importance of GPU acceleration for deep learning tasks and provides step-by-step instructions for setting up the toolkit.",
+        image: "/images/Feature-image.png",
+        tags: ["Linux", "ML", "NVIDIA CUDA"],
+        link: "https://www.freecodecamp.org/news/how-to-install-nvidia-cuda-toolkit-on-ubuntu/",
       },
       // Add more tutorials...
     ],
