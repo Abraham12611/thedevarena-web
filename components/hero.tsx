@@ -35,14 +35,14 @@ export default function Hero() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-8 leading-[1.1] sm:leading-tight px-4 sm:px-6">
               <span className="gradient-text block sm:inline">Developer-First</span>{' '}
               <span className="block mt-2 sm:mt-0 sm:inline">Content</span>
-              <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl mt-3 sm:mt-4">
+              <span className="block text-3xl sm:text-4xl md:text-6xl lg:text-7xl mt-3 sm:mt-4">
                 for Growing SaaS Teams
                 <br className="hidden sm:block" /> and Startups
               </span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground 
               max-w-[90%] sm:max-w-2xl md:max-w-3xl mx-auto mb-8 sm:mb-12
-              leading-relaxed sm:leading-loose px-4 sm:px-6">
+              leading-relaxed sm:leading-loose px-4 sm:px-5">
               Turning complex APIs, docs, and features into clear, 
               <span className="block sm:inline"> dev-ready content that drives adoption</span>{' '}
               <span className="block sm:inline">and reduces support overhead.</span>
