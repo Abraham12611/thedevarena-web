@@ -33,11 +33,11 @@ const categories: Record<string, ProjectCategory> = {
       },
       {
         id: "2",
-        title: "MongoDB vs PostgreSQL",
+        title: "Docker vs. Podman: Why Docker Is Still the Developer’s Choice",
         description: "Analyzing the key differences between document and relational databases.",
-        image: "/images/portfolio/mongo-vs-postgres.jpg",
-        tags: ["MongoDB", "PostgreSQL", "Database"],
-        link: "#",
+        image: "/images/Docker-vs-podman.avif",
+        tags: ["Docker", "Podman", "Containers"],
+        link: "https://collabnix.com/docker-vs-podman-why-docker-is-still-the-developers-choice/",
       },
       // Add more comparison projects...
     ],
