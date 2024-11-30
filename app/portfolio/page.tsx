@@ -82,8 +82,16 @@ const categories: Record<string, ProjectCategory> = {
         title: "How to Manage Secrets in Docker",
         description: "This guide provides best practices for securing Docker containers in production. It emphasizes the importance of containerizing applications securely and provides practical tips for managing secrets and ensuring robust security practices.",
         image: "/images/Docker-secrets.jpg",
-        tags: ["Docker", "Security", "DevOps"],
+        tags: ["Docker", "Security", "DevOps", "Containers"],
         link: "https://www.freecodecamp.org/news/manage-secrets-in-docker/",
+      },
+      {
+        id: "7",
+        title: "Securing Node.js APIs with JSON Web Tokens (JWT)",
+        description: "This guide provides best practices for securing Docker containers in production. It emphasizes the importance of containerizing applications securely and provides practical tips for managing secrets and ensuring robust security practices.",
+        image: "/images/JWT-NodeAPI.webp",
+        tags: ["Node.js", "JWT", "Security", "API", "Authentication",],
+        link: "https://plainenglish.io/community/securing-node-js-apis-with-json-web-tokens-jwt-88ab51",
       },
       // Add more technical guides...
     ],
@@ -115,6 +123,14 @@ const categories: Record<string, ProjectCategory> = {
         image: "/images/Nodejs-opentelementry.png",
         tags: ["Node.js", "OpenTelemetry", "Data Observability"],
         link: "https://www.freecodecamp.org/news/how-to-use-opentelementry-to-trace-node-js-applications/",
+      },
+      {
+        id: "10",
+        title: "Introduction to NGINX Access Logs and Error Logs",
+        description: "This tutorial explains the basics of NGINX access logs and error logs. It highlights the importance of logging for monitoring and improving application performance and provides step-by-step instructions for setting up the toolkit.",
+        image: "/images/Nginx-error-logs.webp",
+        tags: ["NGINX", "Logging", "Web Server", "Monitoring"],
+        link: "https://plainenglish.io/community/introduction-to-nginx-access-logs-and-error-logs-507489",
       },
       // Add more tutorials...
     ],
