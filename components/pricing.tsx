@@ -11,6 +11,7 @@ const basePackages = [
   {
     title: "Essential",
     monthlyPrice: 2227,
+    priceLabel: "from",
     description: "Launch your content strategy with everything you need to get started",
     monthlyWords: 17500,
     features: [
@@ -27,6 +28,7 @@ const basePackages = [
   {
     title: "Suite",
     monthlyPrice: 4454,
+    priceLabel: "from",
     description: "Complete content strategy for growing products",
     monthlyWords: 30000,
     features: [
@@ -189,6 +191,11 @@ export default function Pricing() {
                     group-hover:text-primary/90">{pkg.title}</h3>
                   <div className="flex items-baseline gap-2 mb-4 transition-all duration-300
                     group-hover:translate-x-1">
+                    {pkg.priceLabel && (
+                      <span className="text-muted-foreground text-lg">
+                        {pkg.priceLabel}
+                      </span>
+                    )}
                     <span className="text-4xl font-bold">
                       {formatPrice(calculatePrice(pkg.monthlyPrice))}
                     </span>
