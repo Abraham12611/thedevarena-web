@@ -30,10 +30,10 @@ const projects = [
   },
   {
     title: "Developer Blog Strategy",
-    description: "Implemented a content strategy that doubled organic traffic and increased developer signups by 45%.",
-    image: "/projects/project4.png",
-    link: "#",
-    tags: ["Content Strategy", "Blog Writing", "SEO"],
+    description: "This guide details running a Docker-Surfshark container for secure, private internet access. It emphasizes Docker's flexibility and Surfshark's robust VPN features, persuading developers to streamline privacy solutions through containerized deployments.s",
+    image: "/images/featureimg.webp",
+    link: "https://collabnix.com/why-run-vpn-in-a-docker-container/",
+    tags: ["Technical Writing", "Blog Writing", "Developer Experience"],
   },
 ];
 
