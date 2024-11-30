@@ -4,7 +4,7 @@ import { ProjectCategory } from "@/types/portfolio";
 export default function PortfolioPage() {
   return (
     <main className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold text-center mb-16">My Portfolio</h1>
+      <h1 className="text-4xl font-bold text-center mb-16">Our Portfolio</h1>
       
       {Object.values(categories).map((category) => (
         <section key={category.id} className="mb-20">
