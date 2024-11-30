@@ -32,14 +32,20 @@ export default function Hero() {
                 </span>
               </div>
             </div>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 leading-tight">
- <span className="gradient-text">Developer-First</span> Content
-for Growing SaaS Teams 
-              <br />
-              and Startups
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-8 leading-[1.1] sm:leading-tight px-4 sm:px-6">
+              <span className="gradient-text block sm:inline">Developer-First</span>{' '}
+              <span className="block mt-2 sm:mt-0 sm:inline">Content</span>
+              <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl mt-3 sm:mt-4">
+                for Growing SaaS Teams
+                <br className="hidden sm:block" /> and Startups
+              </span>
             </h1>
-            <p className="text-muted-foreground text-lg sm:text-xl max-w-3xl mx-auto mb-12">
-              Turning complex APIs, docs, and features into clear, dev-ready content that drives adoption and reduces support overhead.
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground 
+              max-w-[90%] sm:max-w-2xl md:max-w-3xl mx-auto mb-8 sm:mb-12
+              leading-relaxed sm:leading-loose px-4 sm:px-6">
+              Turning complex APIs, docs, and features into clear, 
+              <span className="block sm:inline"> dev-ready content that drives adoption</span>{' '}
+              <span className="block sm:inline">and reduces support overhead.</span>
             </p>
           </motion.div>
 
@@ -47,15 +53,19 @@ for Growing SaaS Teams
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="mb-20"
+            className="mb-12 sm:mb-20"
           >
             <Button
               size="lg"
-              className="group relative px-8 py-6 text-lg hover:scale-105 transition-all duration-300 bg-gradient-to-r from-primary via-primary to-accent hover:shadow-[0_0_30px_rgba(238,243,95,0.3)] hover:border-primary/50"
+              className="group relative px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg 
+                hover:scale-105 transition-all duration-300 
+                bg-gradient-to-r from-primary via-primary to-accent 
+                hover:shadow-[0_0_30px_rgba(238,243,95,0.3)] 
+                hover:border-primary/50"
             >
               <span className="flex items-center gap-2">
                 Book a 15-min call
-                <Calendar className="w-5 h-5 transition-transform group-hover:rotate-12" />
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:rotate-12" />
               </span>
             </Button>
             <p className="mt-4 text-muted-foreground flex items-center justify-center gap-2">
