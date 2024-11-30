@@ -8,18 +8,18 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
-    title: "Developer Portal Redesign",
-    description: "Revamped the developer documentation portal for a leading API platform, improving developer experience and reducing support tickets by 40%.",
-    image: "/projects/project1.png",
-    link: "#",
-    tags: ["API Documentation", "Information Architecture", "UX Writing"],
+    title: "PRODUCT PERSUASION GUIDE", 
+    description: "This step-by-step guide demonstrates how to install OpenLiteSpeed on Vultr's Debian 12. It highlights Vultr's reliability and ease of use while showcasing OpenLiteSpeed's performance benefits, persuading developers to adopt both seamlessly.",
+    image: "public\images\a401679d-d9a4-4672-8d84-673c6e20810b.webp",
+    link: "https://docs.vultr.com/how-to-install-openlitespeed-webserver-on-debian-12",
+    tags: ["Technical Writing", "Code Examples", "SEO"],
   },
   {
-    title: "SDK Documentation Suite",
-    description: "Created comprehensive SDK documentation across multiple programming languages, increasing developer adoption by 60%.",
-    image: "/projects/project2.png",
-    link: "#",
-    tags: ["SDK Documentation", "Code Examples", "Technical Writing"],
+    title: "AI Generated Videos with Show-1 on Vultr Cloud GPU",
+    description: "This guide explains how to generate AI-powered videos using Show-1 on Vultr Cloud GPU. It emphasizes Vultr's powerful GPU performance and flexibility, persuading developers to harness AI creativity with Vultr’s infrastructure.",
+    image: "public\images\f78ec501fb566b29.webp",
+    link: "https://docs.vultr.com/ai-generated-videos-using-show-1-on-vultr-cloud-gpu",
+    tags: ["Technical Writing", "Code Examples", "SEO"],
   },
   {
     title: "API Integration Guides",
