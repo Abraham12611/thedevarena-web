@@ -10,7 +10,7 @@ import { useState } from "react";
 const basePackages = [
   {
     title: "Essential",
-    monthlyPrice: 2227,
+    monthlyPrice: 1199,
     priceLabel: "from",
     description: "Launch your content strategy with everything you need to get started",
     monthlyWords: 17500,
@@ -27,7 +27,7 @@ const basePackages = [
   },
   {
     title: "Suite",
-    monthlyPrice: 4454,
+    monthlyPrice: 2999,
     priceLabel: "from",
     description: "Complete content strategy for growing products",
     monthlyWords: 30000,
