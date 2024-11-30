@@ -43,9 +43,8 @@ export default function Hero() {
             <p className="text-sm sm:text-lg md:text-xl text-muted-foreground 
               max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto mb-8 sm:mb-12
               leading-relaxed sm:leading-loose px-2 sm:px-5">
-              <span className="block sm:inline">Turning complex APIs,</span>{' '}
-              <span className="block sm:inline">docs, and features into clear,</span>{' '}
-              <span className="block sm:inline">dev-ready content</span>{' '}
+              <span className="block sm:inline">Turning complex APIs, docs, and features </span>{' '}
+              <span className="block sm:inline">into clear, dev-ready content</span>{' '}
               <span className="block sm:inline">that drives adoption</span>{' '}
               <span className="block sm:inline">and reduces support overhead.</span>
             </p>
