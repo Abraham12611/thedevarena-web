@@ -11,7 +11,7 @@ const basePackages = [
   {
     title: "Essential",
     monthlyPrice: 1199,
-    priceLabel: "from",
+    priceLabel: "starting at",
     description: "Launch your content strategy with everything you need to get started",
     monthlyWords: 17500,
     features: [
@@ -28,7 +28,7 @@ const basePackages = [
   {
     title: "Suite",
     monthlyPrice: 2999,
-    priceLabel: "from",
+    priceLabel: "starting at",
     description: "Complete content strategy for growing products",
     monthlyWords: 30000,
     features: [
