@@ -81,31 +81,53 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-20"
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 max-w-4xl mx-auto mt-12 sm:mt-20 px-4 sm:px-6"
           >
             {[
               {
                 title: "Technical Documentation",
-                description:
-                  "From API docs to SDKs—comprehensive technical content that helps developers succeed with your product from day one.",
+                description: [
+                  "From API docs to SDKs—",
+                  "comprehensive technical content",
+                  "that helps developers succeed",
+                  "with your product from day one."
+                ],
               },
               {
                 title: "Content Strategy",
-                description:
-                  "Data-driven technical content that drives developer adoption and product growth. Strategic roadmaps for documentation, tutorials, and developer resources.",
+                description: [
+                  "Data-driven technical content",
+                  "that drives developer adoption",
+                  "and product growth. Strategic",
+                  "roadmaps for documentation",
+                  "tutorials, and resources."
+                ],
               },
               {
                 title: "Developer Experience",
-                description:
-                  "Data-driven technical content that drives developer adoption and product growth.",
+                description: [
+                  "Data-driven technical content",
+                  "that drives developer adoption",
+                  "and product growth."
+                ],
               },
             ].map((feature, index) => (
               <div
                 key={index}
-                className="bg-card/50 backdrop-blur-sm p-6 rounded-lg hover-glow transition-all duration-300"
+                className="bg-card/50 backdrop-blur-sm p-4 sm:p-6 rounded-lg 
+                  hover-glow transition-all duration-300"
               >
-                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground 
+                  leading-relaxed sm:leading-loose">
+                  {feature.description.map((line, i) => (
+                    <span key={i} className="block sm:inline">
+                      {line}{' '}
+                    </span>
+                  ))}
+                </p>
               </div>
             ))}
           </motion.div>
