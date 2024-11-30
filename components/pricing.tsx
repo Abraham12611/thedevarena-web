@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Calendar } from "lucide-react";
+import { Check, Calendar, Video, GhostIcon, BookText, FileText, Presentation, Braces, PenTool, LineChart } from "lucide-react";
 import { Button } from "./ui/button";
 import { Switch } from "./ui/switch";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { useState } from "react";
 
 const basePackages = [
@@ -39,6 +40,57 @@ const basePackages = [
     ],
     spotsAvailable: 1,
     featured: true,
+  },
+];
+
+const addonServices = [
+  {
+    title: "Video Tutorials",
+    description: "Professional screencast tutorials and product demos with expert narration",
+    icon: Video,
+    price: "from $997",
+  },
+  {
+    title: "Executive Ghostwriting",
+    description: "Thought leadership content written in your voice for blogs and publications",
+    icon: GhostIcon,
+    price: "from $797",
+  },
+  {
+    title: "Technical Ebooks",
+    description: "Comprehensive, well-researched ebooks that establish authority",
+    icon: BookText,
+    price: "from $2,497",
+  },
+  {
+    title: "Whitepapers",
+    description: "In-depth technical whitepapers with original research and insights",
+    icon: FileText,
+    price: "from $1,997",
+  },
+  {
+    title: "Technical Presentations",
+    description: "Engaging slide decks and presentation materials for conferences",
+    icon: Presentation,
+    price: "from $997",
+  },
+  {
+    title: "API Documentation",
+    description: "Detailed API documentation with interactive examples",
+    icon: Braces,
+    price: "from $1,497",
+  },
+  {
+    title: "UX Writing",
+    description: "Microcopy and interface content that enhances user experience",
+    icon: PenTool,
+    price: "from $797",
+  },
+  {
+    title: "Analytics Reports",
+    description: "Documentation performance analysis and optimization reports",
+    icon: LineChart,
+    price: "from $997",
   },
 ];
 
@@ -199,6 +251,74 @@ export default function Pricing() {
             </motion.div>
           ))}
         </div>
+
+        {/* Add Addon Services Button and Dialog */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="text-center mt-16"
+        >
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant="outline"
+                className="group relative px-6 py-2
+                  border border-primary/50 hover:border-primary
+                  bg-background/50 backdrop-blur-sm
+                  transition-all duration-300
+                  hover:shadow-[0_0_30px_rgba(238,243,95,0.2)]"
+              >
+                <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
+                  View Addon Services
+                </span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold text-center mb-6">
+                  Addon Services
+                </DialogTitle>
+              </DialogHeader>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {addonServices.map((service, index) => (
+                  <motion.div
+                    key={service.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                    className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm 
+                      border border-border/50 hover:border-primary/50 
+                      transition-all duration-300"
+                  >
+                    <div className="relative z-10">
+                      <div className="mb-4 inline-block p-3 rounded-lg bg-primary/10">
+                        <service.icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2 group-hover:text-primary 
+                        transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-4 group-hover:text-foreground/80 
+                        transition-colors duration-300">
+                        {service.description}
+                      </p>
+                      <p className="text-primary font-semibold">{service.price}</p>
+                    </div>
+                    
+                    {/* Hover Gradient */}
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-br 
+                      from-primary/5 via-accent/5 to-background 
+                      opacity-0 group-hover:opacity-100 
+                      transition-opacity duration-500 pointer-events-none" 
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
+        </motion.div>
       </div>
     </section>
   );
