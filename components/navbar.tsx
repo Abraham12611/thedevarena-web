@@ -58,7 +58,7 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Button className="hover-glow">Get Started</Button>
+            <Button className="hover-glow">Book a Call</Button>
           </div>
 
           {/* Mobile Navigation Button */}
