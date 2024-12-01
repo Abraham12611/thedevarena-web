@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { blogPosts, getAllTags, searchPosts, getFeaturedPosts } from "@/lib/blog";
+import { getAllPosts, getAllTags, searchPosts } from "@/lib/blog-utils";
 import type { BlogPost } from "@/types/blog";
 import BlogList from "@/components/blog/blog-list";
 import BlogSearch from "@/components/blog/blog-search";
@@ -10,18 +10,44 @@ import { default as FeaturedBlogs } from "@/components/blog/featured-blogs";
 import NewsletterForm from "@/components/blog/newsletter-form";
 import { Badge } from "@/components/ui/badge";
 
-// You can type the props that page receives
-interface PageProps {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default function BlogPage({ params, searchParams }: PageProps) {
+export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const allTags = getAllTags();
-  const featuredPosts = getFeaturedPosts();
-  const filteredPosts = searchPosts(searchQuery, selectedTags);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
+  const [allTags, setAllTags] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load initial data
+  useEffect(() => {
+    const loadInitialData = async () => {
+      try {
+        const [allPosts, tags] = await Promise.all([
+          getAllPosts(),
+          getAllTags()
+        ]);
+        setPosts(allPosts);
+        setFilteredPosts(allPosts);
+        setAllTags(tags);
+      } catch (error) {
+        console.error('Error loading blog data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadInitialData();
+  }, []);
+
+  // Handle search and filtering
+  useEffect(() => {
+    const filterPosts = async () => {
+      const filtered = await searchPosts(searchQuery, selectedTags);
+      setFilteredPosts(filtered);
+    };
+
+    filterPosts();
+  }, [searchQuery, selectedTags]);
 
   const handleTagToggle = (tag: string) => {
     setSelectedTags(prev =>
@@ -30,6 +56,12 @@ export default function BlogPage({ params, searchParams }: PageProps) {
         : [...prev, tag]
     );
   };
+
+  const featuredPosts = posts.slice(0, 3);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // You can replace this with a proper loading skeleton
+  }
 
   return (
     <main className="container mx-auto px-4 py-16">
@@ -42,7 +74,6 @@ export default function BlogPage({ params, searchParams }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <aside className="lg:col-span-1 space-y-8">
-            {/* Search */}
             <div className="sticky top-24">
               <BlogSearch
                 value={searchQuery}

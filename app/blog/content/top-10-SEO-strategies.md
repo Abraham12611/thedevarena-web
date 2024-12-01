@@ -1,7 +1,9 @@
 ---
+slug: "top-10-SEO-strategies"
 title: "Top 10 SEO Strategies for Technical Audiences"
 description: "Learn how to optimize your technical content for search engines while maintaining developer focus"
 publishedAt: "2024-03-05"
+readingTime: "5 min read"
 featureImage: "https://img.freepik.com/free-photo/seo-search-engine-optimization-internet-digital-concept_53876-138498.jpg"
 author: {
   name: "David Kim",

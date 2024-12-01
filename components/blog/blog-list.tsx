@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock } from "lucide-react";
+import { Clock, Eye } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { BlogPost } from "@/types/blog";
 
@@ -89,6 +89,10 @@ export default function BlogList({ posts, isGridView = true }: BlogListProps) {
                         })}
                       </span>
                     )}
+                    <span className="text-sm text-muted-foreground flex items-center gap-1">
+                      <Eye className="w-4 h-4" />
+                      {post.views || 0} views
+                    </span>
                   </div>
                   <div className="flex items-center gap-3 transition-all duration-300
                     group-hover:translate-x-1">
