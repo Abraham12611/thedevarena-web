@@ -9,12 +9,13 @@ interface AuthorIslandProps {
 export function AuthorIsland({ author }: AuthorIslandProps) {
   return (
     <div className="flex items-center gap-4 p-6 rounded-lg border border-border bg-card/50 backdrop-blur-sm">
-      <div className="relative h-16 w-16 rounded-full overflow-hidden">
+      <div className="relative w-16 h-16 rounded-full overflow-hidden border border-border/50">
         <Image
           src={author.image}
           alt={author.name}
           fill
           className="object-cover"
+          sizes="64px"
         />
       </div>
       
