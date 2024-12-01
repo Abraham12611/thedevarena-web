@@ -97,7 +97,7 @@ export default function FeaturedBlogs({ posts }: FeaturedBlogsProps) {
             className="group/btn"
             asChild
           >
-            <a href="/blog">View All Articles</a>
+            <Link href="/blog">View All Articles</Link>
             <ChevronRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
           </Button>
         </motion.div>
