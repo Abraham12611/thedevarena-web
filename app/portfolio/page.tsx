@@ -93,6 +93,14 @@ const categories: Record<string, ProjectCategory> = {
         tags: ["Node.js", "JWT", "Security", "API", "Authentication",],
         link: "https://plainenglish.io/community/securing-node-js-apis-with-json-web-tokens-jwt-88ab51",
       },
+      {
+        id: "8",
+        title: "The Best Practices for DevOps Pipelines",
+        description: "This guide provides best practices for implementing DevOps pipelines. It emphasizes the importance of CI/CD pipelines for automating software delivery and provides practical tips for managing pipelines and ensuring robust security practices.",
+        image: "https://hackernoon.imgix.net/images/szRhcSkT6Vb1JUUrwXMB3X2GOqu2-a792yfe.png",
+        tags: ["DevOps", "CI/CD", "Pipeline", "Best Practices"],
+        link: "https://hackernoon.com/the-best-practices-for-devops-pipelines",
+      },
       // Add more technical guides...
     ],
   },
@@ -101,7 +109,7 @@ const categories: Record<string, ProjectCategory> = {
     title: "Tutorials",
     projects: [
       {
-        id: "7",
+        id: "8",
         title: "How to Secure Your Web Server with Continuous Integration Using NGINX and CircleCI",
         description: "This tutorial provides a step-by-step guide for securing a web server with continuous integration using NGINX and CircleCI. It emphasizes NGINX's security features and CircleCI's automation capabilities, persuading developers to implement robust CI/CD pipelines for enhanced security and performance.",
         image: "/images/Nginx-circle-ci-secuirity.png",

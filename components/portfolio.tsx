@@ -9,21 +9,21 @@ import Link from "next/link";
 
 const projects = [
   {
-    title: "PRODUCT PERSUASION GUIDE", 
+    title: "Product Persuasion Guide", 
     description: "This step-by-step guide demonstrates how to install OpenLiteSpeed on Vultr's Debian 12. It highlights Vultr's reliability and ease of use while showcasing OpenLiteSpeed's performance benefits, persuading developers to adopt both seamlessly.",
     image: "/images/a401679d-d9a4-4672-8d84-673c6e20810b.webp",
     link: "https://docs.vultr.com/how-to-install-openlitespeed-webserver-on-debian-12",
     tags: ["Technical Writing", "Code Examples", "SEO"],
   },
   {
-    title: "PRODUCT PERSUASION GUIDE",
+    title: "Product Persuasion Guide",
     description: "This guide explains how to generate AI-powered videos using Show-1 on Vultr Cloud GPU. It emphasizes Vultr's powerful GPU performance and flexibility, persuading developers to harness AI creativity with Vultr’s infrastructure.",
     image: "/images/f78ec501fb566b29.webp",
     link: "https://docs.vultr.com/ai-generated-videos-using-show-1-on-vultr-cloud-gpu",
     tags: ["Technical Writing", "Code Examples", "SEO"],
   },
   {
-    title: "PRODUCT PERSUASION GUIDE",
+    title: "Product Persuasion Guide",
     description: "This guide walks developers through installing a LAMP stack on Ubuntu 24.04 using Vultr's infrastructure. It highlights Vultr's reliability and scalability, persuading developers to build and deploy robust web applications with ease.",
     image: "/images/8f79779e094f9e60.webp",
     link: "https://docs.vultr.com/how-to-install-apache-mysql-php-lamp-stack-on-ubuntu-24-04",
