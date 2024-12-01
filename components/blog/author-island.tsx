@@ -14,8 +14,9 @@ export function AuthorIsland({ author }: AuthorIslandProps) {
           src={author.image}
           alt={author.name}
           fill
-          className="object-cover"
+          className="object-cover w-full h-full"
           sizes="64px"
+          style={{ objectFit: 'cover', objectPosition: 'center center' }}
         />
       </div>
       
