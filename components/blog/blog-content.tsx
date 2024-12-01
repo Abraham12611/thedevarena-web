@@ -9,9 +9,16 @@ import Markdown from "react-markdown"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { BlogPost } from "@/types/blog"
+import type { ComponentPropsWithoutRef } from 'react'
 
 interface BlogContentProps {
   post: BlogPost
+}
+
+// Define proper types for code components
+type CodeBlockProps = ComponentPropsWithoutRef<'code'> & {
+  inline?: boolean;
+  className?: string;
 }
 
 export default function BlogContent({ post }: BlogContentProps) {
@@ -71,23 +78,35 @@ export default function BlogContent({ post }: BlogContentProps) {
         {/* Content */}
         <Markdown
           components={{
-            code({ className, children, inline, ...props }) {
+            code({ inline, className, children, ...props }: CodeBlockProps) {
+              const match = /language-(\w+)/.exec(className || '')
+              const lang = match ? match[1] : ''
+              
               if (inline) {
-                return <code className={className} {...props}>{children}</code>;
+                return (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                )
               }
-              const match = /language-(\w+)/.exec(className || '');
-              const lang = match ? match[1] : '';
+
               return (
-                <SyntaxHighlighter
-                  style={vscDarkPlus as any}
-                  language={lang}
-                  PreTag="div"
-                  {...props}
-                >
-                  {String(children).replace(/\n$/, '')}
-                </SyntaxHighlighter>
-              );
-            },
+                <div className="relative">
+                  <SyntaxHighlighter
+                    style={vscDarkPlus}
+                    language={lang}
+                    PreTag="div"
+                    customStyle={{
+                      margin: 0,
+                      borderRadius: '0.5rem',
+                      background: 'hsl(var(--card))',
+                    }}
+                  >
+                    {String(children).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
+                </div>
+              )
+            }
           }}
         >
           {post.content || ''}
