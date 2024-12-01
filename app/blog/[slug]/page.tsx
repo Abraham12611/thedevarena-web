@@ -22,7 +22,7 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
       description: "Sample description",
       content,
       publishedAt: new Date().toISOString(),
-      featureImage: "/https://img.freepik.com/free-photo/videographer-uses-software-create-visual-effects-video-projects-while-relaxing-with-music_482257-91925.jpg?t=st=1733051728~exp=1733055328~hmac=e6d3ff5d488c2a2acc2eac8c1a63d565bfe480b4c15490567159695511291c96&w=1060",
+      featureImage: "https://img.freepik.com/free-photo/videographer-uses-software-create-visual-effects-video-projects-while-relaxing-with-music_482257-91925.jpg?t=st=1733051728~exp=1733055328~hmac=e6d3ff5d488c2a2acc2eac8c1a63d565bfe480b4c15490567159695511291c96&w=1060",
       author: {
         name: "Abraham Dahunsi",
         image: "https://i.postimg.cc/L593G1z9/Profile-pic.jpg",
