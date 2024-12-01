@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 const projects = [
   {
@@ -135,10 +136,10 @@ export default function Portfolio() {
             className="group/btn"
             asChild
           >
-            <a href="/portfolio">
+            <Link href="/portfolio">
               View More
               <ChevronRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-            </a>
+            </Link>
           </Button>
         </motion.div>
       </div>
