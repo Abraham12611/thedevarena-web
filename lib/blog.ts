@@ -2,45 +2,45 @@ import type { BlogPost } from "@/types/blog";
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "future-of-ui-ux-design",
-    title: "The Future of UI/UX Design: A Glimpse",
-    description: "Exploring upcoming trends and innovations in user interface and experience design",
-    content: `The landscape of UI/UX design is constantly evolving...`,
-    featureImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
-    publishedAt: "2024-02-25",
+    slug: "video-creation",
+    title: "Creating Effective Technical Videos",
+    description: "A comprehensive guide to creating engaging video content for developer audiences",
+    content: `Creating video content for developers is an effective way to share knowledge, demonstrate skills, and build a community around your expertise. Developers often prefer concise, well-structured, and technical content, so your videos must meet these criteria to be successful. Here are some tips to help you create effective technical videos.`,
+    featureImage: "https://img.freepik.com/free-photo/videographer-uses-software-create-visual-effects-video-projects_482257-91925.jpg",
+    publishedAt: "2024-03-01",
     readingTime: "5 min read",
     author: {
-      name: "Lisa Johnson",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-      profession: "Senior UX Writer",
+      name: "Abraham Dahunsi",
+      image: "https://i.postimg.cc/L593G1z9/Profile-pic.jpg",
+      profession: "Lead Technical Writer",
       social: {
-        twitter: "https://twitter.com/lisajohnson",
-        github: "https://github.com/lisajohnson",
-        website: "https://lisajohnson.dev"
+        twitter: "https://twitter.com/abrahamdahunsi",
+        github: "https://github.com/Abraham12611",
+        website: "https://www.abrahamdahunsi.com"
       }
     },
-    tags: ["UI/UX", "Design", "Trends"],
+    tags: ["Video Content", "Technical Writing", "Developer Experience"],
     views: 1250
   },
   {
-    slug: "social-media-security",
-    title: "Stay Social Stay Secure: Demystifying Cybersecurity",
-    description: "Essential security practices for social media management and engagement",
-    content: `In today's interconnected world...`,
-    featureImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
-    publishedAt: "2024-02-23",
-    readingTime: "7 min read",
+    slug: "blogs-for-developers",
+    title: "Blogs for Developers: A Guide to Engaging Technical Audiences",
+    description: "A comprehensive guide on creating compelling technical blogs that resonate with developer audiences",
+    content: `Technical marketing focuses on engaging developers, engineers, and other tech-savvy audiences by providing value through in-depth, relevant, and actionable content. Unlike traditional marketing, it emphasizes education, problem-solving, and trust-building over overt selling. Here's how to create and execute effective technical marketing strategies.`,
+    featureImage: "https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg",
+    publishedAt: "2024-03-15",
+    readingTime: "5 min read",
     author: {
-      name: "Mike Chen",
+      name: "Emily Parker",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-      profession: "Security Specialist",
+      profession: "Content Strategist",
       social: {
         twitter: "https://twitter.com/mikechen",
-        github: "https://github.com/mikechen",
-        website: "https://mikechen.dev"
+        github: "https://github.com/emilyparker",
+        website: "https://www.emilyparker.dev"
       }
     },
-    tags: ["Security", "Social Media", "Best Practices"],
+    tags: ["Technical Writing", "Content Strategy", "Developer Experience"],
     views: 980
   },
 ];
