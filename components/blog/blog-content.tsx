@@ -14,15 +14,7 @@ interface BlogContentProps {
   post: BlogPost
 }
 
-interface CodeProps {
-  node?: any;
-  inline?: boolean;
-  className?: string;
-  children?: React.ReactNode;
-}
-
 export default function BlogContent({ post }: BlogContentProps) {
-  // Default image for posts without a feature image
   const defaultFeatureImage = "/images/blog/default-feature.jpg";
   
   return (
@@ -32,6 +24,9 @@ export default function BlogContent({ post }: BlogContentProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
+        {/* Title */}
+        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+
         {/* Feature Image */}
         <div className="relative aspect-video w-full mb-8 rounded-lg overflow-hidden">
           <Image
@@ -44,11 +39,20 @@ export default function BlogContent({ post }: BlogContentProps) {
         </div>
 
         {/* Metadata */}
-        <div className="flex items-center gap-4 text-muted-foreground mb-8">
+        <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-8">
           {post.publishedAt && (
-            <time dateTime={post.publishedAt}>
+            <time dateTime={post.publishedAt} className="text-sm">
               {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
             </time>
+          )}
+          {post.tags && (
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map(tag => (
+                <span key={tag} className="text-sm bg-primary/10 text-primary px-2 py-1 rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
           )}
         </div>
 
@@ -57,21 +61,22 @@ export default function BlogContent({ post }: BlogContentProps) {
           <AuthorIsland author={post.author} />
         </div>
 
+        {/* Description */}
+        {post.description && (
+          <p className="text-xl text-muted-foreground mb-8">
+            {post.description}
+          </p>
+        )}
+
         {/* Content */}
         <Markdown
           components={{
-            code({ className, children, inline, ...props }: CodeProps) {
+            code({ className, children, inline, ...props }) {
               if (inline) {
-                return (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
-                );
+                return <code className={className} {...props}>{children}</code>;
               }
-
               const match = /language-(\w+)/.exec(className || '');
               const lang = match ? match[1] : '';
-
               return (
                 <SyntaxHighlighter
                   style={vscDarkPlus as any}
@@ -91,5 +96,5 @@ export default function BlogContent({ post }: BlogContentProps) {
         <ShareButtons />
       </motion.div>
     </article>
-  )
+  );
 }

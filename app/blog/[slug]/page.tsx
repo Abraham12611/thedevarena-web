@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import fs from "fs/promises";
 import path from "path";
+import matter from "gray-matter";
 import BlogContent from "@/components/blog/blog-content";
-import { Author, BlogPost } from "@/types/blog";
+import { BlogPost } from "@/types/blog";
 
 interface BlogPageProps {
   params: {
@@ -13,30 +14,21 @@ interface BlogPageProps {
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
     const filePath = path.join(process.cwd(), 'app/blog/content', `${slug}.md`);
-    const content = await fs.readFile(filePath, 'utf8');
+    const fileContent = await fs.readFile(filePath, 'utf8');
+    
+    // Parse frontmatter and content
+    const { data, content } = matter(fileContent);
     
     const post: BlogPost = {
       slug,
-      title: "Sample Title",
-      excerpt: "Sample excerpt",
-      description: "Sample description",
+      title: data.title,
+      description: data.description,
       content,
-      publishedAt: new Date().toISOString(),
-      featureImage: "https://img.freepik.com/free-photo/videographer-uses-software-create-visual-effects-video-projects-while-relaxing-with-music_482257-91925.jpg?t=st=1733051728~exp=1733055328~hmac=e6d3ff5d488c2a2acc2eac8c1a63d565bfe480b4c15490567159695511291c96&w=1060",
-      author: {
-        name: "Abraham Dahunsi",
-        image: "https://i.postimg.cc/L593G1z9/Profile-pic.jpg",
-        profession: "Technical Writer",
-        bio: "Full-stack developer",
-        social: {
-          twitter: "https://twitter.com/abrahamdahunsi",
-          github: "https://github.com/Abraham12611",
-          website: "https://www.abrahamdahunsi.com",
-        }
-      },
-      tags: ["Technical Writing", "Development"],
-      readingTime: "5 min read",
-      views: 0
+      publishedAt: data.publishedAt,
+      featureImage: data.featureImage,
+      author: data.author,
+      tags: data.tags,
+      readingTime: `${Math.ceil(content.split(' ').length / 200)} min read`,
     };
     
     return post;
