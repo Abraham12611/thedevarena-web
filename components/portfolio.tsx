@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight } from "lucide-react";
 
 const projects = [
   {
@@ -121,6 +121,26 @@ export default function Portfolio() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="flex justify-center mt-12"
+        >
+          <Button
+            variant="outline"
+            size="lg"
+            className="group/btn"
+            asChild
+          >
+            <a href="/portfolio">
+              View More
+              <ChevronRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+            </a>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );
