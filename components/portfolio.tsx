@@ -136,7 +136,7 @@ export default function Portfolio() {
             className="group/btn"
             asChild
           >
-            <Link href="/portfolio">
+            <Link href="/portfolio" className="flex items-center">
               View More
               <ChevronRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
             </Link>
