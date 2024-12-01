@@ -1,10 +1,4 @@
-import fs from 'fs/promises';
-import path from 'path';
-import matter from 'gray-matter';
 import { BlogPost } from '@/types/blog';
-import { incrementViewCount, getViewCount } from '@/lib/view-counter';
-
-const BLOG_DIR = path.join(process.cwd(), 'app/blog/content');
 
 // Cache for blog posts
 let blogPostsCache: BlogPost[] = [];
@@ -14,33 +8,21 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     return blogPostsCache;
   }
 
-  const files = await fs.readdir(BLOG_DIR);
-  const posts = await Promise.all(
-    files
-      .filter(file => file.endsWith('.md'))
-      .map(async file => {
-        const filePath = path.join(BLOG_DIR, file);
-        const content = await fs.readFile(filePath, 'utf8');
-        const { data, content: markdown } = matter(content);
-        const slug = file.replace('.md', '');
-        
-        return {
-          ...data,
-          slug,
-          content: markdown,
-          views: getViewCount(slug),
-        } as BlogPost;
-      })
-  );
+  const response = await fetch('/api/blog?action=getAllPosts');
+  const posts = await response.json();
+  blogPostsCache = posts;
+  return posts;
+}
 
-  // Sort by date, newest first
-  blogPostsCache = posts.sort((a, b) => {
-    const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
-    const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
-    return dateB - dateA;
-  });
-
-  return blogPostsCache;
+export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  try {
+    const response = await fetch(`/api/blog?action=getPost&slug=${slug}`);
+    if (!response.ok) return null;
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    return null;
+  }
 }
 
 export async function getAllTags(): Promise<string[]> {
@@ -76,26 +58,6 @@ export async function searchPosts(query: string, selectedTags: string[] = []): P
 export async function getFeaturedPosts(limit: number = 3): Promise<BlogPost[]> {
   const posts = await getAllPosts();
   return posts.slice(0, limit);
-}
-
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  try {
-    const filePath = path.join(BLOG_DIR, `${slug}.md`);
-    const content = await fs.readFile(filePath, 'utf8');
-    const { data, content: markdown } = matter(content);
-    
-    // Increment view count when post is accessed
-    incrementViewCount(slug);
-
-    return {
-      ...data,
-      slug,
-      content: markdown,
-      views: getViewCount(slug),
-    } as BlogPost;
-  } catch (error) {
-    return null;
-  }
 }
 
 export async function getRelatedPosts(currentSlug: string, limit: number = 2): Promise<BlogPost[]> {
