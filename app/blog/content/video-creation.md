@@ -1,4 +1,20 @@
-# How to Create Video Content for Developers
+---
+title: "Creating Effective Technical Videos"
+description: "A comprehensive guide to creating engaging video content for developer audiences"
+publishedAt: "2024-03-01"
+featureImage: "https://img.freepik.com/free-photo/videographer-uses-software-create-visual-effects-video-projects_482257-91925.jpg"
+author: {
+  name: "Abraham Dahunsi",
+  image: "https://i.postimg.cc/L593G1z9/Profile-pic.jpg",
+  profession: "Lead Technical Writer",
+  social: {
+    twitter: "https://twitter.com/abrahamdahunsi",
+    github: "https://github.com/Abraham12611",
+    website: "https://www.abrahamdahunsi.com"
+  }
+}
+tags: ["Video Content", "Technical Writing", "Developer Experience"]
+---
 
 Creating video content for developers is an effective way to share knowledge, demonstrate skills, and build a community around your expertise. Developers often prefer concise, well-structured, and technical content, so your videos must meet these expectations. This guide will walk you through the essential steps to create impactful video content tailored for a developer audience.
 

@@ -1,4 +1,20 @@
-# Top 10 SEO Strategies for Technical Audiences
+---
+title: "Top 10 SEO Strategies for Technical Audiences"
+description: "Learn how to optimize your technical content for search engines while maintaining developer focus"
+publishedAt: "2024-03-05"
+featureImage: "https://img.freepik.com/free-photo/seo-search-engine-optimization-internet-digital-concept_53876-138498.jpg"
+author: {
+  name: "David Kim",
+  image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop",
+  profession: "Technical Editor",
+  social: {
+    twitter: "https://twitter.com/davidkim",
+    github: "https://github.com/davidkim",
+    website: "https://www.davidkim.dev"
+  }
+}
+tags: ["SEO", "Technical Writing", "Content Strategy"]
+---
 
 Optimizing your content for technical audiences requires a tailored approach. Developers, engineers, and other technical professionals search for precise, actionable information. To engage them effectively, your SEO strategies must prioritize accuracy, clarity, and value. Here are the top 10 SEO strategies for technical audiences.
 

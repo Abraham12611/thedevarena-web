@@ -1,4 +1,20 @@
-# Effective Technical Marketing
+---
+title: "Effective Technical Marketing"
+description: "How to engage developers, engineers, and other tech-savvy audiences through value-driven content"
+publishedAt: "2024-03-10"
+featureImage: "https://img.freepik.com/free-photo/marketing-ideas-share-research-planning-concept_53876-127431.jpg"
+author: {
+  name: "Marcus Rodriguez",
+  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop",
+  profession: "Documentation Engineer",
+  social: {
+    twitter: "https://twitter.com/marcusrodriguez",
+    github: "https://github.com/marcusrodriguez",
+    website: "https://www.marcusrodriguez.dev"
+  }
+}
+tags: ["Technical Marketing", "Developer Relations", "Content Strategy"]
+---
 
 Technical marketing focuses on engaging developers, engineers, and other tech-savvy audiences by providing value through in-depth, relevant, and actionable content. Unlike traditional marketing, it emphasizes education, problem-solving, and trust-building over overt selling. Here's how to create and execute effective technical marketing strategies.
 
