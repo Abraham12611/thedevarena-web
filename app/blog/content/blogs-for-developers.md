@@ -132,11 +132,11 @@ Here are some simple ways to find out who you're writing for:
 
 Personas are make-believe profiles that represent your typical readers. Define their:
 
-      * Skill levels (e.g., "a junior developer with one year of experience in JavaScript").  
+* Skill levels (e.g., "a junior developer with one year of experience in JavaScript").  
 
-      * Challenges (e.g., "struggles with debugging APIs").  
+* Challenges (e.g., "struggles with debugging APIs").  
 
-      * Interests (e.g., "keen to learn about DevOps automation tools").  
+* Interests (e.g., "keen to learn about DevOps automation tools").  
 
     By visualizing your audience, you can write content that speaks directly to them.
 
@@ -237,13 +237,13 @@ For developer blogs, code examples are crucial. Make sure they are:
 
 Example:
 
-    ```bash
-    # Pull the latest Nginx image
-    docker pull nginx:latest
+```bash
+# Pull the latest Nginx image
+docker pull nginx:latest
 
-    # Run Nginx container
-    docker run --name my-nginx -d -p 80:80 nginx:latest
-    ```  
+# Run Nginx container
+docker run --name my-nginx -d -p 80:80 nginx:latest
+```  
 
 #### **Visual Aids**  
 
@@ -358,23 +358,23 @@ Hands-on examples are key to a successful developer blog. They give readers a cl
 
 **Example:**  
 
-    ```python
-    # Connect to an SQLite database and create a simple table
-    import sqlite3
+```python
+# Connect to an SQLite database and create a simple table
+import sqlite3
 
-    # Establish a connection to the database (or create it if it doesn't exist)
-    connection = sqlite3.connect('example.db')
-    cursor = connection.cursor()
+# Establish a connection to the database (or create it if it doesn't exist)
+connection = sqlite3.connect('example.db')
+cursor = connection.cursor()
 
-    # Create a table for storing user data
-    cursor.execute('CREATE TABLE IF NOT EXISTS users (id INTEGER, name TEXT)')
+# Create a table for storing user data
+cursor.execute('CREATE TABLE IF NOT EXISTS users (id INTEGER, name TEXT)')
 
-    # Commit changes and close the connection
-    connection.commit()
-    connection.close()
+# Commit changes and close the connection
+connection.commit()
+connection.close()
 
-    print("Database setup complete!")
-    ```  
+print("Database setup complete!")
+```  
 
 This snippet guides readers through a common task—setting up a database. It's short, practical, and shows a clear result, helping users confirm it worked.  
 
@@ -494,9 +494,9 @@ Feedback is useful only if you use it to make real changes. Updating your blog b
 * **Feedback**: "Which script? Include the command."  
 * **Revised version**: "Run the setup script to configure your server:
 
-      ```bash  
-      ./setup.sh  
-      ```  
+```bash  
+./setup.sh  
+```  
 
 ## Step 7: Promote Your Blog  
 
