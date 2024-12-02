@@ -50,7 +50,8 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* Update the button and availability indicator layout */}
+          <div className="flex flex-col items-center gap-4">
             <Button 
               variant="default"
               size="lg"
@@ -68,7 +69,8 @@ export default function Hero() {
                 <Calendar className="ml-2 w-4 h-4 transition-transform group-hover/btn:scale-110" />
               </a>
             </Button>
-            <p className="mt-4 text-muted-foreground flex items-center justify-center gap-2">
+            
+            <p className="text-muted-foreground flex items-center justify-center gap-2">
               <span className="pulse-dot" aria-hidden="true" />
               4 spots available
             </p>
