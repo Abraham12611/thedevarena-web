@@ -2,7 +2,7 @@
 slug: "blogs-for-developers"
 title: "How to Create Effective Blogs for Developers"
 description: "TL;DR: A comprehensive guide on creating compelling technical blogs that resonate with developer audiences"
-publishedAt: "2024-03-15"
+publishedAt: "2024-11-28"
 readingTime: "5 min read"
 featureImage: "https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg"
 author: {

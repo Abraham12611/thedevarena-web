@@ -2,7 +2,7 @@
 slug: "effective-technical-marketing"
 title: "Effective Technical Marketing"
 description: "How to engage developers, engineers, and other tech-savvy audiences through value-driven content"
-publishedAt: "2024-03-10"
+publishedAt: "2024-11-28"
 readingTime: "5 min read"
 featureImage: "https://img.freepik.com/free-photo/marketing-ideas-share-research-planning-concept_53876-127431.jpg"
 author: {

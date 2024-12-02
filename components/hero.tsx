@@ -50,30 +50,28 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="mb-12 sm:mb-20"
-          >
-            <Button
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              variant="default"
               size="lg"
-              className="group relative px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg 
-                hover:scale-105 transition-all duration-300 
-                bg-gradient-to-r from-primary via-primary to-accent 
-                hover:shadow-[0_0_30px_rgba(238,243,95,0.3)] 
-                hover:border-primary/50"
+              className="group/btn"
+              asChild
             >
-              <span className="flex items-center gap-2">
+              <a 
+                href="https://cal.com/abdahunsi/15min" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
                 Book a 15-min call
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:rotate-12" />
-              </span>
+                <Calendar className="ml-2 w-4 h-4 transition-transform group-hover/btn:scale-110" />
+              </a>
             </Button>
             <p className="mt-4 text-muted-foreground flex items-center justify-center gap-2">
               <span className="pulse-dot" aria-hidden="true" />
               4 spots available
             </p>
-          </motion.div>
+          </div>
 
           <LogoCarousel />
 
