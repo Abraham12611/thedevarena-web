@@ -236,12 +236,18 @@ export default function Pricing() {
                     hover:border-primary/50
                     hover:scale-[1.02]"
                   size="lg"
+                  asChild
                 >
-                  <span className="flex items-center gap-2">
-                    Schedule Discovery Call
+                  <a 
+                    href="https://cal.com/abdahunsi/15min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2"
+                  >
+                    Schedule a 15-min Call
                     <Calendar className="w-5 h-5 transition-all duration-300 
                       group-hover/button:rotate-12" />
-                  </span>
+                  </a>
                 </Button>
 
                 {/* Hover Gradient */}
