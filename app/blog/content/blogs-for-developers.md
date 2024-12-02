@@ -141,7 +141,9 @@ Personas are make-believe profiles that represent your typical readers. Define t
     By visualizing your audience, you can write content that speaks directly to them.
 
 1. **Study Feedback**  
+
    Check the questions developers ask on forums like Stack Overflow, GitHub Issues, or Reddit. Read comments on related blog posts or tutorials to find common problems and knowledge gaps.
+
 2. **Conduct Surveys**  
    Use simple surveys to get input directly from your audience. Ask about their technical background, the topics they’re interested in, and the challenges they face.
 3. **Analyze Analytics**  
