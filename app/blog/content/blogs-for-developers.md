@@ -1,18 +1,18 @@
 ---
 slug: "blogs-for-developers"
 title: "How to Create Effective Blogs for Developers"
-description: "A comprehensive guide on creating compelling technical blogs that resonate with developer audiences"
+description: "TL;DR: A comprehensive guide on creating compelling technical blogs that resonate with developer audiences"
 publishedAt: "2024-03-15"
 readingTime: "5 min read"
 featureImage: "https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg"
 author: {
-  name: "Emily Parker",
-  image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&h=500&fit=crop",
-  profession: "Content Strategist",
+  name: "Abraham Dahunsi",
+  image: "https://i.postimg.cc/L593G1z9/Profile-pic.jpg",
+  profession: "Lead Technical Writer",
   social: {
-    twitter: "https://twitter.com/emilyparker",
-    github: "https://github.com/emilyparker",
-    website: "https://www.emilyparker.dev"
+    twitter: "https://twitter.com/abrahamdahunsi",
+    github: "https://github.com/Abraham12611",
+    website: "https://www.abrahamdahunsi.com"
   }
 }
 tags: ["Technical Writing", "Content Strategy", "Developer Experience"]
