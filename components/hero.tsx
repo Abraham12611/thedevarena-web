@@ -54,17 +54,17 @@ export default function Hero() {
             <Button 
               variant="default"
               size="lg"
-              className="group/btn"
+              className="group/btn w-auto mx-auto sm:w-auto"
               asChild
             >
               <a 
                 href="https://cal.com/abdahunsi/15min" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center"
+                className="flex items-center whitespace-nowrap"
               >
                 <span className="hidden sm:inline">Book a 15-min call</span>
-                <span className="sm:hidden w-2">Book a Call</span>
+                <span className="sm:hidden">Book a Call</span>
                 <Calendar className="ml-2 w-4 h-4 transition-transform group-hover/btn:scale-110" />
               </a>
             </Button>
