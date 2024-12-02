@@ -64,7 +64,7 @@ export default function Hero() {
                 className="flex items-center"
               >
                 <span className="hidden sm:inline">Book a 15-min call</span>
-                <span className="sm:hidden">Book a Call</span>
+                <span className="sm:hidden w-2">Book a Call</span>
                 <Calendar className="ml-2 w-4 h-4 transition-transform group-hover/btn:scale-110" />
               </a>
             </Button>
