@@ -52,7 +52,7 @@ export default function Contact() {
 
                 {/* CTA Button */}
                 <a
-                  href="https://calendly.com/your-link"
+                  href="https://cal.com/abdahunsi/15min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 w-full 
