@@ -5,6 +5,8 @@ import { ClientWrapper } from "@/components/ui/toast/client-wrapper"
 import { Toaster } from "@/components/ui/toaster"
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import ScrollToTop from "@/components/scroll-to-top";
+import LoadingScreen from '@/components/loading-screen';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,10 +30,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ClientWrapper>
+            <LoadingScreen />
             <Navbar />
             <main>{children}</main>
             <Footer />
             <Toaster />
+            <ScrollToTop />
           </ClientWrapper>
         </ThemeProvider>
       </body>

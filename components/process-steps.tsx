@@ -8,41 +8,43 @@ import {
   CheckCircle2,
   Rocket
 } from "lucide-react";
-import Pushpin from "./pushpin";
+import ShineBorder from "@/components/magicui/shine-border";
+import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
+
 
 const steps = [
   {
     number: "01",
-    title: "Technical Discovery & Scope",
-    description: "We start with a deep dive into your API, SDK, or technical product. Our team analyzes your existing documentation and codebase, identifies target developer personas and use cases, and delivers a detailed content strategy and documentation plan.",
+    title: "Discovery Call",
+    description: "We conduct a detailed discovery call to understand your technical product, target audience, and content needs. This sets the foundation for our content strategy and roadmap.",
     icon: Search,
     color: "from-[#FF6B6B] to-[#FFE66D]"
   },
   {
     number: "02",
-    title: "Information Architecture",
-    description: "Building the right structure is crucial for developer experience. We create documentation site information hierarchy, content type definitions, and navigation flows optimized for developer workflows.",
+    title: "Content Plan",
+    description: "We collaborate to create a tailored content strategy that aligns with your goals, resonates with your ideal audience, and delivers measurable results. If you already have a plan we can review and optimize it.",
     icon: LayoutPanelTop,
     color: "from-[#4ECDC4] to-[#556270]"
   },
   {
     number: "03",
-    title: "Content Prototyping",
-    description: "We develop initial content samples to validate our approach with sample documentation in your preferred format, interactive code examples and API request/response pairs, and integration with your existing documentation tools.",
+    title: "Content Creation",
+    description: "Our pool of subject matter experts create high-quality, developer-focused content that speaks to your audience, amplifying your brand’s voice and driving meaningful engagement.",
     icon: CodeSquare,
     color: "from-[#6C5CE7] to-[#A8E6CF]"
   },
   {
     number: "04",
-    title: "Technical Review & Iteration",
-    description: "Quality assurance with a focus on technical accuracy including code review by senior developers, testing of all sample code and API calls, and technical accuracy verification by subject matter experts.",
+    title: "Content Review",
+    description: "We conduct thorough reviews to ensure the accuracy, clarity, and relevance of the content. This includes code reviews, API testing, and technical accuracy verification by subject matter experts.",
     icon: CheckCircle2,
     color: "from-[#FF8C42] to-[#FFF275]"
   },
   {
     number: "05",
-    title: "Deployment & Maintenance",
-    description: "We ensure your documentation stays current and valuable through integration with your CI/CD pipeline, version control and change management, and ongoing updates based on developer feedback.",
+    title: "Content Delivery",
+    description: "Each content piece is delivered on schedule, thoroughly reviewed, and ready for publishing. We ensure every detail aligns with your goals, and if revisions are needed, we’ll work until you’re completely satisfied.",
     icon: Rocket,
     color: "from-[#45B7D1] to-[#DFFFE2]"
   }
@@ -83,48 +85,15 @@ export default function ProcessSteps() {
 
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Our Proven {" "}
-            <span className="gradient-text">Documentation Framework</span>
+            <span className="gradient-text">Content Framework</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            From API specs to interactive tutorials, we follow a battle-tested process that combines technical expertise with clear writing. The result? Documentation that developers trust and actually want to use.
+            We follow a battle-tested process that combines technical expertise with clear writing. The result? Content that developers trust and actually want to use.
           </p>
         </motion.div>
 
         <div className="relative">
           <div className="relative max-w-[900px] mx-auto">
-            {/* Connecting Lines Container */}
-            <div className="absolute inset-0 hidden md:block">
-              {steps.map((_, index) => (
-                index < steps.length - 1 && (
-                  <svg
-                    key={`line-${index}`}
-                    className="absolute"
-                    style={{
-                      top: `${index * 220 + 100}px`,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: '500px',
-                      height: '120px',
-                    }}
-                    viewBox="0 0 500 120"
-                  >
-                    <path
-                      d={
-                        index % 2 === 0
-                          ? "M50,10 C150,10 350,110 450,110"
-                          : "M450,10 C350,10 150,110 50,110"
-                      }
-                      fill="none"
-                      stroke="hsl(var(--primary))"
-                      strokeWidth="2"
-                      strokeDasharray="6 4"
-                      className="opacity-30"
-                    />
-                  </svg>
-                )
-              ))}
-            </div>
-
             {/* Cards */}
             {steps.map((step, index) => (
               <motion.div
@@ -139,41 +108,47 @@ export default function ProcessSteps() {
                   stiffness: 100
                 }}
                 className={`relative ${
-                  index % 2 === 0 ? "ml-0 mr-auto" : "ml-auto mr-0"
-                } mb-32 last:mb-0 w-full md:w-[400px] group`}
+                  index % 2 === 0 ? "mr-auto" : "ml-auto"
+                } mb-32 last:mb-0 w-full md:w-[400px]`}
                 style={{
                   zIndex: steps.length - index
                 }}
               >
-                {/* Card */}
-                <div className="relative bg-card/80 backdrop-blur-sm rounded-2xl shadow-lg">
-                  {/* Pushpin */}
-                  <Pushpin />
-
-                  {/* Card Content */}
-                  <div className="p-8 pt-10">
-                    {/* Number and Title */}
-                    <div className="mb-4">
-                      <span className="text-3xl font-bold text-primary/80 font-mono block mb-2">
-                        {step.number}
-                      </span>
-                      <div className="flex items-center gap-3">
-                        <step.icon className="w-6 h-6 text-primary" />
-                        <h3 className="text-2xl font-bold">{step.title}</h3>
+                <NeonGradientCard 
+                  borderSize={1.5}
+                  borderRadius={24}
+                  neonColors={{
+                    firstColor: step.color.split(" ")[0].replace("from-[", "").replace("]", ""),
+                    secondColor: step.color.split(" ")[1].replace("to-[", "").replace("]", "")
+                  }}
+                  className="max-w-sm items-center justify-center text-center transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
+                >
+                  <div className="relative p-8 rounded-3xl bg-card/80 backdrop-blur-sm transition-all duration-300 group">
+                    {/* Content wrapper */}
+                    <div className="relative">
+                      {/* Number and Title */}
+                      <div className="mb-6">
+                        <span className="text-sm font-medium text-muted-foreground block mb-2 transition-colors group-hover:text-primary">
+                          Step {step.number}
+                        </span>
+                        <div className="flex items-center gap-3">
+                          <div className={`p-2 rounded-xl bg-gradient-to-br ${step.color} transition-transform duration-300 group-hover:scale-110`}>
+                            <step.icon className="w-5 h-5 text-background" />
+                          </div>
+                          <h3 className="text-xl font-semibold transition-colors group-hover:text-primary">{step.title}</h3>
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Description Box */}
-                    <div className="relative mt-6 p-6 bg-secondary/50 rounded-xl border border-border/50">
-                      <p className="text-muted-foreground">
+                      {/* Description */}
+                      <p className="text-muted-foreground text-sm leading-relaxed transition-colors group-hover:text-muted-foreground/80">
                         {step.description}
                       </p>
+
+                      {/* Decorative gradient orb */}
+                      <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br ${step.color} opacity-20 blur-2xl transition-all duration-300 group-hover:opacity-30 group-hover:scale-125`} />
                     </div>
                   </div>
-
-                  {/* Card Border Gradient */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 -z-10 blur-sm opacity-50" />
-                </div>
+                </NeonGradientCard>
               </motion.div>
             ))}
           </div>

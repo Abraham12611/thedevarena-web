@@ -32,37 +32,49 @@ export default function Hero() {
                 </span>
               </div>
             </div>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 leading-tight">
- <span className="gradient-text">Developer-First</span> Technical Content
-for Growing SaaS Teams 
-              <br />
-              and Startups
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-8 leading-[1.1] sm:leading-tight px-2 sm:px-6">
+              <span className="gradient-text block sm:inline">Developer-First</span>{' '}
+              <span className="block mt-2 sm:mt-0 sm:inline">Content</span>
+              <span className="block text-2xl sm:text-4xl md:text-6xl lg:text-7xl mt-3 sm:mt-4">
+                <span className="block sm:inline">for Growing SaaS Teams</span>{' '}
+                <span className="block mt-1 sm:mt-0 sm:inline">&amp; Startups</span>{' '}
+              </span>
             </h1>
-            <p className="text-muted-foreground text-lg sm:text-xl max-w-3xl mx-auto mb-12">
-              Turning complex APIs, docs, and features into clear, dev-ready content that drives adoption and reduces support overhead.
+            <p className="text-sm sm:text-lg md:text-xl text-muted-foreground 
+              max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto mb-8 sm:mb-12
+              leading-relaxed sm:leading-loose px-2 sm:px-5">
+              <span className="block sm:inline">Turning complex APIs, docs, and features </span>{' '}
+              <span className="block sm:inline">into clear, dev-ready content</span>{' '}
+              <span className="block sm:inline">that drives adoption</span>{' '}
+              <span className="block sm:inline">and reduces support overhead.</span>
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="mb-20"
-          >
-            <Button
+          {/* Update the button and availability indicator layout */}
+          <div className="flex flex-col items-center gap-4">
+            <Button 
+              variant="default"
               size="lg"
-              className="group relative px-8 py-6 text-lg hover:scale-105 transition-all duration-300 bg-gradient-to-r from-primary via-primary to-accent hover:shadow-[0_0_30px_rgba(238,243,95,0.3)] hover:border-primary/50"
+              className="group/btn w-auto mx-auto sm:w-auto"
+              asChild
             >
-              <span className="flex items-center gap-2">
-                Book a 15-min call
-                <Calendar className="w-5 h-5 transition-transform group-hover:rotate-12" />
-              </span>
+              <a 
+                href="https://cal.com/abdahunsi/15min" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center whitespace-nowrap"
+              >
+                <span className="hidden sm:inline">Book a 15-min call</span>
+                <span className="sm:hidden">Book a Call</span>
+                <Calendar className="ml-2 w-4 h-4 transition-transform group-hover/btn:scale-110" />
+              </a>
             </Button>
-            <p className="mt-4 text-muted-foreground flex items-center justify-center gap-2">
+            
+            <p className="text-muted-foreground flex items-center justify-center gap-2">
               <span className="pulse-dot" aria-hidden="true" />
               4 spots available
             </p>
-          </motion.div>
+          </div>
 
           <LogoCarousel />
 
@@ -70,31 +82,53 @@ for Growing SaaS Teams
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-20"
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 max-w-4xl mx-auto mt-12 sm:mt-20 px-4 sm:px-6"
           >
             {[
               {
                 title: "Technical Documentation",
-                description:
-                  "From API docs to SDKs—comprehensive technical content that helps developers succeed with your product from day one.",
+                description: [
+                  "From API docs to SDKs—",
+                  "comprehensive technical content",
+                  "that helps developers succeed",
+                  "with your product from day one."
+                ],
               },
               {
                 title: "Content Strategy",
-                description:
-                  "Data-driven technical content that drives developer adoption and product growth. Strategic roadmaps for documentation, tutorials, and developer resources.",
+                description: [
+                  "Data-driven technical content",
+                  "that drives developer adoption",
+                  "and product growth. Strategic",
+                  "roadmaps for documentation",
+                  "tutorials, and resources."
+                ],
               },
               {
                 title: "Developer Experience",
-                description:
-                  "Data-driven technical content that drives developer adoption and product growth. Strategic roadmaps for documentation, tutorials, and developer resources.",
+                description: [
+                  "Data-driven technical content",
+                  "that drives developer adoption",
+                  "and product growth."
+                ],
               },
             ].map((feature, index) => (
               <div
                 key={index}
-                className="bg-card/50 backdrop-blur-sm p-6 rounded-lg hover-glow transition-all duration-300"
+                className="bg-card/50 backdrop-blur-sm p-4 sm:p-6 rounded-lg 
+                  hover-glow transition-all duration-300"
               >
-                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground 
+                  leading-relaxed sm:leading-loose">
+                  {feature.description.map((line, i) => (
+                    <span key={i} className="block sm:inline">
+                      {line}{' '}
+                    </span>
+                  ))}
+                </p>
               </div>
             ))}
           </motion.div>

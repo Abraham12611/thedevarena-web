@@ -1,126 +1,74 @@
 "use client";
 
-import { useState } from "react";
-import { useToast } from "@/components/ui/toast/use-toast";
-
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
-const initialFormData: FormData = {
-  name: "",
-  email: "",
-  message: "",
-};
+import { motion } from "framer-motion";
+import { CalendarDays } from "lucide-react";
+import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 
 export default function Contact() {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState<FormData>(initialFormData);
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // The form will be handled by Netlify Forms automatically
-      toast({
-        title: "Success!",
-        description: "Your message has been sent successfully.",
-        duration: 5000,
-      });
-
-      setFormData(initialFormData);
-    } catch (error) {
-      console.error("Form submission error:", error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        duration: 5000,
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-background/80" />
+      <div className="absolute inset-0 bg-grid-white/[0.02]" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <form
-          onSubmit={handleSubmit}
-          method="POST"
-          data-netlify="true"
-          name="contact"
-          className="space-y-6"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center"
         >
-          <input type="hidden" name="form-name" value="contact" />
-          
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium">
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-              className="mt-1 block w-full rounded-md border border-border bg-background px-3 py-2"
-            />
-          </div>
+          <div className="max-w-xl mx-auto">
+            <NeonGradientCard
+              borderSize={1.5}
+              borderRadius={24}
+              neonColors={{
+                firstColor: "#6C5CE7",
+                secondColor: "#45B7D1"
+              }}
+              className="transition-all duration-300 hover:scale-[1.02]"
+            >
+              <div className="relative bg-card/50 backdrop-blur-xl rounded-2xl p-8">
+                {/* Emoji Icon */}
+                <div className="flex justify-center mb-6">
+                  <div className="w-20 h-20 relative">
+                    <div className="absolute -top-2 right-0 w-6 h-6 bg-yellow-300 rounded-full animate-pulse" />
+                    <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-accent/20 p-1">
+                      <div className="w-full h-full rounded-full bg-background flex items-center justify-center text-3xl">
+                        👩‍💻
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              className="mt-1 block w-full rounded-md border border-border bg-background px-3 py-2"
-            />
-          </div>
+                {/* Text Content */}
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                  Have more questions?
+                </h2>
+                <p className="text-xl font-bold mb-8">
+                  Book a FREE intro call.
+                </p>
 
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium">
-              Message
-            </label>
-            <textarea
-              name="message"
-              id="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-              rows={4}
-              className="mt-1 block w-full rounded-md border border-border bg-background px-3 py-2"
-            />
+                {/* CTA Button */}
+                <a
+                  href="https://cal.com/abdahunsi/15min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 w-full 
+                    rounded-lg bg-primary px-4 sm:px-8 py-3 sm:py-4 
+                    text-sm sm:text-base md:text-lg text-background font-medium 
+                    hover:bg-primary/90 transition-all duration-200
+                    hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <CalendarDays className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="block sm:hidden">Book Free Call</span>
+                  <span className="hidden sm:block">Claim Your Free Strategy Call</span>
+                </a>
+              </div>
+            </NeonGradientCard>
           </div>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full rounded-md bg-primary px-4 py-2 text-white hover:bg-primary/90 disabled:opacity-50"
-          >
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-        </form>
+        </motion.div>
       </div>
     </section>
   );

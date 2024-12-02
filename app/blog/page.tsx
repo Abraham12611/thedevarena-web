@@ -1,90 +1,122 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { getAllPosts, getAllTags, searchPosts } from "@/lib/blog-utils";
+import type { BlogPost } from "@/types/blog";
 import BlogList from "@/components/blog/blog-list";
 import BlogSearch from "@/components/blog/blog-search";
-import BlogSidebar from "@/components/blog/blog-sidebar";
-import { Button } from "@/components/ui/button";
-import { LayoutGrid, LayoutList } from "lucide-react";
-import { blogPosts, type BlogPost } from "@/lib/blog";
+import { default as FeaturedBlogs } from "@/components/blog/featured-blogs";
+import NewsletterForm from "@/components/blog/newsletter-form";
+import { Badge } from "@/components/ui/badge";
 
 export default function BlogPage() {
-  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(blogPosts);
-  const [isGridView, setIsGridView] = useState(true);
-  const [sortBy, setSortBy] = useState<"latest" | "popular">("latest");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
+  const [allTags, setAllTags] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleSearch = (results: BlogPost[]) => {
-    let sortedResults = [...results];
-    if (sortBy === "latest") {
-      sortedResults.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    } else if (sortBy === "popular") {
-      sortedResults.sort((a, b) => (b.views || 0) - (a.views || 0));
-    }
-    setFilteredPosts(sortedResults);
+  // Load initial data
+  useEffect(() => {
+    const loadInitialData = async () => {
+      try {
+        const [allPosts, tags] = await Promise.all([
+          getAllPosts(),
+          getAllTags()
+        ]);
+        setPosts(allPosts);
+        setFilteredPosts(allPosts);
+        setAllTags(tags);
+      } catch (error) {
+        console.error('Error loading blog data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadInitialData();
+  }, []);
+
+  // Handle search and filtering
+  useEffect(() => {
+    const filterPosts = async () => {
+      const filtered = await searchPosts(searchQuery, selectedTags);
+      setFilteredPosts(filtered);
+    };
+
+    filterPosts();
+  }, [searchQuery, selectedTags]);
+
+  const handleTagToggle = (tag: string) => {
+    setSelectedTags(prev =>
+      prev.includes(tag)
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
   };
 
-  const handleSort = (value: "latest" | "popular") => {
-    setSortBy(value);
-    handleSearch(filteredPosts);
-  };
+  const featuredPosts = posts.slice(0, 3);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // You can replace this with a proper loading skeleton
+  }
 
   return (
-    <div className="min-h-screen py-24 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20" />
-      <div className="absolute inset-0 bg-grid-white/[0.02]" />
-      
-      {/* Ambient Light Effects */}
-      <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-20" />
-      <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-20" />
+    <main className="container mx-auto px-4 py-16">
+      <div className="max-w-7xl mx-auto">
+        {/* Featured Blogs Section */}
+        <section className="mb-16">
+          <FeaturedBlogs posts={featuredPosts} />
+        </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            From Local Advancements{" "}
-            <span className="gradient-text">to Global Changes</span>
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            Insights and expertise from our technical writing team on documentation,
-            developer experience, and content strategy.
-          </p>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Sidebar */}
+          <aside className="lg:col-span-1 space-y-8">
+            <div className="sticky top-24">
+              <BlogSearch
+                value={searchQuery}
+                onChange={setSearchQuery}
+                placeholder="Search articles..."
+              />
 
-        <BlogSearch onSearch={handleSearch} />
-
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-12">
-          <div className="lg:col-span-3">
-            <div className="flex justify-between items-center mb-8">
-              <div className="flex items-center gap-4">
-                <Button
-                  variant={isGridView ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setIsGridView(true)}
-                >
-                  <LayoutGrid className="w-4 h-4" />
-                </Button>
-                <Button
-                  variant={!isGridView ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setIsGridView(false)}
-                >
-                  <LayoutList className="w-4 h-4" />
-                </Button>
+              {/* Tags Filter */}
+              <div className="mt-8">
+                <h3 className="text-lg font-semibold mb-4">Topics</h3>
+                <div className="flex flex-wrap gap-2">
+                  {allTags.map(tag => (
+                    <Badge
+                      key={tag}
+                      variant={selectedTags.includes(tag) ? "default" : "secondary"}
+                      className="cursor-pointer transition-colors"
+                      onClick={() => handleTagToggle(tag)}
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-              <select
-                className="bg-secondary rounded-md px-3 py-1 text-sm"
-                value={sortBy}
-                onChange={(e) => handleSort(e.target.value as "latest" | "popular")}
-              >
-                <option value="latest">Latest</option>
-                <option value="popular">Most Popular</option>
-              </select>
+
+              {/* Newsletter Form */}
+              <div className="mt-8 p-6 bg-card rounded-lg border border-border">
+                <NewsletterForm />
+              </div>
             </div>
-            <BlogList posts={filteredPosts} isGridView={isGridView} />
+          </aside>
+
+          {/* Main Content */}
+          <div className="lg:col-span-3">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <BlogList posts={filteredPosts} />
+            </motion.div>
           </div>
-          <BlogSidebar />
         </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -5,19 +5,24 @@ import {
   BookOpen,
   Code2,
   FileCode2,
+  File,
   GanttChart,
   GitBranch,
   GraduationCap,
   LayoutDashboard,
   MessageSquareCode,
   Microscope,
+  Newspaper,
+  ImagePlus,
+  FileText,
+  BookText,
 } from "lucide-react";
 
 const services = [
   {
-    title: "API Documentation",
-    description: "Clear, comprehensive documentation for your APIs with interactive examples and best practices",
-    icon: Code2,
+    title: "Blog Posts",
+    description: "Clear, Engaging, blog posts that attracts developers and boost your brand's authority.",
+    icon: Newspaper,
     className: "md:col-span-2 md:row-span-1",
   },
   {
@@ -27,15 +32,15 @@ const services = [
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    title: "SDK Implementation",
-    description: "Detailed SDK documentation with code samples across multiple languages",
-    icon: FileCode2,
+    title: "Content Graphics",
+    description: "Custom content graphics that simplify complex concepts and visually engage your developer audience.",
+    icon: ImagePlus,
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    title: "Developer Portals",
-    description: "Custom developer portals that showcase your API ecosystem",
-    icon: LayoutDashboard,
+    title: "Whitepapers",
+    description: "Comprehensive, data-driven white papers that showcase your expertise and drive developer trust.",
+    icon: FileText,
     className: "md:col-span-2 md:row-span-1",
   },
   {
@@ -57,9 +62,9 @@ const services = [
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    title: "Technical Training",
-    description: "Custom training materials and onboarding documentation",
-    icon: GraduationCap,
+    title: "E-Books",
+    description: "In-depth, developer-focused e-books that educate, inspire, and position your brand as an industry leader.",
+    icon: BookText,
     className: "md:col-span-1 md:row-span-1",
   },
   {
@@ -95,6 +100,15 @@ export default function Services() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
+          <div className="inline-block mb-6 relative group">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 blur-md rounded-full group-hover:blur-lg transition-all duration-300" />
+            <div className="relative px-4 py-1.5 rounded-full border border-primary/50 bg-background/50 backdrop-blur-sm">
+              <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent font-medium">
+                Services
+              </span>
+            </div>
+          </div>
+
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Make Your Tech Product {" "}
             <span className="gradient-text"> Easy to Love</span>

@@ -1,34 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Calendar } from "lucide-react";
+import { Check, Calendar, Video, GhostIcon, BookText, FileText, Presentation, Braces, PenTool, LineChart } from "lucide-react";
 import { Button } from "./ui/button";
 import { Switch } from "./ui/switch";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { useState } from "react";
 
 const basePackages = [
   {
-    title: "Developer Portal Essentials",
-    monthlyPrice: 1250,
-    description: "Launch your developer documentation with everything you need to get started",
+    title: "Essential",
+    monthlyPrice: 1199,
+    priceLabel: "starting at",
+    description: "Launch your content strategy with everything you need to get started",
+    monthlyWords: 17500,
     features: [
       "Strategic Content Planning & Research",
-      "Technical Content Creation (7,000 words)",
+      (isQuarterly: boolean) => `Technical Content Creation (${isQuarterly ? '52,500' : '17,500'} words)`,
       "Developer-Focused SEO Optimization",
       "Visual Documentation",
       "Expert Technical Review",
       "Professional Technical Editing",
       "48-Hour Revision Turnaround",
     ],
-    spotsAvailable: 2,
+    spotsAvailable: 3,
   },
   {
-    title: "Enterprise Documentation Suite",
-    monthlyPrice: 3200,
-    description: "Complete documentation ecosystem for growing products",
+    title: "Suite",
+    monthlyPrice: 2999,
+    priceLabel: "starting at",
+    description: "Complete content strategy for growing products",
+    monthlyWords: 30000,
     features: [
       "Comprehensive Content Strategy",
-      "Extended Technical Content (15,000 words)",
+      (isQuarterly: boolean) => `Extended Technical Content (${isQuarterly ? '90,000' : '30,000'} words)`,
       "Advanced Technical SEO & Content Distribution",
       "Enhanced Visual Documentation:",
       "Unlimited Technical Reviews",
@@ -37,6 +42,51 @@ const basePackages = [
     ],
     spotsAvailable: 1,
     featured: true,
+  },
+];
+
+const addonServices = [
+  {
+    title: "Video Tutorials",
+    description: "Professional screencast tutorials and product demos with expert narration",
+    icon: Video,
+    price: "from $997",
+  },
+  {
+    title: "Executive Ghostwriting",
+    description: "Thought leadership content written in your voice for blogs and publications",
+    icon: GhostIcon,
+    price: "from $797",
+  },
+  {
+    title: "Technical Ebooks",
+    description: "Comprehensive, well-researched ebooks that establish authority",
+    icon: BookText,
+    price: "from $2,497",
+  },
+  {
+    title: "Whitepapers",
+    description: "In-depth technical whitepapers with original research and insights",
+    icon: FileText,
+    price: "from $1,997",
+  },
+  {
+    title: "Technical Presentations",
+    description: "Engaging slide decks and presentation materials for conferences",
+    icon: Presentation,
+    price: "from $997",
+  },
+  {
+    title: "API Documentation",
+    description: "Detailed API documentation with interactive examples",
+    icon: Braces,
+    price: "from $1,497",
+  },
+  {
+    title: "UX Writing",
+    description: "Microcopy and interface content that enhances user experience",
+    icon: PenTool,
+    price: "from $797",
   },
 ];
 
@@ -77,12 +127,22 @@ export default function Pricing() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
+          {/* Add Badge */}
+          <div className="inline-block mb-6 relative group">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 blur-md rounded-full group-hover:blur-lg transition-all duration-300" />
+            <div className="relative px-4 py-1.5 rounded-full border border-primary/50 bg-background/50 backdrop-blur-sm">
+              <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent font-medium">
+                Pricing
+              </span>
+            </div>
+          </div>
+
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Technical Content {" "}
             <span className="gradient-text">That Fits Your Budget</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto mb-12">
-           Flexible plans that scale with your documentation needs. Choose monthly for flexibility or save 15% with quarterly commitments.
+           Flexible plans that scale with your content needs. Choose monthly for flexibility or save 15% with quarterly commitments.
           </p>
 
           {/* Billing Toggle */}
@@ -110,60 +170,162 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
-              className={`relative group rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 p-8
-                ${pkg.featured ? "ring-2 ring-primary/50" : ""}
-              `}
+              className="group relative"
             >
-              {/* Content */}
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-4xl font-bold">
-                    {formatPrice(calculatePrice(pkg.monthlyPrice))}
-                  </span>
-                  <span className="text-muted-foreground">
-                    /{isQuarterly ? 'quarter' : 'month'}
+              <div className={`relative rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 p-8
+                transition-all duration-500 ease-out
+                group-hover:shadow-[0_0_50px_rgba(238,243,95,0.15)]
+                group-hover:border-primary/30
+                group-hover:-translate-y-1
+                ${pkg.featured ? "ring-2 ring-primary/50" : ""}`}
+              >
+                {/* Content */}
+                <div className="mb-6 relative z-10">
+                  <h3 className="text-2xl font-bold mb-2 transition-colors duration-300
+                    group-hover:text-primary/90">{pkg.title}</h3>
+                  <div className="flex items-baseline gap-2 mb-4 transition-all duration-300
+                    group-hover:translate-x-1">
+                    {pkg.priceLabel && (
+                      <span className="text-muted-foreground text-lg">
+                        {pkg.priceLabel}
+                      </span>
+                    )}
+                    <span className="text-4xl font-bold">
+                      {formatPrice(calculatePrice(pkg.monthlyPrice))}
+                    </span>
+                    <span className="text-muted-foreground">
+                      /{isQuarterly ? 'quarter' : 'month'}
+                    </span>
+                  </div>
+                  <p className="text-muted-foreground transition-colors duration-300
+                    group-hover:text-muted-foreground/80">{pkg.description}</p>
+                </div>
+
+                {/* Features */}
+                <ul className="space-y-4 mb-8 relative z-10">
+                  {pkg.features.map((feature, i) => (
+                    <li key={i} 
+                      className="flex items-start gap-3 transition-all duration-300 ease-out
+                        hover:translate-x-1">
+                      <Check className="w-5 h-5 text-primary mt-0.5 transition-transform duration-300
+                        group-hover:scale-110" />
+                      <span className="text-muted-foreground transition-colors duration-300
+                        group-hover:text-muted-foreground/80">
+                        {typeof feature === 'function' ? feature(isQuarterly) : feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Spots Available */}
+                <div className="mb-6 flex items-center gap-2 relative z-10">
+                  <div className="pulse-dot transition-all duration-300
+                    group-hover:scale-110" />
+                  <span className="text-sm text-muted-foreground transition-all duration-300
+                    group-hover:text-primary/80">
+                    {pkg.spotsAvailable} spot{pkg.spotsAvailable !== 1 ? "s" : ""} available
                   </span>
                 </div>
-                <p className="text-muted-foreground">{pkg.description}</p>
+
+                {/* CTA Button */}
+                <Button
+                  className="w-full group/button relative z-10
+                    transition-all duration-300
+                    bg-gradient-to-r from-primary via-primary to-accent 
+                    hover:shadow-[0_0_30px_rgba(238,243,95,0.3)]
+                    hover:border-primary/50
+                    hover:scale-[1.02]"
+                  size="lg"
+                  asChild
+                >
+                  <a 
+                    href="https://cal.com/abdahunsi/15min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2"
+                  >
+                    Schedule a 15-min Call
+                    <Calendar className="w-5 h-5 transition-all duration-300 
+                      group-hover/button:rotate-12" />
+                  </a>
+                </Button>
+
+                {/* Hover Gradient */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 via-accent/5 to-background 
+                  opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none
+                  mix-blend-overlay" />
               </div>
-
-              {/* Features */}
-              <ul className="space-y-4 mb-8">
-                {pkg.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span className="text-muted-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Spots Available */}
-              <div className="mb-6 flex items-center gap-2">
-                <div className="pulse-dot" />
-                <span className="text-sm text-muted-foreground">
-                  {pkg.spotsAvailable} spot{pkg.spotsAvailable !== 1 ? "s" : ""} available
-                </span>
-              </div>
-
-              {/* CTA Button */}
-              <Button
-                className="w-full group relative hover:scale-105 transition-all duration-300 
-                  bg-gradient-to-r from-primary via-primary to-accent 
-                  hover:shadow-[0_0_30px_rgba(238,243,95,0.3)] hover:border-primary/50"
-                size="lg"
-              >
-                <span className="flex items-center gap-2">
-                  Schedule Technical Consultation
-                  <Calendar className="w-5 h-5 transition-transform group-hover:rotate-12" />
-                </span>
-              </Button>
-
-              {/* Hover Effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 -z-10 blur-sm opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
             </motion.div>
           ))}
         </div>
+
+        {/* Add Addon Services Button and Dialog */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="text-center mt-16"
+        >
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant="outline"
+                className="group relative px-6 py-2
+                  border border-primary/50 hover:border-primary
+                  bg-background/50 backdrop-blur-sm
+                  transition-all duration-300
+                  hover:shadow-[0_0_30px_rgba(238,243,95,0.2)]"
+              >
+                <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
+                  View Addon Services
+                </span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold text-center mb-6">
+                  Addon Services
+                </DialogTitle>
+              </DialogHeader>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {addonServices.map((service, index) => (
+                  <motion.div
+                    key={service.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                    className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm 
+                      border border-border/50 hover:border-primary/50 
+                      transition-all duration-300"
+                  >
+                    <div className="relative z-10">
+                      <div className="mb-4 inline-block p-3 rounded-lg bg-primary/10">
+                        <service.icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2 group-hover:text-primary 
+                        transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-4 group-hover:text-foreground/80 
+                        transition-colors duration-300">
+                        {service.description}
+                      </p>
+                      <p className="text-primary font-semibold">{service.price}</p>
+                    </div>
+                    
+                    {/* Hover Gradient */}
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-br 
+                      from-primary/5 via-accent/5 to-background 
+                      opacity-0 group-hover:opacity-100 
+                      transition-opacity duration-500 pointer-events-none" 
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
+        </motion.div>
       </div>
     </section>
   );

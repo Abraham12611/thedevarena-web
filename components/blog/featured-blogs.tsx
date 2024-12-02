@@ -3,114 +3,106 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { BlogPost } from "@/types/blog";
 import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { Button } from "../ui/button";
 
-const featuredPosts = [
-  {
-    slug: "future-of-interactive-design",
-    title: "The Future of Interactive Design with Framer",
-    description: "Exploring the latest innovations in interactive design using Framer",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop",
-    date: "July 25, 2023",
-    readingTime: "6 min read",
-    category: "Framer"
-  },
-  {
-    slug: "perfect-font-introduction",
-    title: "The Art of Choosing the Perfect Font Introduction",
-    description: "A comprehensive guide to typography in technical documentation",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
-    date: "July 25, 2023",
-    readingTime: "4 min read",
-    category: "Design"
-  }
-];
+interface FeaturedBlogsProps {
+  posts: BlogPost[];
+}
 
-export default function FeaturedBlogs() {
+export default function FeaturedBlogs({ posts }: FeaturedBlogsProps) {
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20" />
-      <div className="absolute inset-0 bg-grid-white/[0.02]" />
-      
-      {/* Ambient Light Effects */}
-      <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-20" />
-      <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-20" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex justify-between items-center mb-12">
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold"
-          >
-            Featured <span className="gradient-text">Blogs</span>
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Button variant="ghost" asChild>
-              <Link href="/blog" className="group">
-                Browse more posts
-                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {featuredPosts.map((post, index) => (
+    <section className="py-24">
+      <div className="container">
+        <h2 className="text-3xl font-bold mb-8">Featured Articles</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => (
             <motion.article
               key={post.slug}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="group relative bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50"
+              transition={{ duration: 0.5 }}
+              className="group relative bg-card rounded-lg overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-300"
             >
-              <Link href={`/blog/${post.slug}`}>
-                <div className="relative h-48">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-                  <Badge
-                    className="absolute top-4 left-4"
-                    variant="secondary"
-                  >
-                    {post.category}
-                  </Badge>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
-                    <span>{post.date}</span>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      {post.readingTime}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {post.description}
-                  </p>
-                </div>
-              </Link>
+              {/* Featured Image */}
+              <div className="relative h-48 w-full overflow-hidden">
+                <Image
+                  src={post.featureImage || '/blog-placeholder.jpg'}
+                  alt={post.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-background/20" />
+              </div>
 
-              {/* Hover Gradient */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 opacity-0 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
+              {/* Content */}
+              <div className="p-6">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {post.tags?.map((tag) => (
+                    <Badge key={tag} variant="secondary" className="text-xs">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                  <Link href={`/blog/${post.slug}`} className="hover:underline">
+                    {post.title}
+                  </Link>
+                </h3>
+
+                {/* Excerpt */}
+                <p className="text-muted-foreground mb-4">
+                  {post.excerpt || post.description}
+                </p>
+
+                {/* Author and Date */}
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <div className="relative w-8 h-8 rounded-full overflow-hidden">
+                      <Image
+                        src={post.author.image}
+                        alt={post.author.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <span className="text-sm font-medium">{post.author.name}</span>
+                  </div>
+                  <span className="text-sm text-muted-foreground">
+                    {post.readingTime}
+                  </span>
+                </div>
+              </div>
             </motion.article>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="flex justify-center mt-12"
+        >
+          <Button
+            variant="outline"
+            size="lg"
+            className="group/btn"
+            asChild
+          >
+            <Link href="/blog" className="flex items-center">
+              View All Articles
+              <ChevronRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+            </Link>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

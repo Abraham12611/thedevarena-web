@@ -9,15 +9,17 @@ export default function BlogAuthor() {
   return (
     <div className="flex items-center gap-6 py-8 border-y border-border mb-12">
       <Image
-        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
-        alt="Lisa Johnson"
+        src="https://i.postimg.cc/L593G1z9/Profile-pic.jpg"
+        alt="Abraham Dahunsi"
         width={80}
         height={80}
         className="rounded-full"
       />
       <div className="flex-1">
-        <h3 className="text-xl font-bold mb-1">Lisa Johnson</h3>
-        <p className="text-muted-foreground mb-3">Senior UX Writer</p>
+        <h3 className="text-xl font-bold mb-1">Abraham Dahunsi</h3>
+        <p className="text-muted-foreground mb-3">
+          Full-stack Developer and Technical Writer
+        </p>
         <div className="flex gap-2">
           {[
             { icon: Twitter, href: "#" },

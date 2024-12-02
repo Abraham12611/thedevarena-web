@@ -9,10 +9,31 @@ import { Button } from "./ui/button";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    // Only handle scroll for hash links
+    if (targetId.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(targetId);
+      if (element) {
+        const navbarHeight = 64; // Height of your fixed navbar
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+
+        // Close mobile menu if open
+        setIsOpen(false);
+      }
+    }
+  };
+
   const navItems = [
     { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Team", href: "#team" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Blog", href: "/blog" },
     { name: "How We Work", href: "/how-we-work" },
     { name: "Contact", href: "#contact" },
   ];
@@ -28,11 +49,27 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link key={item.name} href={item.href} className="nav-link">
+              <Link 
+                key={item.name} 
+                href={item.href}
+                onClick={(e) => handleScroll(e, item.href)}
+                className="nav-link"
+              >
                 {item.name}
               </Link>
             ))}
-            <Button className="hover-glow">Get Started</Button>
+            <Button 
+              className="hover-glow"
+              asChild
+            >
+              <a 
+                href="https://cal.com/abdahunsi/15min"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book a Call
+              </a>
+            </Button>
           </div>
 
           {/* Mobile Navigation Button */}
@@ -60,14 +97,25 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleScroll(e, item.href)}
                 className="block px-3 py-2 text-base nav-link"
-                onClick={() => setIsOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
             <div className="px-3 py-2">
-              <Button className="w-full hover-glow">Get Started</Button>
+              <Button 
+                className="w-full hover-glow"
+                asChild
+              >
+                <a 
+                  href="https://cal.com/abdahunsi/15min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book a Call
+                </a>
+              </Button>
             </div>
           </div>
         </motion.div>
