@@ -13,6 +13,38 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata = {
   title: 'TheDevArena | Technical Writing Agency',
   description: 'Professional technical writing services for modern businesses',
+  icons: {
+    icon: [
+      {
+        url: '/favicon.ico',
+        sizes: 'any',
+      },
+      {
+        url: '/favicon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: {
+      url: '/apple-touch-icon.png',
+      sizes: '180x180',
+      type: 'image/png',
+    },
+    shortcut: ['/favicon.ico'],
+    other: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        url: '/favicon-16x16.png',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
